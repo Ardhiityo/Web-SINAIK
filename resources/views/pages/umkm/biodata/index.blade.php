@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Data Dosen</h2>
+                <h2 class="section-title">Biodatamu</h2>
                 <p class="section-lead">
                     Informasi mengenai data biodatamu bisnismu
                 </p>

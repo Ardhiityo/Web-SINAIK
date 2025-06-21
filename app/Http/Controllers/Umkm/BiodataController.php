@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Http\Controllers\Controller;
+use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
+use App\Services\Interfaces\LinkProductive\CertificationInterface;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 use Illuminate\Http\Request;
 
 class BiodataController extends Controller
 {
     public function __construct(
-        private UmkmInterface $umkmRepository
+        private UmkmInterface $umkmRepository,
+        private BusinessScaleInterface $businessScaleRepository,
+        private CertificationInterface $certificationRepository
     ) {}
 
     /**
@@ -27,7 +31,10 @@ class BiodataController extends Controller
      */
     public function create()
     {
-        //
+        $businessScales = $this->businessScaleRepository->getBusinessScales();
+        $certifications = $this->certificationRepository->getCertifications();
+
+        return view('pages.umkm.biodata.create', compact('businessScales', 'certifications'));
     }
 
     /**
