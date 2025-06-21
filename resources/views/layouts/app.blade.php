@@ -39,7 +39,9 @@
             <x-header />
 
             <!-- Sidebar -->
-            <x-sidebar />
+            @role('umkm')
+                <x-umkm.sidebar />
+            @endrole
 
             <!-- Content -->
             @yield('main')

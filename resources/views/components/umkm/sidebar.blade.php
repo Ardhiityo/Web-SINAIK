@@ -27,8 +27,8 @@
                     <span>Verifikasi</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('umkm.biodata.index') ? 'active' : '' }}">
+                <a href="{{ route('umkm.biodata.index') }}" class="nav-link">
                     <i class="fas fa-book"></i>
                     <span>Biodata</span>
                 </a>

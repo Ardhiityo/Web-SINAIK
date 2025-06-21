@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UmkmController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
-    Route::get('/verification', [UmkmController::class, 'verification'])->name('umkm.verification.index');
+    Route::get('/', [App\Http\Controllers\Umkm\DashboardController::class, 'index'])->name('dashboard');
+    Route::prefix('umkm')->name('umkm.')->group(function () {
+        Route::get('verification', [App\Http\Controllers\UmkmController::class, 'verification'])->name('verification.index');
+        Route::resource('biodata', App\Http\Controllers\Umkm\BiodataController::class);
+    });
 });
 
 
