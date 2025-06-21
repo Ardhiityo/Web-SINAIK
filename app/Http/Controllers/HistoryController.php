@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Umkm;
+use App\Models\History;
 use Illuminate\Http\Request;
 
-class UmkmController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class UmkmController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Umkm $umkm)
+    public function show(History $history)
     {
         //
     }
@@ -42,7 +42,7 @@ class UmkmController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Umkm $umkm)
+    public function edit(History $history)
     {
         //
     }
@@ -50,7 +50,7 @@ class UmkmController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Umkm $umkm)
+    public function update(Request $request, History $history)
     {
         //
     }
@@ -58,13 +58,8 @@ class UmkmController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Umkm $umkm)
+    public function destroy(History $history)
     {
         //
-    }
-
-    public function verification()
-    {
-        return view('pages.verification.index');
     }
 }

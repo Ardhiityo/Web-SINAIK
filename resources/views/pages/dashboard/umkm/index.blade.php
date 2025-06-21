@@ -24,7 +24,7 @@
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">
-                                    <h4>Total Mahasiswa</h4>
+                                    <h4>Total Layananmu</h4>
                                 </div>
                                 <div class="card-body">
                                     0
@@ -41,7 +41,7 @@
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">
-                                    <h4>Total Dosen</h4>
+                                    <h4>Total Karyawan</h4>
                                 </div>
                                 <div class="card-body">
                                     0
@@ -58,7 +58,7 @@
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">
-                                    <h4>Total Ruangan</h4>
+                                    <h4>Total Pendapatan</h4>
                                 </div>
                                 <div class="card-body">
                                     5
@@ -75,7 +75,7 @@
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">
-                                    <h4>Total Jadwal</h4>
+                                    <h4>Total Laporanmu</h4>
                                 </div>
                                 <div class="card-body">
                                     0
@@ -102,7 +102,7 @@
                 <div class="col-lg-4 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Jadwal terbaru</h4>
+                            <h4>Layanan terbaru</h4>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled list-unstyled-border">

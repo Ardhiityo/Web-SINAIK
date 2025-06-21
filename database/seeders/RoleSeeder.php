@@ -28,9 +28,15 @@ class RoleSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Admin Link Productive',
+            'name' => 'Link Productive',
             'email' => 'admin@lp',
             'password' => 11111111
         ])->assignRole('admin_lp');
+
+        User::create([
+            'name' => 'Umkm',
+            'email' => 'umkm@lp',
+            'password' => 11111111
+        ])->assignRole('umkm');
     }
 }

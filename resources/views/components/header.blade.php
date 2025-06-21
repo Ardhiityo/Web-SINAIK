@@ -14,7 +14,7 @@
             </li>
         </ul>
         <div class="search-element">
-            <input class="form-control" type="search" name="nim" placeholder="Cek jadwal dengan NIM"
+            <input class="form-control" type="search" name="nim" placeholder="Cari layanan disini..."
                 aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
@@ -41,7 +41,7 @@
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="mr-1 rounded-circle">
-                <div class="d-sm-none d-lg-inline-block">Hi, Arya</div>
+                <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
