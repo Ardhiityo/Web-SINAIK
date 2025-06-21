@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('founding_year');
             $table->foreignId('business_scale_id')->constrained('business_scales')->cascadeOnDelete();
             $table->foreignId('certification_id')->nullable()->constrained('certifications')->nullOnDelete();
+            $table->foreignId('umkm_id')->constrained('umkms')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('umkm_status_id')->nullable()->constrained('umkm_statuses')->cascadeOnDelete();
             $table->boolean('is_verified')->default(false);
-            $table->foreignId('biodata_id')->nullable()->constrained('biodatas')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="{{ route('umkm.biodata.store') }}" method="POST">
+                                    <form action="{{ route('umkm.biodatas.store') }}" method="POST">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Buat Data</h4>
@@ -97,7 +97,9 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="phone_number">Telepon</label>
-                                                    <textarea name="phone_number" class="form-control" value="{{ old('phone_number') }}"></textarea>
+                                                    <input required type="text" class="form-control" id="phone_number"
+                                                        name="phone_number" value="{{ old('phone_number') }}"
+                                                        placeholder="08xxxxxxxxx">
                                                 </div>
                                             </div>
                                         </div>

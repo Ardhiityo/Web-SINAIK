@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Laravolt\Indonesia\IndonesiaService;
 use App\Http\Requests\Umkm\StoreBiodataRequest;
+use App\Models\Biodata;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
@@ -24,10 +25,9 @@ class BiodataController extends Controller
      */
     public function index()
     {
-        $umkm = $this->umkmRepository->getBiodata();
-        Log::info(json_encode($umkm, JSON_PRETTY_PRINT));
+        $biodata = $this->umkmRepository->getBiodata();
 
-        return view('pages.umkm.biodata.index', compact('umkm'));
+        return view('pages.umkm.biodata.index', compact('biodata'));
     }
 
     /**
@@ -48,7 +48,7 @@ class BiodataController extends Controller
     {
         $this->umkmRepository->storeBiodata($request->validated());
 
-        return redirect()->route('umkm.biodata.index')->withSuccess('Biodata berhasil disimpan');
+        return redirect()->route('umkm.biodatas.index')->withSuccess('Biodata berhasil disimpan');
     }
 
     /**
@@ -78,8 +78,10 @@ class BiodataController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Biodata $biodata)
     {
-        //
+        $biodata->delete();
+
+        return redirect()->route('umkm.biodatas.index')->withSuccess('Biodata berhasil dihapus');
     }
 }

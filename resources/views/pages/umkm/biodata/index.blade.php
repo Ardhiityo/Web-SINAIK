@@ -23,33 +23,19 @@
                     <div class="col-12">
                         <div class="card">
 
-                            <div class="card-header">
-                                <h4>
-                                    <a href="{{ route('umkm.biodata.create') }}" class="btn btn-primary">Buat Biodata</a>
-                                </h4>
-                            </div>
+                            @if (is_null($biodata))
+                                <div class="card-header">
+                                    <h4>
+                                        <a href="{{ route('umkm.biodatas.create') }}" class="btn btn-primary">Buat
+                                            Biodata</a>
+                                    </h4>
+                                </div>
+                            @endif
 
                             <div class="card-body">
-                                @if (is_null($umkm->biodata))
+                                @if (is_null($biodata))
                                     <p>Kamu belum memiliki biodata...</p>
                                 @else
-                                    <div class="row">
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <div class="form-group">
-                                                <div class="mb-3 input-group">
-                                                    <form action="" method="get" class="d-flex">
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Cari disini..." name="keyword">
-                                                        <div class="input-group-append">
-                                                            <button class="btn btn-primary" type="submit">
-                                                                <i class="fa-solid fa-magnifying-glass"></i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="overflow-auto">
                                         <table class="table table-bordered">
                                             <thead>
@@ -68,19 +54,21 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="text-nowrap">
-                                                    <td>{{ $umkm->biodata->business_name }}</td>
-                                                    <td>{{ $umkm->biodata->business_description }}</td>
-                                                    <td>{{ $umkm->biodata->businessScale->name }}</td>
-                                                    <td>{{ $umkm->biodata->certification->name }}</td>
-                                                    <td>{{ $umkm->biodata->phone_number }}</td>
-                                                    <td>{{ $umkm->biodata->founding_year }}</td>
-                                                    <td>{{ $umkm->biodata->city }}</td>
-                                                    <td>{{ $umkm->biodata->province }}</td>
-                                                    <td>{{ $umkm->biodata->address }}</td>
+                                                    <td>{{ $biodata->business_name }}</td>
+                                                    <td>{{ $biodata->business_description }}</td>
+                                                    <td>{{ $biodata->businessScale->name }}</td>
+                                                    <td>{{ $biodata->certification->name }}</td>
+                                                    <td>{{ $biodata->phone_number }}</td>
+                                                    <td>{{ $biodata->founding_year }}</td>
+                                                    <td>{{ $biodata->city }}</td>
+                                                    <td>{{ $biodata->province }}</td>
+                                                    <td>{{ $biodata->address }}</td>
                                                     <td>
-                                                        <a href="" class="btn btn-warning">Edit</a>
-                                                        <form id="form-delete" action="" method="POST"
-                                                            class="d-inline">
+                                                        <a href="{{ route('umkm.biodatas.edit', ['biodata' => $biodata->id]) }}"
+                                                            class="btn btn-warning">Edit</a>
+                                                        <form id="form-delete"
+                                                            action="{{ route('umkm.biodatas.destroy', ['biodata' => $biodata->id]) }}"
+                                                            method="POST" class="d-inline">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" id="btn-delete"

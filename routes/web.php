@@ -6,8 +6,8 @@ use App\Http\Controllers\ProfileController;
 Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\Umkm\DashboardController::class, 'index'])->name('dashboard');
     Route::prefix('umkm')->name('umkm.')->group(function () {
-        Route::get('verification', [App\Http\Controllers\UmkmController::class, 'verification'])->name('verification.index');
-        Route::resource('biodata', App\Http\Controllers\Umkm\BiodataController::class);
+        Route::get('verifications', [App\Http\Controllers\UmkmController::class, 'verification'])->name('verifications.index');
+        Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
     });
 });
 

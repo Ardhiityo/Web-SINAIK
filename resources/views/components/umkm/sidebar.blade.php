@@ -21,14 +21,14 @@
             </li>
 
             <li class="menu-header">Profil Bisnis</li>
-            <li class="nav-item {{ request()->routeIs('umkm.verification.index') ? 'active' : '' }}">
-                <a href="{{ route('umkm.verification.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('umkm.verifications.index') ? 'active' : '' }}">
+                <a href="{{ route('umkm.verifications.index') }}" class="nav-link">
                     <i class="fas fa-info-circle"></i>
                     <span>Verifikasi</span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->routeIs('umkm.biodata.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.biodata.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('umkm.biodatas.*') ? 'active' : '' }}">
+                <a href="{{ route('umkm.biodatas.index') }}" class="nav-link">
                     <i class="fas fa-book"></i>
                     <span>Biodata</span>
                 </a>

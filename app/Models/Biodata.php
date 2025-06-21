@@ -16,11 +16,12 @@ class Biodata extends Model
         'business_description',
         'business_scale_id',
         'certification_id',
+        'umkm_id'
     ];
 
     public function umkm()
     {
-        return $this->hasOne(Umkm::class);
+        return $this->belongsTo(Umkm::class);
     }
 
     public function businessScale()
