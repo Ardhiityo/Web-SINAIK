@@ -38,7 +38,7 @@
                                             <div class="col-12 d-flex justify-content-end">
                                                 <div class="form-group">
                                                     <div class="mb-3 input-group">
-                                                        <form action="{{ route('council-hubs.index') }}" method="get"
+                                                        <form action="" method="get"
                                                             class="d-flex align-items-center">
                                                             <div class="mx-2 d-flex">
                                                                 <select required id="started_date" name="started_date"

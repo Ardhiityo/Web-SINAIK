@@ -1,6 +1,6 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
-    <form class="mr-auto form-inline" action="{{ route('council-hubs.index') }}" method="GET">
+    <form class="mr-auto form-inline" action="" method="GET">
         <ul class="mr-3 navbar-nav">
             <li>
                 <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg">
@@ -18,30 +18,30 @@
                 aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
-            @if (!$histories->isEmpty())
-                <div class="search-result">
-                    <div class="search-header">
-                        Riwayat
-                    </div>
-                    @foreach ($histories as $history)
-                        <div class="search-item">
-                            <a href="{{ route('proposals.index', ['nim' => $history->keyword]) }}">
-                                <div class="mr-3 text-white search-icon bg-primary">
-                                    <i class="fas fa-clock-rotate-left"></i>
-                                </div>
-                                {{ $history->keyword }}
-                            </a>
-                        </div>
-                    @endforeach
+            {{-- @if (!$histories->isEmpty()) --}}
+            <div class="search-result">
+                <div class="search-header">
+                    Riwayat
                 </div>
-            @endif
+                {{-- @foreach ($histories as $history); --}}
+                <div class="search-item">
+                    <a href="">
+                        <div class="mr-3 text-white search-icon bg-primary">
+                            <i class="fas fa-clock-rotate-left"></i>
+                        </div>
+                        Abc
+                    </a>
+                </div>
+                {{-- @endforeach --}}
+            </div>
+            {{-- @endif --}}
         </div>
     </form>
     <ul class="navbar-nav navbar-right">
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="mr-1 rounded-circle">
-                <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div>
+                <div class="d-sm-none d-lg-inline-block">Hi, Arya</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
