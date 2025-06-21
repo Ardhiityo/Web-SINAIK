@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Umkm\StoreProductRequest;
 
 class ProductController extends Controller
 {
@@ -32,9 +33,11 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        $this->umkmRepository->storeProduct($request->validated());
+
+        return redirect()->route('umkm.products.index')->with('success', 'Product berhasil disimpan');
     }
 
     /**
@@ -66,6 +69,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('umkm.products.index')->with('success', 'Product berhasil dihapus');
     }
 }

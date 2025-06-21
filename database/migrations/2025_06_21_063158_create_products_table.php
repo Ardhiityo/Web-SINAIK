@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('umkm_id')->constrained('umkms')->cascadeOnDelete();
+            $table->string('image');
             $table->string('name');
             $table->text('description');
             $table->unsignedBigInteger('price');

@@ -39,6 +39,7 @@
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">Produk</th>
+                                                    <th scope="col">Nama Produk</th>
                                                     <th scope="col">Deskripsi</th>
                                                     <th scope="col">Harga</th>
                                                     <th scope="col">Aksi</th>
@@ -47,6 +48,10 @@
                                             <tbody>
                                                 @foreach ($products as $product)
                                                     <tr class="text-nowrap">
+                                                        <td>
+                                                            <img src="{{ asset(Storage::url($product->image)) }}"
+                                                                width="100" height="100" alt="{{ $product->name }}">
+                                                        </td>
                                                         <td>{{ $product->name }}</td>
                                                         <td>{{ $product->description }}</td>
                                                         <td>{{ $product->price }}</td>

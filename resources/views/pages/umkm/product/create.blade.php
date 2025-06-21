@@ -24,7 +24,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="{{ route('umkm.products.store') }}" method="POST">
+                                    <form action="{{ route('umkm.products.store') }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Buat Data</h4>
@@ -41,6 +42,11 @@
                                         <div class="card-body">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
+                                                    <label for="image">Foto Produk</label>
+                                                    <input required type="file" class="form-control" name="image"
+                                                        id="image">
+                                                </div>
+                                                <div class="form-group col-md-6">
                                                     <label for="name">Nama Produk</label>
                                                     <input required type="name" class="form-control" id="name"
                                                         placeholder="Nama Produkmu..." name="name"
@@ -52,7 +58,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="price">Harga</label>
-                                                    <input required type="date" class="form-control" id="price"
+                                                    <input required type="number" class="form-control" id="price"
                                                         name="price" value="{{ old('price') }}">
                                                 </div>
                                             </div>

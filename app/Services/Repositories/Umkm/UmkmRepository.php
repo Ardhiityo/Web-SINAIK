@@ -6,7 +6,6 @@ use App\Models\Biodata;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Psy\CodeCleaner\FinalClassPass;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 
@@ -55,9 +54,23 @@ class UmkmRepository implements UmkmInterface
             'name',
             'description',
             'price',
-            'stock',
         )
             ->where('umkm_id', $user->umkm->id)
             ->paginate(10);
+    }
+
+    public function storeProduct(array $data)
+    {
+        try {
+            DB::beginTransaction();
+            $user = Auth::user();
+            $data['umkm_id'] = $user->umkm->id;
+            $data['image'] = $data['image']->store('products');
+            Product::create($data);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::info($th->getMessage(), ['store product']);
+        }
     }
 }
