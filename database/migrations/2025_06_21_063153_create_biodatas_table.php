@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('biodatas', function (Blueprint $table) {
             $table->id();
             $table->string('business_name');
+            $table->text('business_description');
             $table->string('phone_number');
             $table->string('city');
             $table->string('province');
             $table->text('address');
-            $table->foreignId('sector_category_id')->constrained('sector_categories')->cascadeOnDelete();
+            $table->date('founding_year');
             $table->foreignId('business_scale_id')->constrained('business_scales')->cascadeOnDelete();
             $table->foreignId('certification_id')->nullable()->constrained('certifications')->nullOnDelete();
             $table->timestamps();

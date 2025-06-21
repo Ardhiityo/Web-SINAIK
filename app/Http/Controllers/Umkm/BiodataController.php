@@ -3,16 +3,23 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Http\Controllers\Controller;
+use App\Services\Interfaces\Umkm\UmkmInterface;
 use Illuminate\Http\Request;
 
 class BiodataController extends Controller
 {
+    public function __construct(
+        private UmkmInterface $umkmRepository
+    ) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pages.umkm.biodata.index');
+        $umkm = $this->umkmRepository->getBiodata();
+
+        return view('pages.umkm.biodata.index', compact('umkm'));
     }
 
     /**

@@ -25,13 +25,13 @@
 
                             <div class="card-header">
                                 <h4>
-                                    <a href="" class="btn btn-primary">Tambah Data</a>
+                                    <a href="{{ route('umkm.biodata.create') }}" class="btn btn-primary">Buat Biodata</a>
                                 </h4>
                             </div>
 
                             <div class="card-body">
-                                @if (is_null($biodata))
-                                    <p>Tambahkan biodatamu...</p>
+                                @if (is_null($umkm->biodata))
+                                    <p>Kamu belum memiliki biodata...</p>
                                 @else
                                     <div class="row">
                                         <div class="col-12 d-flex justify-content-end">
@@ -54,8 +54,15 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
-                                                    <th scope="col">Nama</th>
-                                                    <th scope="col">NIDN</th>
+                                                    <th scope="col">Nama Bisnis</th>
+                                                    <th scope="col">Deskripsi Bisnis</th>
+                                                    <th scope="col">Skala Bisnis</th>
+                                                    <th scope="col">Sertifikasi Bisnis</th>
+                                                    <th scope="col">Telepon</th>
+                                                    <th scope="col">Tahun Berdiri</th>
+                                                    <th scope="col">Kota</th>
+                                                    <th scope="col">Provinsi</th>
+                                                    <th scope="col">Alamat</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
