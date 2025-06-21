@@ -33,8 +33,8 @@
                     <span>Biodata</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
+                <a href="{{ route('umkm.products.index') }}" class="nav-link">
                     <i class="fas fa-shopping-bag"></i>
                     <span>Produk</span>
                 </a>

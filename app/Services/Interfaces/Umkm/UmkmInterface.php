@@ -6,4 +6,5 @@ interface UmkmInterface
 {
     public function getBiodata();
     public function storeBiodata(array $data);
+    public function getProducts();
 }

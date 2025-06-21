@@ -3,8 +3,10 @@
 namespace App\Services\Repositories\Umkm;
 
 use App\Models\Biodata;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Psy\CodeCleaner\FinalClassPass;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 
@@ -42,5 +44,20 @@ class UmkmRepository implements UmkmInterface
             DB::rollBack();
             Log::info($th->getMessage(), ['store biodata']);
         }
+    }
+
+    public function getProducts()
+    {
+        $user = Auth::user();
+
+        return Product::select(
+            'id',
+            'name',
+            'description',
+            'price',
+            'stock',
+        )
+            ->where('umkm_id', $user->umkm->id)
+            ->paginate(10);
     }
 }

@@ -1,18 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Umkm;
 
 use App\Models\Product;
+use App\Services\Interfaces\Umkm\UmkmInterface;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+    public function __construct(private UmkmInterface $umkmRepository) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $products = $this->umkmRepository->getProducts();
+
+        return view('pages.umkm.product.index', compact('products'));
     }
 
     /**
@@ -20,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.umkm.product.create');
     }
 
     /**
