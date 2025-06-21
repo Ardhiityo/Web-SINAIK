@@ -9,6 +9,7 @@ Route::middleware('auth')->group(function () {
         Route::get('verifications', [App\Http\Controllers\UmkmController::class, 'verification'])->name('verifications.index');
         Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
         Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
+        Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
     });
 });
 

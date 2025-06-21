@@ -1,18 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Umkm;
 
 use App\Models\Income;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Interfaces\Umkm\UmkmInterface;
 
 class IncomeController extends Controller
 {
+    public function __construct(private UmkmInterface $umkmRepository) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $incomes = $this->umkmRepository->getIncomes();
+
+        return view('pages.umkm.income.index', compact('incomes'));
     }
 
     /**

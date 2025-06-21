@@ -41,8 +41,8 @@
             </li>
 
             <li class="menu-header">Pelaporan Bisnis</li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('umkm.incomes.*') ? 'active' : '' }}">
+                <a href="{{ route('umkm.incomes.index') }}" class="nav-link">
                     <i class="fas fa-pen-alt"></i>
                     <span>Laporan</span>
                 </a>

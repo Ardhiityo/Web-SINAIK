@@ -3,6 +3,7 @@
 namespace App\Services\Repositories\Umkm;
 
 use App\Models\Biodata;
+use App\Models\Income;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -90,5 +91,19 @@ class UmkmRepository implements UmkmInterface
             DB::rollBack();
             Log::info($th->getMessage(), ['update product']);
         }
+    }
+
+    public function getIncomes()
+    {
+        $user = Auth::user();
+
+        return Income::select(
+            'id',
+            'date',
+            'total_income',
+            'total_employee',
+        )
+            ->where('umkm_id', $user->umkm->id)
+            ->paginate(10);
     }
 }
