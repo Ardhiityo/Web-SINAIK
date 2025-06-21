@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Buat Biodata')
+@section('title', 'Edit Biodata')
 
 @section('main')
     <div class="main-content">
@@ -24,10 +24,12 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="{{ route('umkm.biodatas.store') }}" method="POST">
+                                    <form action="{{ route('umkm.biodatas.update', ['biodata' => $biodata->id]) }}"
+                                        method="POST">
                                         @csrf
+                                        @method('PUT')
                                         <div class="card-header">
-                                            <h4>Buat Data</h4>
+                                            <h4>Edit Data</h4>
                                         </div>
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
@@ -44,11 +46,11 @@
                                                     <label for="business_name">Nama Bisnis</label>
                                                     <input required type="name" class="form-control" id="business_name"
                                                         placeholder="Nama Bisnismu..." name="business_name"
-                                                        value="{{ old('business_name') }}">
+                                                        value="{{ old('business_name', $biodata->business_name) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="business_description">Deskripsi Bisnis</label>
-                                                    <textarea name="business_description" class="form-control">{{ old('business_description') }}</textarea>
+                                                    <textarea name="business_description" class="form-control">{{ old('business_description', $biodata->business_description) }}</textarea>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="business_scale_id">Skala Bisnis</label>
@@ -57,7 +59,7 @@
                                                         <option selected value="">Pilih...</option>
                                                         @foreach ($businessScales as $businessScale)
                                                             <option value="{{ $businessScale->id }}"
-                                                                {{ old('business_scale_id') == $businessScale->id ? 'selected' : '' }}>
+                                                                {{ old('business_scale_id', $biodata->business_scale_id) == $businessScale->id ? 'selected' : '' }}>
                                                                 {{ $businessScale->name }}
                                                             </option>
                                                         @endforeach
@@ -70,7 +72,7 @@
                                                         <option selected value="">Pilih...</option>
                                                         @foreach ($certifications as $certification)
                                                             <option value="{{ $certification->id }}"
-                                                                {{ old('certification_id') == $certification->id ? 'selected' : '' }}>
+                                                                {{ old('certification_id', $biodata->certification_id) == $certification->id ? 'selected' : '' }}>
                                                                 {{ $certification->name }}
                                                             </option>
                                                         @endforeach
@@ -79,26 +81,30 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="founding_year">Tahun Berdiri</label>
                                                     <input required type="date" class="form-control" id="founding_year"
-                                                        name="founding_year" value="{{ old('founding_year') }}">
+                                                        name="founding_year"
+                                                        value="{{ old('founding_year', $biodata->founding_year) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="city">Kota</label>
                                                     <input required type="text" class="form-control" id="city"
-                                                        name="city" value="{{ old('city') }}" placeholder="Cilegon">
+                                                        name="city" value="{{ old('city', $biodata->city) }}"
+                                                        placeholder="Cilegon">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="province">Provinsi</label>
                                                     <input required type="text" class="form-control" id="province"
-                                                        name="province" value="{{ old('province') }}" placeholder="Banten">
+                                                        name="province" value="{{ old('province', $biodata->province) }}"
+                                                        placeholder="Banten">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="address">Alamat Lengkap</label>
-                                                    <textarea name="address" class="form-control" rows="10" cols="50">{{ old('address') }}</textarea>
+                                                    <textarea name="address" class="form-control" rows="10" cols="50">{{ old('address', $biodata->address) }}</textarea>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="phone_number">Telepon</label>
                                                     <input required type="text" class="form-control" id="phone_number"
-                                                        name="phone_number" value="{{ old('phone_number') }}"
+                                                        name="phone_number"
+                                                        value="{{ old('phone_number', $biodata->phone_number) }}"
                                                         placeholder="08xxxxxxxxx">
                                                 </div>
                                             </div>

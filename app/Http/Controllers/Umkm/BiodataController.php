@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Laravolt\Indonesia\IndonesiaService;
 use App\Http\Requests\Umkm\StoreBiodataRequest;
+use App\Http\Requests\Umkm\UpdateBiodataRequest;
 use App\Models\Biodata;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
@@ -62,17 +63,22 @@ class BiodataController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Biodata $biodata)
     {
-        //
+        $businessScales = $this->businessScaleRepository->getBusinessScales();
+        $certifications = $this->certificationRepository->getCertifications();
+
+        return view('pages.umkm.biodata.edit', compact('biodata', 'businessScales', 'certifications'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateBiodataRequest $request, Biodata $biodata)
     {
-        //
+        $biodata->update($request->validated());
+
+        return redirect()->route('umkm.biodatas.index')->withSuccess('Biodata berhasil diupdate');
     }
 
     /**

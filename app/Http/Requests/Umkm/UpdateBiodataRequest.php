@@ -4,7 +4,7 @@ namespace App\Http\Requests\Umkm;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBiodataRequest extends FormRequest
+class UpdateBiodataRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class StoreBiodataRequest extends FormRequest
             'address' => ['required'],
             'phone_number' => ['required'],
             'founding_year' => ['required'],
-            'certification_id' => ['required']
+            'certification_id' => ['required'],
         ];
     }
 }
