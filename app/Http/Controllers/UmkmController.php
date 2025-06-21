@@ -65,6 +65,6 @@ class UmkmController extends Controller
 
     public function verification()
     {
-        return view('pages.verification.index');
+        return view('pages.umkm.verification.index');
     }
 }
