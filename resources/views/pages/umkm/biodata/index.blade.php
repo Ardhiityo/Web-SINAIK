@@ -68,8 +68,15 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="text-nowrap">
-                                                    <td>Arya</td>
-                                                    <td>123</td>
+                                                    <td>{{ $umkm->biodata->business_name }}</td>
+                                                    <td>{{ $umkm->biodata->business_description }}</td>
+                                                    <td>{{ $umkm->biodata->businessScale->name }}</td>
+                                                    <td>{{ $umkm->biodata->certification->name }}</td>
+                                                    <td>{{ $umkm->biodata->phone_number }}</td>
+                                                    <td>{{ $umkm->biodata->founding_year }}</td>
+                                                    <td>{{ $umkm->biodata->city }}</td>
+                                                    <td>{{ $umkm->biodata->province }}</td>
+                                                    <td>{{ $umkm->biodata->address }}</td>
                                                     <td>
                                                         <a href="" class="btn btn-warning">Edit</a>
                                                         <form id="form-delete" action="" method="POST"

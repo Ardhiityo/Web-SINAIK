@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Umkm;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Laravolt\Indonesia\IndonesiaService;
+use App\Http\Requests\Umkm\StoreBiodataRequest;
+use App\Services\Interfaces\Umkm\UmkmInterface;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
-use App\Services\Interfaces\Umkm\UmkmInterface;
-use Illuminate\Http\Request;
 
 class BiodataController extends Controller
 {
@@ -22,6 +25,7 @@ class BiodataController extends Controller
     public function index()
     {
         $umkm = $this->umkmRepository->getBiodata();
+        Log::info(json_encode($umkm, JSON_PRETTY_PRINT));
 
         return view('pages.umkm.biodata.index', compact('umkm'));
     }
@@ -40,9 +44,11 @@ class BiodataController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBiodataRequest $request)
     {
-        //
+        $this->umkmRepository->storeBiodata($request->validated());
+
+        return redirect()->route('umkm.biodata.index')->withSuccess('Biodata berhasil disimpan');
     }
 
     /**

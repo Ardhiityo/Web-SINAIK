@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BusinessScale extends Model
 {
-    //
+    public function biodata()
+    {
+        return $this->hasOne(Biodata::class);
+    }
 }

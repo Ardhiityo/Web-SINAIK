@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Umkm extends Model
 {
+    protected $fillable = [
+        'biodata_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

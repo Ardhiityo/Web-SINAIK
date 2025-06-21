@@ -24,7 +24,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="" method="POST">
+                                    <form action="{{ route('umkm.biodata.store') }}" method="POST">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Buat Data</h4>
@@ -48,9 +48,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="business_description">Deskripsi Bisnis</label>
-                                                    <textarea name="business_description" class="form-control" value="{{ old('business_description') }}" rows="10"
-                                                        cols="50">
-                                                    </textarea>
+                                                    <textarea name="business_description" class="form-control" value="{{ old('business_description') }}"></textarea>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="business_scale_id">Skala Bisnis</label>
@@ -86,17 +84,20 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="city">Kota</label>
                                                     <input required type="text" class="form-control" id="city"
-                                                        name="city" value="{{ old('city') }}">
+                                                        name="city" value="{{ old('city') }}" placeholder="Cilegon">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="province">Provinsi</label>
                                                     <input required type="text" class="form-control" id="province"
-                                                        name="province" value="{{ old('province') }}">
+                                                        name="province" value="{{ old('province') }}" placeholder="Banten">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="address">Alamat Lengkap</label>
-                                                    <input required type="text" class="form-control" id="address"
-                                                        name="address" value="{{ old('address') }}">
+                                                    <textarea name="address" class="form-control" value="{{ old('address') }}" rows="10" cols="50"></textarea>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="phone_number">Telepon</label>
+                                                    <textarea name="phone_number" class="form-control" value="{{ old('phone_number') }}"></textarea>
                                                 </div>
                                             </div>
                                         </div>
