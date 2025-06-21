@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Models\Product;
-use App\Services\Interfaces\Umkm\UmkmInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Umkm\StoreProductRequest;
+use App\Services\Interfaces\Umkm\UmkmInterface;
+use App\Http\Requests\Umkm\UpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -53,15 +55,17 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('pages.umkm.product.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $this->umkmRepository->updateProduct($request->validated(), $product);
+
+        return redirect()->route('umkm.products.index')->with('success', 'Product berhasil diupdate');
     }
 
     /**
@@ -69,6 +73,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        Storage::disk('public')->delete($product->image);
+
         $product->delete();
 
         return redirect()->route('umkm.products.index')->with('success', 'Product berhasil dihapus');

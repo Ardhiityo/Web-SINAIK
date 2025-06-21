@@ -50,7 +50,8 @@
                                                     <tr class="text-nowrap">
                                                         <td>
                                                             <img src="{{ asset(Storage::url($product->image)) }}"
-                                                                width="100" height="100" alt="{{ $product->name }}">
+                                                                width="100" height="100" class="rounded"
+                                                                alt="{{ $product->name }}">
                                                         </td>
                                                         <td>{{ $product->name }}</td>
                                                         <td>{{ $product->description }}</td>
