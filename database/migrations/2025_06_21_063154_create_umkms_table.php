@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('umkms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('umkm_status_id')->constrained('umkm_statuses')->cascadeOnDelete();
+            $table->foreignId('umkm_status_id')->nullable()->constrained('umkm_statuses')->cascadeOnDelete();
             $table->boolean('is_verified')->default(false);
-            $table->foreignId('biodata_id')->constrained('biodatas')->cascadeOnDelete();
+            $table->foreignId('biodata_id')->nullable()->constrained('biodatas')->cascadeOnDelete();
             $table->timestamps();
         });
     }

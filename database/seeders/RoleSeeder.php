@@ -33,10 +33,13 @@ class RoleSeeder extends Seeder
             'password' => 11111111
         ])->assignRole('admin_lp');
 
-        User::create([
+        $umkm = User::create([
             'name' => 'Umkm',
             'email' => 'umkm@lp',
             'password' => 11111111
-        ])->assignRole('umkm');
+        ]);
+
+        $umkm->assignRole('umkm');
+        $umkm->umkm()->create();
     }
 }

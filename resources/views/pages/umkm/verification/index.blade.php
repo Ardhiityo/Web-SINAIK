@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Data Status Veeifikasi Bisnisk</h2>
+                <h2 class="section-title">Data Status Verifikasi Bisnis</h2>
                 <p class="section-lead">
                     Informasi mengenai data status verifikasi bisnismu
                 </p>
@@ -33,7 +33,8 @@
                                         <tbody>
                                             <tr class="text-nowrap">
                                                 <th scope="row">1</th>
-                                                <td></td>
+                                                <td>{{ Auth::user()->umkm->is_verified == false ? 'Belum terverifkasi' : 'Terverifikasi' }}
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
