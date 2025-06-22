@@ -4,7 +4,7 @@ namespace App\Http\Requests\Umkm;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class StoreIncomeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,9 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'required|string',
-            'image' => 'required|image|max:2048',
+            'date' => 'required|date|unique:incomes,date',
+            'total_income' => 'required|numeric',
+            'total_employee' => 'required|integer|min:0',
         ];
     }
 }

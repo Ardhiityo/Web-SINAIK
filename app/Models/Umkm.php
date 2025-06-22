@@ -34,4 +34,9 @@ class Umkm extends Model
     {
         return $this->belongsTo(Certification::class);
     }
+
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
 }

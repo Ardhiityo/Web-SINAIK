@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Umkm;
 use App\Models\Income;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Umkm\StoreIncomeRequest;
+use App\Http\Requests\Umkm\UpdateIncomeRequest;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 
 class IncomeController extends Controller
@@ -26,15 +28,17 @@ class IncomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.umkm.income.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreIncomeRequest $request)
     {
-        //
+        $this->umkmRepository->storeIncome($request->validated());
+
+        return redirect()->route('umkm.incomes.index')->with('success', 'Pendapatan berhasil disimpan');
     }
 
     /**
@@ -50,15 +54,17 @@ class IncomeController extends Controller
      */
     public function edit(Income $income)
     {
-        //
+        return view('pages.umkm.income.edit', compact('income'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Income $income)
+    public function update(UpdateIncomeRequest $request, Income $income)
     {
-        //
+        $income->update($request->validated());
+
+        return redirect()->route('umkm.incomes.index')->with('success', 'Pendapatan berhasil diupdate');
     }
 
     /**
@@ -66,6 +72,8 @@ class IncomeController extends Controller
      */
     public function destroy(Income $income)
     {
-        //
+        $income->delete();
+
+        return redirect()->route('umkm.incomes.index')->with('success', 'Pendapatan berhasil dihapus');
     }
 }

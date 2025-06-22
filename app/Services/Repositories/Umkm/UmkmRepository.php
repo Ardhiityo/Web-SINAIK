@@ -106,4 +106,18 @@ class UmkmRepository implements UmkmInterface
             ->where('umkm_id', $user->umkm->id)
             ->paginate(10);
     }
+
+    public function storeIncome(array $data)
+    {
+        try {
+            DB::beginTransaction();
+            $user = Auth::user();
+            $data['umkm_id'] = $user->umkm->id;
+            Income::create($data);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::info($th->getMessage(), ['store income']);
+        }
+    }
 }
