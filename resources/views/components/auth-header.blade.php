@@ -3,6 +3,6 @@
 </div>
 <div>
     <p style="letter-spacing: 1px" class="text-center font-weight-bold text-primary">SINAIK<br>
-        <b>by Link Prodcutive</b>
+        <b>Sistem UMKM Naik Kelas</b>
     </p>
 </div>
