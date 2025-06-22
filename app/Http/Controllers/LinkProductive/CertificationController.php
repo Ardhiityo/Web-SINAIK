@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\LinkProductive;
 
-use App\Models\Certification;
 use Illuminate\Http\Request;
+use App\Models\Certification;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreCertificationRequest;
+use App\Http\Requests\LinkProductive\UpdateCertificationRequest;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
 
 class CertificationController extends Controller
@@ -53,15 +54,17 @@ class CertificationController extends Controller
      */
     public function edit(Certification $certification)
     {
-        //
+        return view('pages.link-productive.certification.edit', compact('certification'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Certification $certification)
+    public function update(UpdateCertificationRequest $request, Certification $certification)
     {
-        //
+        $certification->update($request->validated());
+
+        return redirect()->route('link-productive.certifications.index')->with('success', 'Sukses diupdate');
     }
 
     /**
@@ -69,6 +72,8 @@ class CertificationController extends Controller
      */
     public function destroy(Certification $certification)
     {
-        //
+        $certification->delete();
+
+        return redirect()->route('link-productive.certifications.index')->with('success', 'Sukses dihapus');
     }
 }
