@@ -14,7 +14,7 @@ class ServiceCategoryController extends Controller
 
     public function index()
     {
-        $serviceCategories = $this->serviceCategoryRepoistory->getServiceCategories();
+        $serviceCategories = $this->serviceCategoryRepoistory->getServiceCategoriesPaginate();
 
         return view('pages.link-productive.service-category.index', compact('serviceCategories'));
     }

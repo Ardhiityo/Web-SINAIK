@@ -45,6 +45,7 @@
                                                     <th scope="col">Tanggal Mulai</th>
                                                     <th scope="col">Tanggal Selesai</th>
                                                     <th scope="col">Kategori</th>
+                                                    <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -55,7 +56,7 @@
                                                         <td>{{ $service->description }}</td>
                                                         <td>{{ $service->available_date }}</td>
                                                         <td>{{ $service->end_date }}</td>
-                                                        <td>{{ $service->category->name }}</td>
+                                                        <td>{{ $service->serviceCategory->name }}</td>
                                                         <td>
                                                             <a href="{{ route('link-productive.services.edit', ['service' => $service->id]) }}"
                                                                 class="btn btn-warning">Edit</a>

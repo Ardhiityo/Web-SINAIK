@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
-@section('title', 'Buat Kategori Layanan')
+@section('title', 'Buat Layanan')
 
 @section('main')
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Kategori Layanan</h1>
+                <h1>Layanan</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Manajemen Layanan</a></div>
-                    <div class="breadcrumb-item"><a href="#">Kategori</a></div>
+                    <div class="breadcrumb-item"><a href="#">Layanan</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Kategori Layanan</h2>
+                <h2 class="section-title">Layanan</h2>
                 <p class="section-lead">
-                    Informasi mengenai data kategori layanan
+                    Informasi mengenai data layanan
                 </p>
 
                 <div class="row">
@@ -24,7 +24,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="{{ route('link-productive.service-categories.store') }}" method="POST">
+                                    <form action="{{ route('link-productive.services.store') }}" method="POST">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Buat Data</h4>
@@ -41,10 +41,37 @@
                                         <div class="card-body">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="name">Nama Kategori Layanan</label>
-                                                    <input required type="name" class="form-control" id="name"
-                                                        placeholder="Nama Kategori..." name="name"
-                                                        value="{{ old('name') }}">
+                                                    <label for="title">Judul</label>
+                                                    <input required type="text" class="form-control" id="title"
+                                                        placeholder="Nama Layanan..." name="title"
+                                                        value="{{ old('title') }}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="description">Deskripsi</label>
+                                                    <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="available_date">Tanggal Mulai</label>
+                                                    <input required type="date" class="form-control" id="available_date"
+                                                        name="available_date" value="{{ old('available_date') }}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="end_date">Tanggal Selesai</label>
+                                                    <input required type="date" class="form-control" id="end_date"
+                                                        name="end_date" value="{{ old('end_date') }}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="service_category_id">Kategori Layanan</label>
+                                                    <select id="service_category_id" required name="service_category_id"
+                                                        class="form-control">
+                                                        <option selected value="">Pilih...</option>
+                                                        @foreach ($serviceCategories as $serviceCategory)
+                                                            <option value="{{ $serviceCategory->id }}"
+                                                                {{ old('business_scale_id') == $serviceCategory->id ? 'selected' : '' }}>
+                                                                {{ $serviceCategory->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

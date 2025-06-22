@@ -11,6 +11,11 @@ class ServiceCategoryRepository implements ServiceCategoryInterface
 {
     public function getServiceCategories()
     {
+        return ServiceCategory::select('id', 'name')->get();
+    }
+
+    public function getServiceCategoriesPaginate()
+    {
         return ServiceCategory::select('id', 'name')->paginate(10);
     }
 

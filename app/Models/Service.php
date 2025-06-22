@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     protected $fillable = [
-        'name'
+        'title',
+        'description',
+        'available_date',
+        'end_date',
+        'service_category_id'
     ];
 
     public function serviceCategory()
