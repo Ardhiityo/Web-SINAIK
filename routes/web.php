@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('link-productive')->name('link-productive.')->group(function () {
         Route::resource('verifications', App\Http\Controllers\LinkProductive\VerificationController::class);
         Route::resource('sector-categories', App\Http\Controllers\LinkProductive\SectorCategoryController::class);
+        Route::resource('business-scales', App\Http\Controllers\LinkProductive\BusinessScaleController::class);
     });
 });
 

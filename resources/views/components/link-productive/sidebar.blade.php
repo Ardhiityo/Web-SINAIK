@@ -41,8 +41,8 @@
                     <span>Sektor</span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.products.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('link-productive.business-scales.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.business-scales.index') }}" class="nav-link">
                     <i class="fas fa-chart-line"></i>
                     <span>Skala</span>
                 </a>

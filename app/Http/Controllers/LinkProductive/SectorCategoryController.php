@@ -4,7 +4,6 @@ namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\SectorCategory;
 use App\Services\Interfaces\LinkProductive\SectorCategoryInterface;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreSectorCategoryRequest;
 use App\Http\Requests\LinkProductive\UpdateSectorCategoryRequest;
