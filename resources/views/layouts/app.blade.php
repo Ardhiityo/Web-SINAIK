@@ -43,6 +43,10 @@
                 <x-umkm.sidebar />
             @endrole
 
+            @role('admin_lp')
+                <x-link-productive.sidebar />
+            @endrole
+
             <!-- Content -->
             @yield('main')
 

@@ -32,6 +32,10 @@ class AuthenticatedSessionController extends Controller
 
         if ($user->hasRole('umkm')) {
             return redirect()->intended(route('dashboard'));
+        } else if ($user->has('admin_lp')) {
+            return redirect()->intended(route('admin.lp.dashboard'));
+        } else if ($user->has('admin_ico')) {
+            return redirect()->intended(route('admin.ico.dashboard'));
         }
     }
 
