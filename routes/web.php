@@ -4,20 +4,25 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
 Route::middleware('auth')->group(function () {
+    // Dashboard UMKM
     Route::get('/', [App\Http\Controllers\Umkm\DashboardController::class, 'index'])->name('dashboard');
+
+    // UMKM
     Route::prefix('umkm')->name('umkm.')->group(function () {
-        Route::get('verifications', [App\Http\Controllers\UmkmController::class, 'verification'])->name('verifications.index');
+        Route::get('verifications', [App\Http\Controllers\Umkm\UmkmController::class, 'verification'])->name('verifications.index');
         Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
         Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
         Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
         Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
     });
 
+    // Link Productive
     Route::prefix('link-productive')->name('link-productive.')->group(function () {
         Route::resource('verifications', App\Http\Controllers\LinkProductive\VerificationController::class);
         Route::resource('sector-categories', App\Http\Controllers\LinkProductive\SectorCategoryController::class);
         Route::resource('business-scales', App\Http\Controllers\LinkProductive\BusinessScaleController::class);
         Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
+        Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
     });
 });
 

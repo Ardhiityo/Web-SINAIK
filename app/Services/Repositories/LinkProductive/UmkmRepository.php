@@ -30,4 +30,12 @@ class UmkmRepository implements UmkmInterface
             Log::info($th->getMessage(), ['update verification umkm']);
         }
     }
+
+    public function getUmkmsPaginate()
+    {
+        return Umkm::with([
+            'user:id,name',
+            'biodata:id,business_name,umkm_id,address'
+        ])->select('id', 'user_id', 'is_verified')->latest()->paginate(10);
+    }
 }

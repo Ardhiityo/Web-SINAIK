@@ -6,4 +6,5 @@ interface UmkmInterface
 {
     public function getVerifications();
     public function updateVerification($id);
+    public function getUmkmsPaginate();
 }

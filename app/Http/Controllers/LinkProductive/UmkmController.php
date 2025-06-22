@@ -1,18 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\Umkm;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Interfaces\LinkProductive\UmkmInterface;
 
 class UmkmController extends Controller
 {
+    public function __construct(private UmkmInterface $umkmRepository) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $umkms = $this->umkmRepository->getUmkmsPaginate();
+
+        return view('pages.link-productive.umkm.index', compact('umkms'));
     }
 
     /**
@@ -61,10 +67,5 @@ class UmkmController extends Controller
     public function destroy(Umkm $umkm)
     {
         //
-    }
-
-    public function verification()
-    {
-        return view('pages.umkm.verification.index');
     }
 }
