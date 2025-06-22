@@ -21,8 +21,8 @@
             </li>
 
             <li class="menu-header">Manajemen UMKM</li>
-            <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.products.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('link-productive.verifications.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.verifications.index') }}" class="nav-link">
                     <i class="fas fa-info-circle"></i>
                     <span>Verifkasi</span>
                 </a>

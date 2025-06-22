@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Umkm extends Model
 {
+    protected $casts = [
+        'is_verified' => 'boolean'
+    ];
+
     protected $fillable = [
         'biodata_id'
     ];
