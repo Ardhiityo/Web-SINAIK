@@ -52,6 +52,8 @@
                                                         <td>{{ $umkm->biodata->address }}</td>
                                                         </td>
                                                         <td>
+                                                            <a href="{{ route('link-productive.umkms.show', ['umkm' => $umkm->id]) }}"
+                                                                class="btn btn-success">Lihat</a>
                                                             <a href="{{ route('link-productive.umkms.edit', ['umkm' => $umkm->id]) }}"
                                                                 class="btn btn-warning">Edit</a>
                                                             <form id="form-delete"

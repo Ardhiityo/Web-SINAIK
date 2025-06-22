@@ -4,6 +4,7 @@ namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\Umkm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\LinkProductive\UmkmInterface;
 
@@ -42,7 +43,9 @@ class UmkmController extends Controller
      */
     public function show(Umkm $umkm)
     {
-        //
+        $umkm = $this->umkmRepository->getUmkm($umkm->id);
+
+        return view('pages.link-productive.umkm.show', compact('umkm'));
     }
 
     /**
