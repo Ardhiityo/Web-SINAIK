@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('province');
             $table->text('address');
             $table->date('founding_year');
-            $table->foreignId('business_scale_id')->constrained('business_scales')->cascadeOnDelete();
+            $table->foreignId('business_scale_id')->nullable()->constrained('business_scales')->nullOnDelete();
             $table->foreignId('certification_id')->nullable()->constrained('certifications')->nullOnDelete();
             $table->foreignId('umkm_id')->constrained('umkms')->cascadeOnDelete();
             $table->timestamps();

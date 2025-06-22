@@ -27,8 +27,8 @@
                     <span>Verifkasi</span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.products.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('link-productive.sector-categories.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.sector-categories.index') }}" class="nav-link">
                     <i class="far fa-building"></i>
                     <span>Sektor</span>
                 </a>

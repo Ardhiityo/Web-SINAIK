@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Produk')
+@section('title', 'Data Sektor Kategori Bisnis')
 
 @section('main')
     <div class="main-content">
@@ -8,15 +8,15 @@
             <div class="section-header">
                 <h1>Sektor Bisnis</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Profile Bisnis</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Manajemen UMKM</a></div>
                     <div class="breadcrumb-item"><a href="#">Sektor</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Sektor Bisnis</h2>
+                <h2 class="section-title">Sektor Kategori Bisnis</h2>
                 <p class="section-lead">
-                    Informasi mengenai data sektor bisnismu
+                    Informasi mengenai data sektor kategori bisnis
                 </p>
 
                 <div class="mt-5 row">
@@ -25,22 +25,23 @@
 
                             <div class="card-header">
                                 <h4>
-                                    <a href="{{ route('umkm.sector-category-umkms.create') }}" class="btn btn-primary">
-                                        Buat Sektor Bisnis
+                                    <a href="{{ route('link-productive.sector-categories.create') }}"
+                                        class="btn btn-primary">
+                                        Buat Sektor
                                     </a>
                                 </h4>
                             </div>
 
                             <div class="card-body">
                                 @if ($sectorCategories->isEmpty())
-                                    <p>Kamu belum memiliki sektor kategori...</p>
+                                    <p>Belum ada sektor kategori bisnis...</p>
                                 @else
                                     <div class="overflow-auto">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Sektor Kategori</th>
+                                                    <th scope="col">Sektor Kategori Bisnis</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -50,10 +51,10 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $sectorCategory->name }}</td>
                                                         <td>
-                                                            <a href="{{ route('umkm.sector-category-umkms.edit', ['sector_category_umkm' => $sectorCategory->pivot->id]) }}"
+                                                            <a href="{{ route('link-productive.sector-categories.edit', ['sector_category' => $sectorCategory->id]) }}"
                                                                 class="btn btn-warning">Edit</a>
                                                             <form id="form-delete"
-                                                                action="{{ route('umkm.sector-category-umkms.destroy', ['sector_category_umkm' => $sectorCategory->pivot->id]) }}"
+                                                                action="{{ route('link-productive.sector-categories.destroy', ['sector_category' => $sectorCategory->id]) }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')

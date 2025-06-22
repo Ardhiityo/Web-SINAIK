@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class SectorCategory extends Model
 {
+    protected $fillable = [
+        'name'
+    ];
+
     public function umkms()
     {
         return $this->belongsToMany(Umkm::class, 'sector_category_umkms', 'sector_category_id', 'umkm_id')->withPivot('id');

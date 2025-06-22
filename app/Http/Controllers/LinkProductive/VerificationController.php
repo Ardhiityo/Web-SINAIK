@@ -20,6 +20,6 @@ class VerificationController extends Controller
     {
         $this->umkmInterface->updateVerification($id);
 
-        return redirect()->route('link-productive.verifications.index')->with('success', 'Verifikasi berhasil diupdate');
+        return redirect()->route('link-productive.verifications.index')->with('success', 'Sukses diupdate');
     }
 }

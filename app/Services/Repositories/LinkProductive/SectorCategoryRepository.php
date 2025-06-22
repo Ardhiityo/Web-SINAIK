@@ -11,4 +11,9 @@ class SectorCategoryRepository implements SectorCategoryInterface
     {
         return SectorCategory::select('id', 'name')->get();
     }
+
+    public function getSectorCategoriesPaginate()
+    {
+        return SectorCategory::select('id', 'name')->paginate(10);
+    }
 }

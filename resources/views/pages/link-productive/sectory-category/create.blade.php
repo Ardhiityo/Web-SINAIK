@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Buat Sektor Kategori')
+@section('title', 'Buat Sektor Kategori Bisnis')
 
 @section('main')
     <div class="main-content">
@@ -8,8 +8,8 @@
             <div class="section-header">
                 <h1>Sektor Kategori Bisnis</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Profile Bisnis</a></div>
-                    <div class="breadcrumb-item"><a href="#">Produk</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Manajemen UMKM</a></div>
+                    <div class="breadcrumb-item"><a href="#">Sektor</a></div>
                 </div>
             </div>
 
