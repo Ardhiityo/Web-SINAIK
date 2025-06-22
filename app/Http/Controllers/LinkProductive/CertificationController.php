@@ -1,18 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\Certification;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\LinkProductive\StoreCertificationRequest;
+use App\Services\Interfaces\LinkProductive\CertificationInterface;
 
 class CertificationController extends Controller
 {
+    public function __construct(private CertificationInterface $certificationInterface) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $certifications = $this->certificationInterface->getCertificationsPaginate();
+
+        return view('pages.link-productive.certification.index', compact('certifications'));
     }
 
     /**
@@ -20,15 +27,17 @@ class CertificationController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.link-productive.certification.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCertificationRequest $request)
     {
-        //
+        $this->certificationInterface->storeCertification($request->validated());
+
+        return redirect()->route('link-productive.certifications.index')->with('success', 'Sukses disimpan');
     }
 
     /**

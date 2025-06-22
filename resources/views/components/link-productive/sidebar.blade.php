@@ -47,8 +47,8 @@
                     <span>Skala</span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.products.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('link-productive.certifications.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.certifications.index') }}" class="nav-link">
                     <i class="fas fa-medal"></i>
                     <span>Sertifikasi</span>
                 </a>
