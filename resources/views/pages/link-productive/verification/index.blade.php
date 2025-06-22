@@ -22,48 +22,59 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="overflow-auto">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr class="text-nowrap">
-                                                <th scope="col">Nama UMKM</th>
-                                                <th scope="col">Owner</th>
-                                                <th scope="col">Status Verifikasi</th>
-                                                <th scope="col">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($umkms as $umkm)
+                                @if ($umkms->isEmpty())
+                                    <p>Belum ada data umkm...</p>
+                                @else
+                                    <div class="overflow-auto">
+                                        <table class="table table-bordered">
+                                            <thead>
                                                 <tr class="text-nowrap">
-                                                    <td>{{ $umkm->biodata->business_name }}</td>
-                                                    <td>{{ $umkm->user->name }}</td>
-                                                    <td>{{ $umkm->is_verified ? 'Terverifikasi' : 'Belum Terverifikasi' }}
-                                                    </td>
-                                                    <td>
-                                                        @if ($umkm->is_verified)
-                                                            <form
-                                                                action="{{ route('link-productive.verifications.update', ['verification' => $umkm->id]) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @method('put')
-                                                                <button type="submit"
-                                                                    class="btn btn-danger">Unverifikasi</button>
-                                                            </form>
-                                                        @else
-                                                            <form
-                                                                action="{{ route('link-productive.verifications.update', ['verification' => $umkm->id]) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @method('put')
-                                                                <button type="submit"
-                                                                    class="btn btn-warning">Verifikasi</button>
-                                                            </form>
-                                                        @endif
-                                                    </td>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Nama UMKM</th>
+                                                    <th scope="col">Owner</th>
+                                                    <th scope="col">Status Verifikasi</th>
+                                                    <th scope="col">Aksi</th>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($umkms as $umkm)
+                                                    <tr class="text-nowrap">
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $umkm->biodata->business_name }}</td>
+                                                        <td>{{ $umkm->user->name }}</td>
+                                                        <td>{{ $umkm->is_verified ? 'Terverifikasi' : 'Belum Terverifikasi' }}
+                                                        </td>
+                                                        <td>
+                                                            @if ($umkm->is_verified)
+                                                                <form
+                                                                    action="{{ route('link-productive.verifications.update', ['verification' => $umkm->id]) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger">Unverifikasi</button>
+                                                                </form>
+                                                            @else
+                                                                <form
+                                                                    action="{{ route('link-productive.verifications.update', ['verification' => $umkm->id]) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                    <button type="submit"
+                                                                        class="btn btn-warning">Verifikasi</button>
+                                                                </form>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="row">
+                                <div class="flex-wrap mt-5 col-12 d-flex justify-content-end">
+                                    {{ $umkms->links('pagination::bootstrap-5') }}
                                 </div>
                             </div>
                         </div>
