@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\BusinessScale;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreBusinessScaleRequest;
+use App\Http\Requests\LinkProductive\UpdateBusinessScaleRequest;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 
 class BusinessScaleController extends Controller
@@ -53,15 +53,17 @@ class BusinessScaleController extends Controller
      */
     public function edit(BusinessScale $businessScale)
     {
-        //
+        return view('pages.link-productive.business-scale.edit', compact('businessScale'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BusinessScale $businessScale)
+    public function update(UpdateBusinessScaleRequest $request, BusinessScale $businessScale)
     {
-        //
+        $businessScale->update($request->validated());
+
+        return redirect()->route('link-productive.business-scales.index')->with('success', 'Sukses diupdate');
     }
 
     /**
@@ -69,6 +71,8 @@ class BusinessScaleController extends Controller
      */
     public function destroy(BusinessScale $businessScale)
     {
-        //
+        $businessScale->delete();
+
+        return redirect()->route('link-productive.business-scales.index')->with('success', 'Sukses dihapus');
     }
 }
