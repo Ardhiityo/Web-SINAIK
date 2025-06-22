@@ -55,8 +55,8 @@
             </li>
 
             <li class="menu-header">Manajemen Layanan</li>
-            <li class="nav-item {{ request()->routeIs('umkm.incomes.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.incomes.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('link-productive.services.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.services.index') }}" class="nav-link">
                     <i class="fas fa-bullhorn"></i>
                     <span>Layanan</span>
                 </a>

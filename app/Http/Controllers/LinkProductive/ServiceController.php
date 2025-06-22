@@ -1,18 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Interfaces\LinkProductive\ServiceInterface;
 
 class ServiceController extends Controller
 {
+    public function __construct(private ServiceInterface $serviceInterface) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $services = $this->serviceInterface->getServicesPaginate();
+
+        return view('pages.link-productive.service.index', compact('services'));
     }
 
     /**

@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
         Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
         Route::resource('service-categories', App\Http\Controllers\LinkProductive\ServiceCategoryController::class);
+        Route::resource('services', App\Http\Controllers\LinkProductive\ServiceController::class);
     });
 });
 
