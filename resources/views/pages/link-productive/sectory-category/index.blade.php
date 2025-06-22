@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Sektor Kategori Bisnis')
+@section('title', 'Data Sektor Bisnis')
 
 @section('main')
     <div class="main-content">
@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Sektor Kategori Bisnis</h2>
+                <h2 class="section-title">Sektor Bisnis</h2>
                 <p class="section-lead">
-                    Informasi mengenai data sektor kategori bisnis
+                    Informasi mengenai data sektor bisnis
                 </p>
 
                 <div class="mt-5 row">
@@ -34,14 +34,14 @@
 
                             <div class="card-body">
                                 @if ($sectorCategories->isEmpty())
-                                    <p>Belum ada sektor kategori bisnis...</p>
+                                    <p>Belum ada sektor bisnis...</p>
                                 @else
                                     <div class="overflow-auto">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Sektor Kategori Bisnis</th>
+                                                    <th scope="col">Sektor Bisnis</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>

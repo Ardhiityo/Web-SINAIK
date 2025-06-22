@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Sektor Kategori Bisnis')
+@section('title', 'Edit Sektor Bisnis')
 
 @section('main')
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Sektor Kategori Bisnis</h1>
+                <h1>Sektor Bisnis</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Manajemen UMKM</a></div>
                     <div class="breadcrumb-item"><a href="#">Sektor</a></div>
@@ -30,7 +30,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="card-header">
-                                            <h4>Buat Data</h4>
+                                            <h4>Edit Data</h4>
                                         </div>
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
@@ -44,7 +44,7 @@
                                         <div class="card-body">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="name">Nama Sektor</label>
+                                                    <label for="name">Nama Sektor Bisnis</label>
                                                     <input required type="name" class="form-control" id="name"
                                                         placeholder="Nama Sektor..." name="name"
                                                         value="{{ old('name', $sectorCategory->name) }}">

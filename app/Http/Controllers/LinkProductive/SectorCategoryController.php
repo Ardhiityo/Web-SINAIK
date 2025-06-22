@@ -28,7 +28,7 @@ class SectorCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.link-productive.sectory-category.create');
     }
 
     /**
@@ -36,7 +36,9 @@ class SectorCategoryController extends Controller
      */
     public function store(StoreSectorCategoryRequest $request)
     {
-        //
+        $this->sectorCategoryRepository->storeSectorCategory($request->validated());
+
+        return redirect()->route('link-productive.sector-categories.index')->with('success', 'Sukses disimpan');
     }
 
     /**
@@ -72,6 +74,6 @@ class SectorCategoryController extends Controller
     {
         $sectorCategory->delete();
 
-        return redirect()->route('umkm.sector-category-umkms.index')->with('success', 'Sukses dihapus');
+        return redirect()->route('link-productive.sector-categories.index')->with('success', 'Sukses dihapus');
     }
 }
