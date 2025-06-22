@@ -3,12 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\Interfaces\Umkm\UmkmInterface;
-use App\Services\Repositories\Umkm\UmkmRepository;
-use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
-use App\Services\Interfaces\LinkProductive\CertificationInterface;
-use App\Services\Repositories\LinkProductive\BusinessScaleRepository;
-use App\Services\Repositories\LinkProductive\CertificationRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,9 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(UmkmInterface::class, UmkmRepository::class);
-        $this->app->singleton(BusinessScaleInterface::class, BusinessScaleRepository::class);
-        $this->app->singleton(CertificationInterface::class, CertificationRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\Umkm\UmkmInterface::class, \App\Services\Repositories\Umkm\UmkmRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\LinkProductive\BusinessScaleInterface::class, \App\Services\Repositories\LinkProductive\BusinessScaleRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\LinkProductive\CertificationInterface::class, \App\Services\Repositories\LinkProductive\CertificationRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\LinkProductive\SectorCategoryInterface::class, \App\Services\Repositories\LinkProductive\SectorCategoryRepository::class);
     }
 
     /**

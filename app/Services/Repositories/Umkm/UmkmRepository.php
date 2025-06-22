@@ -5,11 +5,14 @@ namespace App\Services\Repositories\Umkm;
 use App\Models\Biodata;
 use App\Models\Income;
 use App\Models\Product;
+use App\Models\SectorCategoryUmkm;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Interfaces\Umkm\UmkmInterface;
+
+use function Laravel\Prompts\select;
 
 class UmkmRepository implements UmkmInterface
 {
@@ -119,5 +122,36 @@ class UmkmRepository implements UmkmInterface
             DB::rollBack();
             Log::info($th->getMessage(), ['store income']);
         }
+    }
+
+    public function getSectorCategories()
+    {
+        $user = Auth::user();
+
+        return $user->umkm->sectorCategories()->paginate(10);
+    }
+
+    public function storeSectorCategory(array $data)
+    {
+        try {
+            DB::beginTransaction();
+            $user = Auth::user();
+            $data['umkm_id'] = $user->umkm->id;
+            SectorCategoryUmkm::create($data);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::info($th->getMessage(), ['store sector category']);
+        }
+    }
+
+    public function getSectorCategoryById($id)
+    {
+        $user = Auth::user();
+
+        return $user->umkm
+            ->sectorCategories()
+            ->where('sector_categories.id', $id)
+            ->firstOrFail();
     }
 }

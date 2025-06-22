@@ -33,6 +33,12 @@
                     <span>Biodata</span>
                 </a>
             </li>
+            <li class="nav-item {{ request()->routeIs('umkm.sector-category-umkms.*') ? 'active' : '' }}">
+                <a href="{{ route('umkm.sector-category-umkms.index') }}" class="nav-link">
+                    <i class="far fa-building"></i>
+                    <span>Sektor</span>
+                </a>
+            </li>
             <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
                 <a href="{{ route('umkm.products.index') }}" class="nav-link">
                     <i class="fas fa-shopping-bag"></i>

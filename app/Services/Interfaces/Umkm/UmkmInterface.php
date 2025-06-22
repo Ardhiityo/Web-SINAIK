@@ -13,4 +13,7 @@ interface UmkmInterface
     public function updateProduct(array $data, Product $product);
     public function getIncomes();
     public function storeIncome(array $data);
+    public function getSectorCategories();
+    public function storeSectorCategory(array $data);
+    public function getSectorCategoryById($id);
 }

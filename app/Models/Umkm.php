@@ -22,7 +22,7 @@ class Umkm extends Model
 
     public function sectorCategories()
     {
-        return $this->belongsToMany(SectorCategory::class, 'sector_category_umkms', 'umkm_id', 'sector_category_id');
+        return $this->belongsToMany(SectorCategory::class, 'sector_category_umkms', 'umkm_id', 'sector_category_id')->withPivot('id');
     }
 
     public function businessScale()

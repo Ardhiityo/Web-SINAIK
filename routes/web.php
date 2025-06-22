@@ -10,6 +10,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
         Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
         Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
+        Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
     });
 });
 

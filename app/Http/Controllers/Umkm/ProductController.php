@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Umkm\StoreProductRequest;
