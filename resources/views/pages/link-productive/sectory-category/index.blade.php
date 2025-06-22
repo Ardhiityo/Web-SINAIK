@@ -8,7 +8,7 @@
             <div class="section-header">
                 <h1>Sektor Bisnis</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Manajemen UMKM</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Manajemen Bisnis</a></div>
                     <div class="breadcrumb-item"><a href="#">Sektor</a></div>
                 </div>
             </div>

@@ -27,6 +27,14 @@
                     <span>Verifkasi</span>
                 </a>
             </li>
+            <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
+                <a href="{{ route('umkm.products.index') }}" class="nav-link">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span>Dukungan</span>
+                </a>
+            </li>
+
+            <li class="menu-header">Manajemen Bisnis</li>
             <li class="nav-item {{ request()->routeIs('link-productive.sector-categories.*') ? 'active' : '' }}">
                 <a href="{{ route('link-productive.sector-categories.index') }}" class="nav-link">
                     <i class="far fa-building"></i>
@@ -43,12 +51,6 @@
                 <a href="{{ route('umkm.products.index') }}" class="nav-link">
                     <i class="fas fa-medal"></i>
                     <span>Sertifikasi</span>
-                </a>
-            </li>
-            <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.products.index') }}" class="nav-link">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <span>Dukungan</span>
                 </a>
             </li>
 
