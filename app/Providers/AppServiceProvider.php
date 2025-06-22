@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Services\Interfaces\LinkProductive\CertificationInterface::class, \App\Services\Repositories\LinkProductive\CertificationRepository::class);
         $this->app->singleton(\App\Services\Interfaces\LinkProductive\SectorCategoryInterface::class, \App\Services\Repositories\LinkProductive\SectorCategoryRepository::class);
         $this->app->singleton(\App\Services\Interfaces\LinkProductive\UmkmInterface::class, \App\Services\Repositories\LinkProductive\UmkmRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\LinkProductive\ServiceCategoryInterface::class, \App\Services\Repositories\LinkProductive\ServiceCategoryRepository::class);
     }
 
     /**

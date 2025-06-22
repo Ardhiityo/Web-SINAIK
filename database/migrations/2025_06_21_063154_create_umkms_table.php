@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('umkms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->unique()->constrained('users')->cascadeOnDelete();
             $table->foreignId('umkm_status_id')->nullable()->constrained('umkm_statuses')->nullOnDelete();
             $table->boolean('is_verified')->default(false);
             $table->timestamps();

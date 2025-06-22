@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('business-scales', App\Http\Controllers\LinkProductive\BusinessScaleController::class);
         Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
         Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
+        Route::resource('service-categories', App\Http\Controllers\LinkProductive\ServiceCategoryController::class);
     });
 });
 

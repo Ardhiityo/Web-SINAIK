@@ -61,6 +61,12 @@
                     <span>Layanan</span>
                 </a>
             </li>
+            <li class="nav-item {{ request()->routeIs('link-productive.service-categories.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.service-categories.index') }}" class="nav-link">
+                    <i class="fas fa-tag"></i>
+                    <span>Kategori</span>
+                </a>
+            </li>
             <li class="nav-item {{ request()->routeIs('umkm.incomes.*') ? 'active' : '' }}">
                 <a href="{{ route('umkm.incomes.index') }}" class="nav-link">
                     <i class="fas fa-list"></i>
