@@ -71,6 +71,11 @@
                                     </div>
                                 @endif
                             </div>
+                            <div class="row">
+                                <div class="flex-wrap mt-5 col-12 d-flex justify-content-end">
+                                    {{ $incomes->links('pagination::bootstrap-5') }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

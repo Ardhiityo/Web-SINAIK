@@ -26,13 +26,11 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="text-nowrap">
-                                                <th scope="col">No</th>
                                                 <th scope="col">Status Verifikasi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="text-nowrap">
-                                                <th scope="row">1</th>
                                                 <td>{{ Auth::user()->umkm->is_verified == false ? 'Belum terverifkasi' : 'Terverifikasi' }}
                                                 </td>
                                             </tr>

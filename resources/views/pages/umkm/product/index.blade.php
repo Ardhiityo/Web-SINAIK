@@ -38,6 +38,7 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
+                                                    <th scope="col">No</th>
                                                     <th scope="col">Produk</th>
                                                     <th scope="col">Nama Produk</th>
                                                     <th scope="col">Deskripsi</th>
@@ -48,6 +49,7 @@
                                             <tbody>
                                                 @foreach ($products as $product)
                                                     <tr class="text-nowrap">
+                                                        <td>{{ $loop->iteration }}</td>
                                                         <td>
                                                             <img src="{{ asset(Storage::url($product->image)) }}"
                                                                 width="100" height="100" class="rounded"
@@ -74,6 +76,11 @@
                                         </table>
                                     </div>
                                 @endif
+                            </div>
+                            <div class="row">
+                                <div class="flex-wrap mt-5 col-12 d-flex justify-content-end">
+                                    {{ $products->links('pagination::bootstrap-5') }}
+                                </div>
                             </div>
                         </div>
                     </div>
