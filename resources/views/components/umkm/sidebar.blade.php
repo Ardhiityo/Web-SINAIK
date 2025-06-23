@@ -63,8 +63,8 @@
             </li>
 
             <li class="menu-header">Pusat Layanan</li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('umkm.services.*') ? 'active' : '' }}">
+                <a href="{{ route('umkm.services.index') }}" class="nav-link">
                     <i class="fas fa-bullhorn"></i>
                     <span>Layanan</span>
                 </a>

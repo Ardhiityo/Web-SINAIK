@@ -16,4 +16,5 @@ interface UmkmInterface
     public function getSectorCategories();
     public function storeSectorCategory(array $data);
     public function getSectorCategoryById($id);
+    public function storeRegisterForService(array $data);
 }

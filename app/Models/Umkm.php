@@ -43,4 +43,9 @@ class Umkm extends Model
     {
         return $this->hasMany(Income::class);
     }
+
+    public function registerForServices()
+    {
+        return $this->hasMany(RegisterForService::class);
+    }
 }

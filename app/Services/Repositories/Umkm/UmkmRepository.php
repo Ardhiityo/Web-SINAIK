@@ -5,6 +5,7 @@ namespace App\Services\Repositories\Umkm;
 use App\Models\Biodata;
 use App\Models\Income;
 use App\Models\Product;
+use App\Models\RegisterForService;
 use App\Models\SectorCategoryUmkm;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -153,5 +154,22 @@ class UmkmRepository implements UmkmInterface
             ->sectorCategories()
             ->where('sector_categories.id', $id)
             ->firstOrFail();
+    }
+
+    public function storeRegisterForService($data)
+    {
+        try {
+            DB::beginTransaction();
+            $user = Auth::user();
+            RegisterForService::create([
+                'umkm_id' => $user->umkm->id,
+                'register_status' => 'process',
+                'service_id' => $data['service_id']
+            ]);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::info(json_encode($th->getMessage(), JSON_PRETTY_PRINT));
+        }
     }
 }

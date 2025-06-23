@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sector_category_umkms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('umkm_id')->constrained('umkms')->cascadeOnDelete();
-            $table->foreignId('sector_category_id')->constrained('sector_categories')->nullOnDelete();
+            $table->foreignId('sector_category_id')->constrained('sector_categories')->cascadeOnDelete();
             $table->timestamps();
         });
     }

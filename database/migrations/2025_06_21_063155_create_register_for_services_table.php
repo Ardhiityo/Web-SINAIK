@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('register_for_services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('umkm_id')->constrained('umkms')->cascadeOnDelete();
-            $table->enum('register_status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('register_status', ['process', 'approved', 'rejected'])->default('process');
             $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
             $table->timestamps();
         });
