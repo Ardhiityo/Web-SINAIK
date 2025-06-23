@@ -69,8 +69,8 @@
                     <span>Layanan</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('umkm.service-umkms.*') ? 'active' : '' }}">
+                <a href="{{ route('umkm.service-umkms.index') }}" class="nav-link">
                     <i class="fas fa-list"></i>
                     <span>Layananmu</span>
                 </a>

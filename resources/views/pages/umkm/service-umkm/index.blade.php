@@ -9,7 +9,7 @@
                 <h1>Layanan</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Pusat Layanan</a></div>
-                    <div class="breadcrumb-item"><a href="#">Layanan</a></div>
+                    <div class="breadcrumb-item"><a href="#">Layananmu</a></div>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                @if ($services->isEmpty())
+                                @if ($serviceUmkms->isEmpty())
                                     <p>Belum ada layanan yang tersedia...</p>
                                 @else
                                     <div class="overflow-auto">
@@ -32,25 +32,28 @@
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
                                                     <th scope="col">Judul</th>
-                                                    <th scope="col">Deskripsi</th>
                                                     <th scope="col">Tanggal Dimulai</th>
                                                     <th scope="col">Tanggal Selesai</th>
-                                                    <th scope="col">Kategori</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($services as $service)
+                                                @foreach ($serviceUmkms as $serviceUmkm)
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $service->title }}</td>
-                                                        <td>{{ $service->description }}</td>
-                                                        <td>{{ $service->available_date }}</td>
-                                                        <td>{{ $service->end_date }}</td>
-                                                        <td>{{ $service->serviceCategory->name }}</td>
+                                                        <td>{{ $serviceUmkm->title }}</td>
+                                                        <td>{{ $serviceUmkm->available_date }}</td>
+                                                        <td>{{ $serviceUmkm->end_date }}</td>
                                                         <td>
-                                                            <a href="{{ route('umkm.services.show', ['service' => $service->id]) }}"
-                                                                class="btn btn-warning">Lihat</a>
+                                                            <form
+                                                                action="{{ route('umkm.services.destroy', ['service' => $serviceUmkm->id]) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <input type="hidden" name="service_id"
+                                                                    value="{{ $serviceUmkm->id }}">
+                                                                <button class="btn btn-danger">Batalkan</button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -61,7 +64,7 @@
                             </div>
                             <div class="row">
                                 <div class="flex-wrap mt-5 col-12 d-flex justify-content-end">
-                                    {{ $services->links('pagination::bootstrap-5') }}
+                                    {{ $serviceUmkms->links('pagination::bootstrap-5') }}
                                 </div>
                             </div>
                         </div>

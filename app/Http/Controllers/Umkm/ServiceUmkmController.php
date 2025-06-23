@@ -3,9 +3,16 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Services\Interfaces\Umkm\UmkmInterface;
 
 class ServiceUmkmController extends Controller
 {
-    //
+    public function __construct(private UmkmInterface $umkmRepository) {}
+
+    public function index()
+    {
+        $serviceUmkms = $this->umkmRepository->getServiceUmkmPaginate();
+
+        return view('pages.umkm.service-umkm.index', compact('serviceUmkms'));
+    }
 }

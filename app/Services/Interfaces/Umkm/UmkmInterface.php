@@ -19,4 +19,5 @@ interface UmkmInterface
     public function storeRegisterForService(array $data);
     public function registeredServiceUmkmCheck($serviceId);
     public function destroyServiceUmkm($serviceId);
+    public function getServiceUmkmPaginate();
 }

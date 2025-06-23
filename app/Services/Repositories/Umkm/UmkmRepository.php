@@ -196,4 +196,11 @@ class UmkmRepository implements UmkmInterface
             Log::info($th->getMessage());
         }
     }
+
+    public function getServiceUmkmPaginate()
+    {
+        $user = Auth::user();
+
+        return $user->umkm->serviceUmkms()->paginate(10);
+    }
 }
