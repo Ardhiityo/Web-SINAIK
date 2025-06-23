@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Umkm;
 
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 

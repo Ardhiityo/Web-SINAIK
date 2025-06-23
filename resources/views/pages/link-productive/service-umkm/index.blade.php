@@ -36,6 +36,7 @@
                                                     <th scope="col">Telepon</th>
                                                     <th scope="col">Layanan</th>
                                                     <th scope="col">Status</th>
+                                                    <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -48,12 +49,24 @@
                                                         <td>{{ $serviceUmkm->service->title }}</td>
                                                         <td>
                                                             @if ($serviceUmkm->register_status == 'process')
-                                                                <span class="btn btn-warning">Diproses</span>
+                                                                Diproses
                                                             @elseif ($serviceUmkm->register_status == 'rejected')
-                                                                <span class="btn btn-danger">Ditolak</span>
+                                                                Ditolak
                                                             @elseif ($serviceUmkm->register_status == 'approved')
-                                                                <span class="btn btn-success">Diterima</span>
+                                                                Diterima
                                                             @endif
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('link-productive.service-umkms.edit', ['service_umkm' => $serviceUmkm->id]) }}"
+                                                                class="btn btn-warning">Edit</a>
+                                                            <form id="form-delete"
+                                                                action="{{ route('link-productive.service-umkms.destroy', ['service_umkm' => $serviceUmkm->id]) }}"
+                                                                method="POST" class="d-inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" id="btn-delete"
+                                                                    class="btn btn-danger">Hapus</button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach

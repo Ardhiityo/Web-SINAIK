@@ -45,7 +45,6 @@
                                                     <th scope="col">Tanggal Mulai</th>
                                                     <th scope="col">Tanggal Selesai</th>
                                                     <th scope="col">Kategori</th>
-                                                    <th scope="col">Status</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
