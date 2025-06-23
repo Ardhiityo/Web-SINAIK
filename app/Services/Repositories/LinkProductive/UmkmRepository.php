@@ -66,7 +66,7 @@ class UmkmRepository implements UmkmInterface
 
     public function getUmkmPerformancePaginate($id)
     {
-        return Income::select('id', 'date', 'total_employee', 'total_income')->where('umkm_id', $id)
+        return Income::select('id', 'date', 'total_employee', 'total_income', 'umkm_id')->where('umkm_id', $id)
             ->paginate(10);
     }
 }

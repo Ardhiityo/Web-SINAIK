@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 
 Route::middleware('auth')->group(function () {
     // Dashboard UMKM
@@ -26,6 +25,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
         Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
         Route::get('/umkms/{umkm}/performances', [App\Http\Controllers\LinkProductive\UmkmController::class, 'performance'])->name('umkms.performance');
+        Route::get('/umkms/{umkm}/performances/{income}/edit', [App\Http\Controllers\LinkProductive\IncomeController::class, 'edit'])->name('umkms.performance.edit');
+        Route::delete('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'destroy'])->name('umkms.performance.destroy');
         Route::resource('service-categories', App\Http\Controllers\LinkProductive\ServiceCategoryController::class);
         Route::resource('services', App\Http\Controllers\LinkProductive\ServiceController::class);
         Route::resource('service-umkms', App\Http\Controllers\LinkProductive\ServiceUmkmController::class);
@@ -34,9 +35,9 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__ . '/auth.php';

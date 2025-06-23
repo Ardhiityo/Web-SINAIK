@@ -75,7 +75,8 @@
             </li>
 
             <li class="menu-header">Informasi UMKM</li>
-            <li class="nav-item {{ request()->routeIs('link-productive.umkms.*') ? 'active' : '' }}">
+            <li
+                class="nav-item {{ (request()->routeIs('link-productive.umkms.*') ? 'active' : '' || request()->routeIs('link-productive.incomes.*')) ? 'active' : '' }}">
                 <a href="{{ route('link-productive.umkms.index') }}" class="nav-link">
                     <i class="fas fa-store"></i>
                     <span>UMKM</span>

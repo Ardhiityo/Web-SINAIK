@@ -43,13 +43,14 @@
                                                         <td>{{ $performance->date }}</td>
                                                         <td>{{ $performance->total_income }}</td>
                                                         <td>{{ $performance->total_employee }}</td>
-                                                        </td>
                                                         <td>
-                                                            <a href="" class="mx-2 btn btn-warning">
+                                                            <a href="{{ route('link-productive.umkms.performance.edit', ['umkm' => $performance->umkm_id, 'income' => $performance->id]) }}"
+                                                                class="mx-2 btn btn-warning">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
-                                                            <form id="form-delete" action="" method="POST"
-                                                                class="d-inline">
+                                                            <form id="form-delete"
+                                                                action="{{ route('link-productive.umkms.performance.destroy', ['umkm' => $performance->umkm_id, 'income' => $performance->id]) }}"
+                                                                method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"
