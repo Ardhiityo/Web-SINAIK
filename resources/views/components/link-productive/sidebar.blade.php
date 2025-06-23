@@ -67,8 +67,8 @@
                     <span>Kategori</span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->routeIs('umkm.incomes.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.incomes.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('link-productive.service-umkms.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.service-umkms.index') }}" class="nav-link">
                     <i class="fas fa-list"></i>
                     <span>Pendaftar</span>
                 </a>
