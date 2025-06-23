@@ -19,6 +19,11 @@
                     Informasi mengenai biodata UMKM
                 </p>
                 <div class="row">
+                    <div class="my-3 col-12 d-flex justify-content-end">
+                        <a href="" class="mr-2 btn btn-warning">Produk</a>
+                        <a href="{{ route('link-productive.umkms.performance', ['umkm' => $umkm->id]) }}"
+                            class="btn btn-success">Performa</a>
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">

@@ -2,6 +2,7 @@
 
 namespace App\Services\Repositories\LinkProductive;
 
+use App\Models\Income;
 use App\Models\Umkm;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -61,5 +62,11 @@ class UmkmRepository implements UmkmInterface
                 )
         ])->select('id', 'user_id', 'is_verified')
             ->findOrFail($id);
+    }
+
+    public function getUmkmPerformancePaginate($id)
+    {
+        return Income::select('id', 'date', 'total_employee', 'total_income')->where('umkm_id', $id)
+            ->paginate(10);
     }
 }

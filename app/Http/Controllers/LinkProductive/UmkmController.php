@@ -48,6 +48,13 @@ class UmkmController extends Controller
         return view('pages.link-productive.umkm.show', compact('umkm'));
     }
 
+    public function performance(Umkm $umkm)
+    {
+        $performances = $this->umkmRepository->getUmkmPerformancePaginate($umkm->id);
+
+        return view('pages.link-productive.umkm.performance', compact('performances'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

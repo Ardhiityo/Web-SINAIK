@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('business-scales', App\Http\Controllers\LinkProductive\BusinessScaleController::class);
         Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
         Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
+        Route::get('/umkms/{umkm}/performances', [App\Http\Controllers\LinkProductive\UmkmController::class, 'performance'])->name('umkms.performance');
         Route::resource('service-categories', App\Http\Controllers\LinkProductive\ServiceCategoryController::class);
         Route::resource('services', App\Http\Controllers\LinkProductive\ServiceController::class);
         Route::resource('service-umkms', App\Http\Controllers\LinkProductive\ServiceUmkmController::class);
