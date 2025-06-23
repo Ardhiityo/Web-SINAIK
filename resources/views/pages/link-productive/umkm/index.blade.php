@@ -53,16 +53,22 @@
                                                         </td>
                                                         <td>
                                                             <a href="{{ route('link-productive.umkms.show', ['umkm' => $umkm->id]) }}"
-                                                                class="btn btn-success">Lihat</a>
+                                                                class="btn btn-success">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
                                                             <a href="{{ route('link-productive.umkms.edit', ['umkm' => $umkm->id]) }}"
-                                                                class="btn btn-warning">Edit</a>
+                                                                class="mx-2 btn btn-warning">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
                                                             <form id="form-delete"
                                                                 action="{{ route('link-productive.umkms.destroy', ['umkm' => $umkm->id]) }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">Hapus</button>
+                                                                    class="btn btn-danger">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>

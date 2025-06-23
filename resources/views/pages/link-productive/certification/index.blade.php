@@ -49,14 +49,18 @@
                                                         </td>
                                                         <td>
                                                             <a href="{{ route('link-productive.certifications.edit', ['certification' => $certification->id]) }}"
-                                                                class="btn btn-warning">Edit</a>
+                                                                class="mr-2 btn btn-warning">
+                                                                <i class="far fa-edit"></i>
+                                                            </a>
                                                             <form id="form-delete"
                                                                 action="{{ route('link-productive.certifications.destroy', ['certification' => $certification->id]) }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">Hapus</button>
+                                                                    class="btn btn-danger">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>

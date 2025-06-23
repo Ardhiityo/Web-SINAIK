@@ -52,14 +52,18 @@
                                                         <td>{{ $sectorCategory->name }}</td>
                                                         <td>
                                                             <a href="{{ route('link-productive.sector-categories.edit', ['sector_category' => $sectorCategory->id]) }}"
-                                                                class="btn btn-warning">Edit</a>
+                                                                class="mr-2 btn btn-warning">
+                                                                <i class="far fa-edit"></i>
+                                                            </a>
                                                             <form id="form-delete"
                                                                 action="{{ route('link-productive.sector-categories.destroy', ['sector_category' => $sectorCategory->id]) }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">Hapus</button>
+                                                                    class="btn btn-danger">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>
