@@ -18,4 +18,5 @@ interface UmkmInterface
     public function getSectorCategoryById($id);
     public function storeRegisterForService(array $data);
     public function registeredServiceUmkmCheck($serviceId);
+    public function destroyServiceUmkm($serviceId);
 }

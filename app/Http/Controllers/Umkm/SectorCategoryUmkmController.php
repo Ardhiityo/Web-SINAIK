@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Models\SectorCategory;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 use App\Http\Requests\Umkm\StoreSectorCategoryUmkmRequest;

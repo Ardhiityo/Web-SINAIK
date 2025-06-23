@@ -22,7 +22,7 @@ class StoreSectorCategoryUmkmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sector_category_id' => 'required|exists:sector_categories,id|unique:sector_category_umkms,sector_category_id',
+            'sector_category_id' => 'required|exists:sector_categories,id|unique:sector_category_umkm,sector_category_id',
         ];
     }
 }

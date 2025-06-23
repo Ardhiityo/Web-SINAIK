@@ -24,6 +24,7 @@
                         @if ($registeredServiceCheck)
                             <form action="{{ route('umkm.services.destroy', ['service' => $service->id]) }}" method="post">
                                 @csrf
+                                @method('DELETE')
                                 <input type="hidden" name="service_id" value="{{ $service->id }}">
                                 <button class="btn btn-danger">Batalkan</button>
                             </form>

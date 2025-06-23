@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
         Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
         Route::resource('services', App\Http\Controllers\Umkm\ServiceController::class);
+        Route::resource('service-umkms', App\Http\Controllers\Umkm\ServiceUmkmController::class);
     });
 
     // Link Productive

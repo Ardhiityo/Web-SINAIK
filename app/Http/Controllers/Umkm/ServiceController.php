@@ -31,13 +31,15 @@ class ServiceController extends Controller
 
     public function show(Service $service)
     {
-        $registeredServiceCheck = $this->umkmRepository->registeredServiceCheck($service->id);
+        $registeredServiceCheck = $this->umkmRepository->registeredServiceUmkmCheck($service->id);
 
         return view('pages.umkm.service.show', compact('service', 'registeredServiceCheck'));
     }
 
     public function destroy(Service $service)
     {
-        //
+        $this->umkmRepository->destroyServiceUmkm($service->id);
+
+        return redirect()->route('umkm.services.index')->withSuccess('Berhasil');
     }
 }

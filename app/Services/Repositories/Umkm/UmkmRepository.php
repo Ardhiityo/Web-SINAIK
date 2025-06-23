@@ -182,4 +182,18 @@ class UmkmRepository implements UmkmInterface
             ->where('service_id', $serviceId)
             ->exists();
     }
+
+    public function destroyServiceUmkm($serviceId)
+    {
+        $user = Auth::user();
+
+        try {
+            DB::beginTransaction();
+            $user->umkm->serviceUmkms()->detach($serviceId);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::info($th->getMessage());
+        }
+    }
 }
