@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('register_for_services', function (Blueprint $table) {
+        Schema::create('service_umkm', function (Blueprint $table) {
             $table->id();
             $table->foreignId('umkm_id')->constrained('umkms')->cascadeOnDelete();
             $table->enum('register_status', ['process', 'approved', 'rejected'])->default('process');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('register_for_services');
+        Schema::dropIfExists('service_umkm');
     }
 };

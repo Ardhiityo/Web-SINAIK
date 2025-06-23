@@ -54,8 +54,8 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="text-nowrap">
-                                                <th scope="col">Sertifikasi</th>
-                                                <th scope="col">Sektor Bisnis</th>
+                                                <th scope="col">Nama UMKM</th>
+                                                <th scope="col">Tahun Berdiri</th>
                                                 <th scope="col">Skala Bisnis</th>
                                             </tr>
                                         </thead>

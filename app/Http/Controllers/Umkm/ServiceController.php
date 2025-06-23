@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Umkm;
 
+use App\Models\Service;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Umkm\StoreServiceRequest;
-use App\Services\Interfaces\LinkProductive\ServiceInterface;
 use App\Services\Interfaces\Umkm\UmkmInterface;
+use App\Services\Interfaces\LinkProductive\ServiceInterface;
 
 class ServiceController extends Controller
 {
@@ -26,5 +27,17 @@ class ServiceController extends Controller
         $this->umkmRepository->storeRegisterForService($request->validated());
 
         return redirect()->route('umkm.services.index')->withSuccess('Pendaftaran berhasil');
+    }
+
+    public function show(Service $service)
+    {
+        $registeredServiceCheck = $this->umkmRepository->registeredServiceCheck($service->id);
+
+        return view('pages.umkm.service.show', compact('service', 'registeredServiceCheck'));
+    }
+
+    public function destroy(Service $service)
+    {
+        //
     }
 }

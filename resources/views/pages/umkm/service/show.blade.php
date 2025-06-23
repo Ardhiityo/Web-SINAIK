@@ -16,57 +16,74 @@
             <div class="section-body">
                 <h2 class="section-title">Layanan</h2>
                 <p class="section-lead">
-                    Informasi mengenai semua data layanan
+                    Informasi mengenai data layanan {{ $service->title }}, dengan
+                    kategori {{ $service->serviceCategory->name }}
                 </p>
-
                 <div class="mt-5 row">
+                    <div class="mb-4 col-12 d-flex justify-content-end">
+                        @if ($registeredServiceCheck)
+                            <form action="{{ route('umkm.services.destroy', ['service' => $service->id]) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                <button class="btn btn-danger">Batalkan</button>
+                            </form>
+                        @else
+                            <form action="{{ route('umkm.services.store') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                <button class="btn btn-success">Daftar</button>
+                            </form>
+                        @endif
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                @if ($services->isEmpty())
-                                    <p>Belum ada layanan yang tersedia...</p>
-                                @else
-                                    <div class="overflow-auto">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr class="text-nowrap">
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">Judul</th>
-                                                    <th scope="col">Deskripsi</th>
-                                                    <th scope="col">Tanggal Dimulai</th>
-                                                    <th scope="col">Tanggal Selesai</th>
-                                                    <th scope="col">Kategori</th>
-                                                    <th scope="col">Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($services as $service)
-                                                    <tr class="text-nowrap">
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $service->title }}</td>
-                                                        <td>{{ $service->description }}</td>
-                                                        <td>{{ $service->available_date }}</td>
-                                                        <td>{{ $service->end_date }}</td>
-                                                        <td>{{ $service->serviceCategory->name }}</td>
-                                                        <td>
-                                                            <form action="{{ route('umkm.services.store') }}" method="POST"
-                                                                class="d-inline">
-                                                                @csrf
-                                                                <input type="hidden" name="service_id">
-                                                                <button type="submit"
-                                                                    class="btn btn-success">Daftar</button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                @endif
+                                <div class="card-header">
+                                    <h4>
+                                        {{ $service->title }}
+                                    </h4>
+                                </div>
+                                <div class="overflow-auto">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="text-nowrap">
+                                                <th scope="col">Deskripsi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="text-nowrap">
+                                                <td>{{ $service->description }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
-                            <div class="row">
-                                <div class="flex-wrap mt-5 col-12 d-flex justify-content-end">
-                                    {{ $services->links('pagination::bootstrap-5') }}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <h4>
+                                        Tanggal
+                                    </h4>
+                                </div>
+                                <div class="overflow-auto">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="text-nowrap">
+                                                <th scope="col">Dimulai</th>
+                                                <th scope="col">Selesai</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="text-nowrap">
+                                                <td>{{ $service->available_date }}</td>
+                                                <td>{{ $service->end_date }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

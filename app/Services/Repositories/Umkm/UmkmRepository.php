@@ -7,6 +7,7 @@ use App\Models\Income;
 use App\Models\Product;
 use App\Models\RegisterForService;
 use App\Models\SectorCategoryUmkm;
+use App\Models\ServiceUmkm;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -161,7 +162,7 @@ class UmkmRepository implements UmkmInterface
         try {
             DB::beginTransaction();
             $user = Auth::user();
-            RegisterForService::create([
+            ServiceUmkm::create([
                 'umkm_id' => $user->umkm->id,
                 'register_status' => 'process',
                 'service_id' => $data['service_id']
@@ -171,5 +172,14 @@ class UmkmRepository implements UmkmInterface
             DB::rollBack();
             Log::info(json_encode($th->getMessage(), JSON_PRETTY_PRINT));
         }
+    }
+
+    public function registeredServiceUmkmCheck($serviceId)
+    {
+        $user = Auth::user();
+
+        return ServiceUmkm::where('umkm_id', $user->umkm->id)
+            ->where('service_id', $serviceId)
+            ->exists();
     }
 }

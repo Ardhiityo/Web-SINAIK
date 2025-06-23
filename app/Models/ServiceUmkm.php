@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class RegisterForService extends Model
+class ServiceUmkm extends Pivot
 {
     protected $fillable = [
         'umkm_id',
@@ -15,5 +15,10 @@ class RegisterForService extends Model
     public function umkm()
     {
         return $this->belongsTo(Umkm::class);
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
     }
 }

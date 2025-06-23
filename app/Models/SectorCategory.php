@@ -12,6 +12,6 @@ class SectorCategory extends Model
 
     public function umkms()
     {
-        return $this->belongsToMany(Umkm::class, 'sector_category_umkms', 'sector_category_id', 'umkm_id')->withPivot('id');
+        return $this->belongsToMany(Umkm::class, 'sector_category_umkm', 'sector_category_id', 'umkm_id')->withPivot('id');
     }
 }

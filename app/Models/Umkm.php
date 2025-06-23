@@ -26,7 +26,7 @@ class Umkm extends Model
 
     public function sectorCategories()
     {
-        return $this->belongsToMany(SectorCategory::class, 'sector_category_umkms', 'umkm_id', 'sector_category_id')->withPivot('id');
+        return $this->belongsToMany(SectorCategory::class, 'sector_category_umkm', 'umkm_id', 'sector_category_id')->withPivot('id');
     }
 
     public function businessScale()
@@ -43,9 +43,8 @@ class Umkm extends Model
     {
         return $this->hasMany(Income::class);
     }
-
-    public function registerForServices()
+    public function serviceUmkms()
     {
-        return $this->hasMany(RegisterForService::class);
+        return $this->belongsToMany(Service::class, 'service_umkm', 'umkm_id', 'service_id');
     }
 }

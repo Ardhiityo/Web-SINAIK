@@ -49,7 +49,7 @@
                                                         <td>{{ $service->end_date }}</td>
                                                         <td>{{ $service->serviceCategory->name }}</td>
                                                         <td>
-                                                            <a href="{{ route('umkm.services.show') }}"
+                                                            <a href="{{ route('umkm.services.show', ['service' => $service->id]) }}"
                                                                 class="btn btn-warning">Lihat</a>
                                                         </td>
                                                     </tr>
