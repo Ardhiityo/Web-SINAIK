@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Layanan</h2>
+                <h2 class="section-title">Layananmu</h2>
                 <p class="section-lead">
-                    Informasi mengenai semua data layanan
+                    Informasi mengenai semua data layananmu
                 </p>
 
                 <div class="mt-5 row">
@@ -34,7 +34,7 @@
                                                     <th scope="col">Judul</th>
                                                     <th scope="col">Tanggal Dimulai</th>
                                                     <th scope="col">Tanggal Selesai</th>
-                                                    <th scope="col">Aksi</th>
+                                                    <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -45,15 +45,13 @@
                                                         <td>{{ $serviceUmkm->available_date }}</td>
                                                         <td>{{ $serviceUmkm->end_date }}</td>
                                                         <td>
-                                                            <form
-                                                                action="{{ route('umkm.services.destroy', ['service' => $serviceUmkm->id]) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <input type="hidden" name="service_id"
-                                                                    value="{{ $serviceUmkm->id }}">
-                                                                <button class="btn btn-danger">Batalkan</button>
-                                                            </form>
+                                                            @if ($serviceUmkm->pivot->register_status == 'process')
+                                                                <span class="btn btn-warning">Diproses</span>
+                                                            @elseif ($serviceUmkm->pivot->register_status == 'rejected')
+                                                                <span class="btn btn-danger">Ditolak</span>
+                                                            @elseif ($serviceUmkm->pivot->register_status == 'approved')
+                                                                <span class="btn btn-success">Diterima</span>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach

@@ -21,14 +21,7 @@
                 </p>
                 <div class="mt-5 row">
                     <div class="mb-4 col-12 d-flex justify-content-end">
-                        @if ($registeredServiceCheck)
-                            <form action="{{ route('umkm.services.destroy', ['service' => $service->id]) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input type="hidden" name="service_id" value="{{ $service->id }}">
-                                <button class="btn btn-danger">Batalkan</button>
-                            </form>
-                        @else
+                        @if (!$registeredServiceCheck)
                             <form action="{{ route('umkm.services.store') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="service_id" value="{{ $service->id }}">
