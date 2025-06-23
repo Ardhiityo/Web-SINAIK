@@ -23,8 +23,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>
-                                    <a href="{{ route('link-productive.certifications.create') }}" class="btn btn-primary">
-                                        Buat Sertifikasi
+                                    <a href="{{ route('link-productive.umkms.create') }}" class="btn btn-primary">
+                                        Buat UMKM
                                     </a>
                                 </h4>
                             </div>
@@ -47,9 +47,9 @@
                                                 @foreach ($umkms as $umkm)
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $umkm->biodata->business_name }}</td>
+                                                        <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
-                                                        <td>{{ $umkm->biodata->address }}</td>
+                                                        <td>{{ $umkm->biodata->address ?? '-' }}</td>
                                                         </td>
                                                         <td>
                                                             <a href="{{ route('link-productive.umkms.show', ['umkm' => $umkm->id]) }}"

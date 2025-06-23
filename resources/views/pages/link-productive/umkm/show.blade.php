@@ -36,7 +36,7 @@
                                         <tbody>
                                             <tr class="text-nowrap">
                                                 <td>{{ $umkm->user->name }}</td>
-                                                <td>{{ $umkm->biodata->phone_number }}</td>
+                                                <td>{{ $umkm->biodata->phone_number ?? '-' }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -61,9 +61,9 @@
                                         </thead>
                                         <tbody>
                                             <tr class="text-nowrap">
-                                                <td>{{ $umkm->biodata->business_name }}</td>
-                                                <td>{{ $umkm->biodata->founding_year }}</td>
-                                                <td>{{ $umkm->biodata->businessScale->name }}</td>
+                                                <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
+                                                <td>{{ $umkm->biodata->founding_year ?? '-' }}</td>
+                                                <td>{{ $umkm->biodata->businessScale->name ?? '-' }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -88,9 +88,10 @@
                                         </thead>
                                         <tbody>
                                             <tr class="text-nowrap">
-                                                <td>{{ $umkm->biodata->certification->name }}</td>
-                                                <td>{{ $umkm->sectorCategories->pluck('name')->implode(', ') }}</td>
-                                                <td>{{ $umkm->biodata->business_description }}</td>
+                                                <td>{{ $umkm->biodata->certification->name ?? '-' }}</td>
+                                                <td>{{ $umkm->sectorCategories->isEmpty() ? '-' : $umkm->sectorCategories->pluck('name')->implode(', ') }}
+                                                </td>
+                                                <td>{{ $umkm->biodata->business_description ?? '-' }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -115,9 +116,9 @@
                                         </thead>
                                         <tbody>
                                             <tr class="text-nowrap">
-                                                <td>{{ $umkm->biodata->city }}</td>
-                                                <td>{{ $umkm->biodata->province }}</td>
-                                                <td>{{ $umkm->biodata->address }}</td>
+                                                <td>{{ $umkm->biodata->city ?? '-' }}</td>
+                                                <td>{{ $umkm->biodata->province ?? '-' }}</td>
+                                                <td>{{ $umkm->biodata->address ?? '-' }}</td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -40,7 +40,7 @@
                                                 @foreach ($umkms as $umkm)
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $umkm->biodata->business_name }}</td>
+                                                        <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
                                                         <td>{{ $umkm->is_verified ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                                         </td>

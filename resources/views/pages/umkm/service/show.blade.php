@@ -49,8 +49,13 @@
                                                         <td>{{ $service->end_date }}</td>
                                                         <td>{{ $service->serviceCategory->name }}</td>
                                                         <td>
-                                                            <a href="{{ route('umkm.services.show') }}"
-                                                                class="btn btn-warning">Lihat</a>
+                                                            <form action="{{ route('umkm.services.store') }}" method="POST"
+                                                                class="d-inline">
+                                                                @csrf
+                                                                <input type="hidden" name="service_id">
+                                                                <button type="submit"
+                                                                    class="btn btn-success">Daftar</button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach
