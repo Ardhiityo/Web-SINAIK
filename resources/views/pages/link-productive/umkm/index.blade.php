@@ -56,9 +56,13 @@
                                                                 class="btn btn-success">
                                                                 <i class="fas fa-eye"></i>
                                                             </a>
-                                                            <a href="{{ route('link-productive.umkms.edit', ['umkm' => $umkm->id]) }}"
-                                                                class="mx-2 btn btn-warning">
-                                                                <i class="fas fa-edit"></i>
+                                                            @if ($umkm->biodata->id ?? false)
+                                                                <a href="{{ route('link-productive.umkms.biodata.edit', ['umkm' => $umkm->id]) }}"
+                                                                    class="mx-2 btn btn-warning">
+                                                                    <i class="fas fa-edit"></i>
+                                                                @else
+                                                                    <span class="mx-2"></span>
+                                                            @endif
                                                             </a>
                                                             <form id="form-delete"
                                                                 action="{{ route('link-productive.umkms.destroy', ['umkm' => $umkm->id]) }}"

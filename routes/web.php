@@ -24,22 +24,24 @@ Route::middleware('auth')->group(function () {
         Route::resource('business-scales', App\Http\Controllers\LinkProductive\BusinessScaleController::class);
         Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
         Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
-        Route::get('/umkms/{umkm}/performances', [App\Http\Controllers\LinkProductive\UmkmController::class, 'performance'])->name('umkms.performance');
-        Route::get('/umkms/{umkm}/performances/{income}/edit', [App\Http\Controllers\LinkProductive\IncomeController::class, 'edit'])->name('umkms.performance.edit');
-        Route::delete('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'destroy'])->name('umkms.performance.destroy');
-        Route::put('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'update'])->name('umkms.performance.update');
-        Route::get('/umkms/{umkm}/products', [App\Http\Controllers\LinkProductive\ProductController::class, 'index'])->name('umkms.product.index');
-        Route::get('/umkms/{umkm}/products/create', [App\Http\Controllers\LinkProductive\ProductController::class, 'create'])->name('umkms.product.create');
-        Route::post('/umkms/{umkm}/products', [App\Http\Controllers\LinkProductive\ProductController::class, 'store'])->name('umkms.product.store');
-        Route::get('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'edit'])->name('umkms.product.edit');
-        Route::put('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'update'])->name('umkms.product.update');
-        Route::delete('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'destroy'])->name('umkms.product.destroy');
+        Route::get('/umkms/{umkm}/performance', [App\Http\Controllers\LinkProductive\UmkmController::class, 'performance'])->name('umkms.performance');
+        Route::get('/umkms/{umkm}/performance/{income}/edit', [App\Http\Controllers\LinkProductive\IncomeController::class, 'edit'])->name('umkms.performance.edit');
+        Route::delete('/umkms/{umkm}/performance/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'destroy'])->name('umkms.performance.destroy');
+        Route::put('/umkms/{umkm}/performance/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'update'])->name('umkms.performance.update');
+        Route::get('/umkms/{umkm}/product', [App\Http\Controllers\LinkProductive\ProductController::class, 'index'])->name('umkms.product.index');
+        Route::get('/umkms/{umkm}/product/create', [App\Http\Controllers\LinkProductive\ProductController::class, 'create'])->name('umkms.product.create');
+        Route::post('/umkms/{umkm}/product', [App\Http\Controllers\LinkProductive\ProductController::class, 'store'])->name('umkms.product.store');
+        Route::get('/umkms/{umkm}/product/{product}/edit', [App\Http\Controllers\LinkProductive\ProductController::class, 'edit'])->name('umkms.product.edit');
+        Route::put('/umkms/{umkm}/product/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'update'])->name('umkms.product.update');
+        Route::delete('/umkms/{umkm}/product/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'destroy'])->name('umkms.product.destroy');
+        Route::get('/umkms/{umkm}/biodata/edit', [App\Http\Controllers\LinkProductive\BiodataController::class, 'edit'])->name('umkms.biodata.edit');
+        Route::put('/umkms/{umkm}/biodata/{biodata}', [App\Http\Controllers\LinkProductive\BiodataController::class, 'update'])->name('umkms.biodata.update');
+        Route::delete('/umkms/{umkm}/biodata/{biodata}', [App\Http\Controllers\LinkProductive\BiodataController::class, 'destroy'])->name('umkms.biodata.destroy');
         Route::resource('service-categories', App\Http\Controllers\LinkProductive\ServiceCategoryController::class);
         Route::resource('services', App\Http\Controllers\LinkProductive\ServiceController::class);
         Route::resource('service-umkms', App\Http\Controllers\LinkProductive\ServiceUmkmController::class);
     });
 });
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');

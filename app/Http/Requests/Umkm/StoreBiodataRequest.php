@@ -24,13 +24,13 @@ class StoreBiodataRequest extends FormRequest
         return [
             'business_name' => ['required'],
             'business_description' => ['required'],
-            'business_scale_id' => ['required'],
+            'business_scale_id' => ['required', 'exists:business_scales,id'],
             'province' => ['required'],
             'city' => ['required'],
             'address' => ['required'],
-            'phone_number' => ['required'],
+            'phone_number' => ['required', 'min_digits:10'],
             'founding_year' => ['required'],
-            'certification_id' => ['required']
+            'certification_id' => ['required', 'exists:certifications,id']
         ];
     }
 }
