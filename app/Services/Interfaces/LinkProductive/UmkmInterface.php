@@ -9,4 +9,5 @@ interface UmkmInterface
     public function getUmkmsPaginate();
     public function getUmkm($id);
     public function getUmkmPerformancePaginate($id);
+    public function getUmkmProductsPaginate($id);
 }

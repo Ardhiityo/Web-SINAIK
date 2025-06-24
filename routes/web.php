@@ -28,6 +28,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/umkms/{umkm}/performances/{income}/edit', [App\Http\Controllers\LinkProductive\IncomeController::class, 'edit'])->name('umkms.performance.edit');
         Route::delete('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'destroy'])->name('umkms.performance.destroy');
         Route::put('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'update'])->name('umkms.performance.update');
+        Route::get('/umkms/{umkm}/products', [App\Http\Controllers\LinkProductive\ProductController::class, 'index'])->name('umkms.product.index');
+        Route::get('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'edit'])->name('umkms.product.edit');
+        Route::put('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'update'])->name('umkms.product.update');
+        Route::delete('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'destroy'])->name('umkms.product.destroy');
         Route::resource('service-categories', App\Http\Controllers\LinkProductive\ServiceCategoryController::class);
         Route::resource('services', App\Http\Controllers\LinkProductive\ServiceController::class);
         Route::resource('service-umkms', App\Http\Controllers\LinkProductive\ServiceUmkmController::class);

@@ -2,13 +2,14 @@
 
 namespace App\Services\Repositories\LinkProductive;
 
-use App\Models\Income;
 use App\Models\Umkm;
+use App\Models\Income;
+use App\Models\Product;
+use GuzzleHttp\Psr7\Query;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Services\Interfaces\LinkProductive\UmkmInterface;
-use GuzzleHttp\Psr7\Query;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use App\Services\Interfaces\LinkProductive\UmkmInterface;
 
 class UmkmRepository implements UmkmInterface
 {
@@ -67,6 +68,13 @@ class UmkmRepository implements UmkmInterface
     public function getUmkmPerformancePaginate($id)
     {
         return Income::select('id', 'date', 'total_employee', 'total_income', 'umkm_id')->where('umkm_id', $id)
+            ->paginate(10);
+    }
+
+    public function getUmkmProductsPaginate($id)
+    {
+        return Product::select('id', 'image', 'name', 'price', 'description', 'umkm_id')
+            ->where('umkm_id', $id)
             ->paginate(10);
     }
 }
