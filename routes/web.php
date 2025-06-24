@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/umkms/{umkm}/product/{product}/edit', [App\Http\Controllers\LinkProductive\ProductController::class, 'edit'])->name('umkms.product.edit');
         Route::put('/umkms/{umkm}/product/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'update'])->name('umkms.product.update');
         Route::delete('/umkms/{umkm}/product/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'destroy'])->name('umkms.product.destroy');
+        Route::get('/umkms/{umkm}/biodata/create', [App\Http\Controllers\LinkProductive\BiodataController::class, 'create'])->name('umkms.biodata.create');
+        Route::post('/umkms/{umkm}/biodata', [App\Http\Controllers\LinkProductive\BiodataController::class, 'store'])->name('umkms.biodata.store');
         Route::get('/umkms/{umkm}/biodata/edit', [App\Http\Controllers\LinkProductive\BiodataController::class, 'edit'])->name('umkms.biodata.edit');
         Route::put('/umkms/{umkm}/biodata/{biodata}', [App\Http\Controllers\LinkProductive\BiodataController::class, 'update'])->name('umkms.biodata.update');
         Route::delete('/umkms/{umkm}/biodata/{biodata}', [App\Http\Controllers\LinkProductive\BiodataController::class, 'destroy'])->name('umkms.biodata.destroy');

@@ -7,7 +7,7 @@ use App\Models\Product;
 interface UmkmInterface
 {
     public function getBiodata();
-    public function storeBiodata(array $data);
+    public function storeBiodata(array $data, $umkmId = null);
     public function getProducts();
     public function storeProduct(array $data, $umkmId = null);
     public function updateProduct(array $data, Product $product);

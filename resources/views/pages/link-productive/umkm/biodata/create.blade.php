@@ -6,17 +6,17 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Biodata Bisnis</h1>
+                <h1>Biodata UMKM</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Profile Bisnis</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Informasi Umum</a></div>
                     <div class="breadcrumb-item"><a href="#">Biodata</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Biodatamu</h2>
+                <h2 class="section-title">Biodata</h2>
                 <p class="section-lead">
-                    Informasi mengenai data biodatamu bisnismu
+                    Informasi mengenai data biodatamu bisnis
                 </p>
 
                 <div class="row">
@@ -24,7 +24,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="{{ route('link-productive.umkms.biodata.store') }}" method="POST">
+                                    <form action="{{ route('link-productive.umkms.biodata.store', ['umkm' => $umkm->id]) }}"
+                                        method="POST">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Buat Data</h4>

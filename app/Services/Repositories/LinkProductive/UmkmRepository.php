@@ -5,7 +5,6 @@ namespace App\Services\Repositories\LinkProductive;
 use App\Models\Umkm;
 use App\Models\Income;
 use App\Models\Product;
-use GuzzleHttp\Psr7\Query;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Contracts\Database\Eloquent\Builder;

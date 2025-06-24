@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 
-use function Laravel\Prompts\select;
-
 class UmkmRepository implements UmkmInterface
 {
     public function getBiodata()
@@ -38,12 +36,16 @@ class UmkmRepository implements UmkmInterface
             ->first();
     }
 
-    public function storeBiodata(array $data)
+    public function storeBiodata(array $data, $umkmId = null)
     {
         try {
             DB::beginTransaction();
             $user = Auth::user();
-            $data['umkm_id'] = $user->umkm->id;
+            if (is_null($umkmId)) {
+                $data['umkm_id'] = $user->umkm->id;
+            } else {
+                $data['umkm_id'] = $umkmId;
+            }
             Biodata::create($data);
             DB::commit();
         } catch (\Throwable $th) {

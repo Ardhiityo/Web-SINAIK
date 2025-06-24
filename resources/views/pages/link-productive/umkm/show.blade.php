@@ -139,7 +139,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>
-                                    <a href="{{ route('umkm.incomes.create') }}" class="btn btn-primary">
+                                    <a href="{{ route('link-productive.umkms.biodata.create', ['umkm' => $umkm->id]) }}"
+                                        class="btn btn-primary">
                                         Buat Biodata
                                     </a>
                                 </h4>
