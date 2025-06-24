@@ -21,6 +21,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+                            <div class="card-header">
+                                <h4>
+                                    <a href="{{ route('link-productive.umkms.performance.create', ['umkm' => $umkm->id]) }}"
+                                        class="btn btn-primary">
+                                        Buat Performa
+                                    </a>
+                                </h4>
+                            </div>
                             <div class="card-body">
                                 @if ($performances->isEmpty())
                                     <p>Belum ada data performa umkm...</p>

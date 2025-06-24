@@ -52,7 +52,7 @@ class UmkmController extends Controller
     {
         $performances = $this->umkmRepository->getUmkmPerformancePaginate($umkm->id);
 
-        return view('pages.link-productive.umkm.performance.index', compact('performances'));
+        return view('pages.link-productive.umkm.performance.index', compact('performances', 'umkm'));
     }
 
     /**
