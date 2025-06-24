@@ -20,11 +20,15 @@ class ProductController extends Controller
     {
         $products = $this->linkProductiveUmkmRepository->getUmkmProductsPaginate($umkm->id);
 
+        $umkm->load('biodata:id,business_name,umkm_id');
+
         return view('pages.link-productive.umkm.product.index', compact('products', 'umkm'));
     }
 
     public function create(Umkm $umkm)
     {
+        $umkm->load('biodata:id,business_name,umkm_id');
+
         return view('pages.link-productive.umkm.product.create', compact('umkm'));
     }
 
@@ -37,6 +41,8 @@ class ProductController extends Controller
 
     public function edit(Umkm $umkm, Product $product)
     {
+        $umkm->load('biodata:id,business_name,umkm_id');
+
         return view('pages.link-productive.umkm.product.edit', compact('umkm', 'product'));
     }
 
