@@ -6,17 +6,17 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Layanan</h1>
+                <h1>Pusat Layanan</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Pusat Layanan</a></div>
-                    <div class="breadcrumb-item"><a href="#">Layananmu</a></div>
+                    <div class="breadcrumb-item"><a href="#">Layananku</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Layananmu</h2>
+                <h2 class="section-title">Layananku</h2>
                 <p class="section-lead">
-                    Informasi mengenai semua data layananmu
+                    Informasi mengenai semua data layananku
                 </p>
 
                 <div class="mt-5 row">
@@ -46,11 +46,11 @@
                                                         <td>{{ $serviceUmkm->end_date }}</td>
                                                         <td>
                                                             @if ($serviceUmkm->pivot->register_status == 'process')
-                                                                <span class="btn btn-warning">Diproses</span>
+                                                                <span class="badge badge-warning">Diproses</span>
                                                             @elseif ($serviceUmkm->pivot->register_status == 'rejected')
-                                                                <span class="btn btn-danger">Ditolak</span>
+                                                                <span class="badge badge-danger">Ditolak</span>
                                                             @elseif ($serviceUmkm->pivot->register_status == 'approved')
-                                                                <span class="btn btn-success">Diterima</span>
+                                                                <span class="badge badge-success">Diterima</span>
                                                             @endif
                                                         </td>
                                                     </tr>

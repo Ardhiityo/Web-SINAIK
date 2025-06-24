@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Umkm;
 
-use Illuminate\Http\Request;
+use App\Models\Biodata;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use Laravolt\Indonesia\IndonesiaService;
 use App\Http\Requests\Umkm\StoreBiodataRequest;
-use App\Http\Requests\Umkm\UpdateBiodataRequest;
-use App\Models\Biodata;
 use App\Services\Interfaces\Umkm\UmkmInterface;
+use App\Http\Requests\Umkm\UpdateBiodataRequest;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
 
@@ -50,14 +48,6 @@ class BiodataController extends Controller
         $this->umkmRepository->storeBiodata($request->validated());
 
         return redirect()->route('umkm.biodatas.index')->withSuccess('Biodata berhasil disimpan');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**

@@ -6,7 +6,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Laporan Bisnis</h1>
+                <h1>Pelaporan Bisnis</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Profile Bisnis</a></div>
                     <div class="breadcrumb-item"><a href="#">Pelaporan</a></div>
@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Laporanmu</h2>
+                <h2 class="section-title">Laporan</h2>
                 <p class="section-lead">
-                    Informasi mengenai data laporan bisnismu
+                    Informasi mengenai data laporan bisnis
                 </p>
 
                 <div class="mt-5 row">

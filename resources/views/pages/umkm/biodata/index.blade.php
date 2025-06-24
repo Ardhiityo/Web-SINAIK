@@ -14,76 +14,141 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Biodatamu</h2>
+                <h2 class="section-title">Biodata Bisnis</h2>
                 <p class="section-lead">
-                    Informasi mengenai data biodatamu bisnismu
+                    Informasi mengenai biodata bisnis
                 </p>
-
-                <div class="mt-5 row">
-                    <div class="col-12">
-                        <div class="card">
-
-                            @if (is_null($biodata))
-                                <div class="card-header">
-                                    <h4>
-                                        <a href="{{ route('umkm.biodatas.create') }}" class="btn btn-primary">Buat
-                                            Biodata</a>
-                                    </h4>
-                                </div>
-                            @endif
-
-                            <div class="card-body">
-                                @if (is_null($biodata))
-                                    <p>Kamu belum memiliki biodata...</p>
-                                @else
+                @if (is_null($biodata))
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>
+                                <a href="{{ route('umkm.biodatas.create') }}" class="btn btn-primary">Buat Biodata</a>
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Belum ada biodata...</p>
+                        </div>
+                    </div>
+                @else
+                    <div class="row">
+                        <div class="my-3 col-12 d-flex justify-content-end">
+                            <a href="{{ route('umkm.biodatas.edit', ['biodata' => $biodata->id]) }}"
+                                class="mr-2 btn btn-warning">Edit</a>
+                            <form action="{{ route('umkm.biodatas.destroy', ['biodata' => $biodata->id]) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-header">
+                                        <h4>Owner</h4>
+                                    </div>
                                     <div class="overflow-auto">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
-                                                    <th scope="col">Nama Bisnis</th>
-                                                    <th scope="col">Deskripsi Bisnis</th>
-                                                    <th scope="col">Skala Bisnis</th>
-                                                    <th scope="col">Sertifikasi Bisnis</th>
+                                                    <th scope="col">Nama Owner</th>
                                                     <th scope="col">Telepon</th>
-                                                    <th scope="col">Tahun Berdiri</th>
-                                                    <th scope="col">Kota</th>
-                                                    <th scope="col">Provinsi</th>
-                                                    <th scope="col">Alamat</th>
-                                                    <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr class="text-nowrap">
-                                                    <td>{{ $biodata->business_name }}</td>
-                                                    <td>{{ $biodata->business_description }}</td>
-                                                    <td>{{ $biodata->businessScale->name }}</td>
-                                                    <td>{{ $biodata->certification->name }}</td>
-                                                    <td>{{ $biodata->phone_number }}</td>
-                                                    <td>{{ $biodata->founding_year }}</td>
-                                                    <td>{{ $biodata->city }}</td>
-                                                    <td>{{ $biodata->province }}</td>
-                                                    <td>{{ $biodata->address }}</td>
-                                                    <td>
-                                                        <a href="{{ route('umkm.biodatas.edit', ['biodata' => $biodata->id]) }}"
-                                                            class="btn btn-warning">Edit</a>
-                                                        <form id="form-delete"
-                                                            action="{{ route('umkm.biodatas.destroy', ['biodata' => $biodata->id]) }}"
-                                                            method="POST" class="d-inline">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" id="btn-delete"
-                                                                class="btn btn-danger">Hapus</button>
-                                                        </form>
-                                                    </td>
+                                                    <td>{{ $biodata->umkm->user->name }}</td>
+                                                    <td>{{ $biodata->phone_number ?? '-' }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-header">
+                                        <h4>Profil</h4>
+                                    </div>
+                                    <div class="overflow-auto">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="text-nowrap">
+                                                    <th scope="col">Nama UMKM</th>
+                                                    <th scope="col">Tahun Berdiri</th>
+                                                    <th scope="col">Skala Bisnis</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="text-nowrap">
+                                                    <td>{{ $biodata->business_name ?? '-' }}</td>
+                                                    <td>{{ $biodata->founding_year ?? '-' }}</td>
+                                                    <td>{{ $biodata->businessScale->name ?? '-' }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-header">
+                                        <h4>Detail</h4>
+                                    </div>
+                                    <div class="overflow-auto">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="text-nowrap">
+                                                    <th scope="col">Sertifikasi Bisnis</th>
+                                                    <th scope="col">Sektor Bisnis</th>
+                                                    <th scope="col">Deskripsi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="text-nowrap">
+                                                    <td>{{ $biodata->certification->name ?? '-' }}</td>
+                                                    <td>{{ $biodata->umkm->sectorCategories->isEmpty() ? '-' : $biodata->umkm->sectorCategories->pluck('name')->implode(', ') }}
+                                                    </td>
+                                                    <td>{{ $umkm->biodata->business_description ?? '-' }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-header">
+                                        <h4>Alamat</h4>
+                                    </div>
+                                    <div class="overflow-auto">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="text-nowrap">
+                                                    <th scope="col">Kota</th>
+                                                    <th scope="col">Provinsi</th>
+                                                    <th scope="col">Alamat lengkap</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="text-nowrap">
+                                                    <td>{{ $umkm->biodata->city ?? '-' }}</td>
+                                                    <td>{{ $umkm->biodata->province ?? '-' }}</td>
+                                                    <td>{{ $umkm->biodata->address ?? '-' }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </section>
     </div>

@@ -16,7 +16,7 @@
             <div class="section-body">
                 <h2 class="section-title">Sektor Bisnis</h2>
                 <p class="section-lead">
-                    Informasi mengenai data sektor bisnismu
+                    Informasi mengenai data sektor bisnis
                 </p>
 
                 <div class="mt-5 row">

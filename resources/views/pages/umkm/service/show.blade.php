@@ -20,15 +20,15 @@
                     kategori {{ $service->serviceCategory->name }}
                 </p>
                 <div class="mt-5 row">
-                    <div class="mb-4 col-12 d-flex justify-content-end">
-                        @if (!$registeredServiceCheck)
+                    @if (!$registeredServiceCheck)
+                        <div class="mb-4 col-12 d-flex justify-content-end">
                             <form action="{{ route('umkm.services.store') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="service_id" value="{{ $service->id }}">
                                 <button class="btn btn-success">Daftar</button>
                             </form>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">

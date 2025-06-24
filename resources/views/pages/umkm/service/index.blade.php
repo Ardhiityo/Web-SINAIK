@@ -6,7 +6,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Layanan</h1>
+                <h1>Pusat Layanan</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Pusat Layanan</a></div>
                     <div class="breadcrumb-item"><a href="#">Layanan</a></div>

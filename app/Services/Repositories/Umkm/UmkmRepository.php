@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Interfaces\Umkm\UmkmInterface;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class UmkmRepository implements UmkmInterface
 {
@@ -20,7 +21,11 @@ class UmkmRepository implements UmkmInterface
     {
         $user = Auth::user();
 
-        return Biodata::select(
+        return Biodata::with([
+            'businessScale' => fn(Builder $query) => $query->select('id', 'name'),
+            'certification' => fn(Builder $query) => $query->select('id', 'name'),
+            'umkm' => fn(Builder $query) => $query->with('user:id,name', 'sectorCategories:id,name')->select('id', 'user_id')
+        ])->select(
             'id',
             'business_name',
             'business_description',
@@ -31,6 +36,7 @@ class UmkmRepository implements UmkmInterface
             'founding_year',
             'business_scale_id',
             'certification_id',
+            'umkm_id'
         )
             ->where('umkm_id', $user->umkm->id)
             ->first();
