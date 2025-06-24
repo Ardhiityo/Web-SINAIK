@@ -55,8 +55,8 @@
             </li>
 
             <li class="menu-header">Pusat UMKM</li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('umkm.umkms.*') ? 'active' : '' }}">
+                <a href="{{ route('umkm.umkms.index') }}" class="nav-link">
                     <i class="fas fa-store"></i>
                     <span>UMKM</span>
                 </a>

@@ -12,6 +12,11 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         // UMKM
+        $this->app->singleton(\App\Services\Interfaces\Umkm\BiodataInterface::class, \App\Services\Repositories\Umkm\BiodataRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\Umkm\IncomeInterface::class, \App\Services\Repositories\Umkm\IncomeRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\Umkm\ProductInterface::class, \App\Services\Repositories\Umkm\ProductRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\Umkm\SectorCategoryInterface::class, \App\Services\Repositories\Umkm\SectorCategoryRepository::class);
+        $this->app->singleton(\App\Services\Interfaces\Umkm\ServiceUmkmInterface::class, \App\Services\Repositories\Umkm\ServiceUmkmRepository::class);
         $this->app->singleton(\App\Services\Interfaces\Umkm\UmkmInterface::class, \App\Services\Repositories\Umkm\UmkmRepository::class);
 
         // Link Productive

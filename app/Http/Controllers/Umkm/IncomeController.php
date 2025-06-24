@@ -3,22 +3,23 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Models\Income;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Umkm\StoreIncomeRequest;
 use App\Http\Requests\Umkm\UpdateIncomeRequest;
-use App\Services\Interfaces\Umkm\UmkmInterface;
+use App\Services\Interfaces\Umkm\IncomeInterface;
 
 class IncomeController extends Controller
 {
-    public function __construct(private UmkmInterface $umkmRepository) {}
+    public function __construct(
+        private IncomeInterface $incomeRepository
+    ) {}
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $incomes = $this->umkmRepository->getIncomes();
+        $incomes = $this->incomeRepository->getIncomes();
 
         return view('pages.umkm.income.index', compact('incomes'));
     }
@@ -36,17 +37,9 @@ class IncomeController extends Controller
      */
     public function store(StoreIncomeRequest $request)
     {
-        $this->umkmRepository->storeIncome($request->validated());
+        $this->incomeRepository->storeIncome($request->validated());
 
         return redirect()->route('umkm.incomes.index')->with('success', 'Pendapatan berhasil disimpan');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Income $income)
-    {
-        //
     }
 
     /**

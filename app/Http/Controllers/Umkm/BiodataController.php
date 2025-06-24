@@ -3,20 +3,19 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Models\Biodata;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Umkm\StoreBiodataRequest;
-use App\Services\Interfaces\Umkm\UmkmInterface;
 use App\Http\Requests\Umkm\UpdateBiodataRequest;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
+use App\Services\Interfaces\Umkm\BiodataInterface;
 
 class BiodataController extends Controller
 {
     public function __construct(
-        private UmkmInterface $umkmRepository,
         private BusinessScaleInterface $businessScaleRepository,
-        private CertificationInterface $certificationRepository
+        private CertificationInterface $certificationRepository,
+        private BiodataInterface $biodataRepository
     ) {}
 
     /**
@@ -24,7 +23,7 @@ class BiodataController extends Controller
      */
     public function index()
     {
-        $biodata = $this->umkmRepository->getBiodata();
+        $biodata = $this->biodataRepository->getBiodata();
 
         return view('pages.umkm.biodata.index', compact('biodata'));
     }
@@ -45,7 +44,7 @@ class BiodataController extends Controller
      */
     public function store(StoreBiodataRequest $request)
     {
-        $this->umkmRepository->storeBiodata($request->validated());
+        $this->biodataRepository->storeBiodata($request->validated());
 
         return redirect()->route('umkm.biodatas.index')->withSuccess('Biodata berhasil disimpan');
     }

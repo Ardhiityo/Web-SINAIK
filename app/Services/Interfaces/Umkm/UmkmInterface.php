@@ -2,22 +2,7 @@
 
 namespace App\Services\Interfaces\Umkm;
 
-use App\Models\Product;
-
 interface UmkmInterface
 {
-    public function getBiodata();
-    public function storeBiodata(array $data, $umkmId = null);
-    public function getProducts();
-    public function storeProduct(array $data, $umkmId = null);
-    public function updateProduct(array $data, Product $product);
-    public function getIncomes();
-    public function storeIncome(array $data, $umkmId = null);
-    public function getSectorCategories();
-    public function storeSectorCategory(array $data);
-    public function getSectorCategoryById($id);
-    public function storeRegisterForService(array $data);
-    public function registeredServiceUmkmCheck($serviceId);
-    public function destroyServiceUmkm($serviceId);
-    public function getServiceUmkmPaginate();
+    public function getUmkmsPaginate();
 }

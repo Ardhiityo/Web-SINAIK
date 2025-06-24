@@ -16,56 +16,48 @@
             <div class="section-body">
                 <h2 class="section-title">Data UMKM</h2>
                 <p class="section-lead">
-                    Informasi mengenai data UMKM
+                    Informasi mengenai performa data UMKM
                 </p>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4>
-                                    <a href="{{ route('link-productive.umkms.create') }}" class="btn btn-primary">
-                                        Buat UMKM
+                                    <a href="{{ route('link-productive.umkms.performance.create', ['umkm' => $umkm->id]) }}"
+                                        class="btn btn-primary">
+                                        Buat Performa
                                     </a>
                                 </h4>
                             </div>
                             <div class="card-body">
-                                @if ($umkms->isEmpty())
-                                    <p>Belum ada data umkm...</p>
+                                @if ($performances->isEmpty())
+                                    <p>Belum ada data performa umkm...</p>
                                 @else
                                     <div class="overflow-auto">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Nama UMKM</th>
-                                                    <th scope="col">Owner</th>
-                                                    <th scope="col">Alamat</th>
+                                                    <th scope="col">Tanggal</th>
+                                                    <th scope="col">Total Pendapatan</th>
+                                                    <th scope="col">Total Karyawan</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($umkms as $umkm)
+                                                @foreach ($performances as $performance)
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
-                                                        <td>{{ $umkm->user->name }}</td>
-                                                        <td>{{ $umkm->biodata->address ?? '-' }}</td>
-                                                        </td>
+                                                        <td>{{ $performance->date }}</td>
+                                                        <td>{{ $performance->total_income }}</td>
+                                                        <td>{{ $performance->total_employee }}</td>
                                                         <td>
-                                                            <a href="{{ route('link-productive.umkms.show', ['umkm' => $umkm->id]) }}"
-                                                                class="btn btn-success">
-                                                                <i class="fas fa-eye"></i>
+                                                            <a href="{{ route('link-productive.umkms.performance.edit', ['umkm' => $performance->umkm_id, 'income' => $performance->id]) }}"
+                                                                class="mx-2 btn btn-warning">
+                                                                <i class="fas fa-edit"></i>
                                                             </a>
-                                                            @if ($umkm->biodata->id ?? false)
-                                                                <a href="{{ route('link-productive.umkms.biodata.edit', ['umkm' => $umkm->id]) }}"
-                                                                    class="mx-2 btn btn-warning">
-                                                                    <i class="fas fa-edit"></i>
-                                                                </a>
-                                                            @else
-                                                                <span class="mx-2"></span>
-                                                            @endif
                                                             <form id="form-delete"
-                                                                action="{{ route('link-productive.umkms.destroy', ['umkm' => $umkm->id]) }}"
+                                                                action="{{ route('link-productive.umkms.performance.destroy', ['umkm' => $performance->umkm_id, 'income' => $performance->id]) }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -84,7 +76,7 @@
                             </div>
                             <div class="row">
                                 <div class="flex-wrap mt-5 col-12 d-flex justify-content-end">
-                                    {{ $umkms->links('pagination::bootstrap-5') }}
+                                    {{ $performances->links('pagination::bootstrap-5') }}
                                 </div>
                             </div>
                         </div>

@@ -8,13 +8,14 @@ Route::middleware('auth')->group(function () {
 
     // UMKM
     Route::prefix('umkm')->name('umkm.')->group(function () {
-        Route::get('verifications', [App\Http\Controllers\Umkm\UmkmController::class, 'verification'])->name('verifications.index');
+        Route::get('verifications', [App\Http\Controllers\Umkm\VerificationController::class, 'index'])->name('verifications.index');
         Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
         Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
         Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
         Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
         Route::resource('services', App\Http\Controllers\Umkm\ServiceController::class);
         Route::resource('service-umkms', App\Http\Controllers\Umkm\ServiceUmkmController::class);
+        Route::resource('umkms', App\Http\Controllers\Umkm\UmkmController::class);
     });
 
     // Link Productive

@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers\Umkm;
 
-use App\Models\SectorCategory;
+use App\Models\SectorCategoryUmkm;
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 use App\Http\Requests\Umkm\StoreSectorCategoryUmkmRequest;
 use App\Http\Requests\Umkm\UpdateSectorCategoryUmkmRequest;
-use App\Models\SectorCategoryUmkm;
-use App\Services\Interfaces\LinkProductive\SectorCategoryInterface;
 
 class SectorCategoryUmkmController extends Controller
 {
     public function __construct(
         private UmkmInterface $umkmRepository,
-        private SectorCategoryInterface $sectorCategoryRepository
+        private \App\Services\Interfaces\LinkProductive\SectorCategoryInterface $sectorCategoryLinkProductiveRepository,
+        private \App\Services\Interfaces\Umkm\SectorCategoryInterface $sectorCategoryRepository
     ) {}
 
     /**
@@ -22,7 +21,7 @@ class SectorCategoryUmkmController extends Controller
      */
     public function index()
     {
-        $sectorCategories = $this->umkmRepository->getSectorCategories();
+        $sectorCategories = $this->sectorCategoryRepository->getSectorCategories();
 
         return view('pages.umkm.sectory-category.index', compact('sectorCategories'));
     }
@@ -32,7 +31,7 @@ class SectorCategoryUmkmController extends Controller
      */
     public function create()
     {
-        $sectorCategories = $this->sectorCategoryRepository->getSectorCategories();
+        $sectorCategories = $this->sectorCategoryLinkProductiveRepository->getSectorCategories();
 
         return view('pages.umkm.sectory-category.create', compact('sectorCategories'));
     }
@@ -42,18 +41,10 @@ class SectorCategoryUmkmController extends Controller
      */
     public function store(StoreSectorCategoryUmkmRequest $request)
     {
-        $this->umkmRepository->storeSectorCategory($request->validated());
+        $this->sectorCategoryRepository->storeSectorCategory($request->validated());
 
         return redirect()->route('umkm.sector-category-umkms.index')
             ->with('success', 'Sektor kategori berhasil disimpan');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(SectorCategory $sectorCategory)
-    {
-        //
     }
 
     /**
@@ -61,7 +52,7 @@ class SectorCategoryUmkmController extends Controller
      */
     public function edit(SectorCategoryUmkm $sectorCategoryUmkm)
     {
-        $sectorCategoryLists = $this->sectorCategoryRepository->getSectorCategories();
+        $sectorCategoryLists = $this->sectorCategoryLinkProductiveRepository->getSectorCategories();
 
         return view('pages.umkm.sectory-category.edit', compact('sectorCategoryUmkm', 'sectorCategoryLists'));
     }

@@ -6,19 +6,21 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Umkm\StoreProductRequest;
-use App\Services\Interfaces\Umkm\UmkmInterface;
 use App\Http\Requests\Umkm\UpdateProductRequest;
+use App\Services\Interfaces\Umkm\ProductInterface;
 
 class ProductController extends Controller
 {
-    public function __construct(private UmkmInterface $umkmRepository) {}
+    public function __construct(
+        private ProductInterface $productRepository
+    ) {}
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = $this->umkmRepository->getProducts();
+        $products = $this->productRepository->getProducts();
 
         return view('pages.umkm.product.index', compact('products'));
     }
@@ -36,17 +38,9 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $this->umkmRepository->storeProduct($request->validated());
+        $this->productRepository->storeProduct($request->validated());
 
         return redirect()->route('umkm.products.index')->with('success', 'Product berhasil disimpan');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
     }
 
     /**
@@ -62,7 +56,7 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $this->umkmRepository->updateProduct($request->validated(), $product);
+        $this->productRepository->updateProduct($request->validated(), $product);
 
         return redirect()->route('umkm.products.index')->with('success', 'Product berhasil diupdate');
     }

@@ -2,12 +2,25 @@
 
 namespace App\Http\Controllers\Umkm;
 
+use App\Models\Umkm;
 use App\Http\Controllers\Controller;
+use App\Services\Interfaces\Umkm\UmkmInterface;
 
 class UmkmController extends Controller
 {
-    public function verification()
+    public function __construct(
+        private UmkmInterface $umkmRepository
+    ) {}
+
+    public function index()
     {
-        return view('pages.umkm.verification.index');
+        $umkms = $this->umkmRepository->getUmkmsPaginate();
+
+        return view('pages.umkm.umkm.index', compact('umkms'));
+    }
+
+    public function show(Umkm $umkm)
+    {
+        //
     }
 }
