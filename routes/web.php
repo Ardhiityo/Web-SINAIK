@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/umkms/{umkm}/performances', [App\Http\Controllers\LinkProductive\UmkmController::class, 'performance'])->name('umkms.performance');
         Route::get('/umkms/{umkm}/performances/{income}/edit', [App\Http\Controllers\LinkProductive\IncomeController::class, 'edit'])->name('umkms.performance.edit');
         Route::delete('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'destroy'])->name('umkms.performance.destroy');
+        Route::put('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'update'])->name('umkms.performance.update');
         Route::resource('service-categories', App\Http\Controllers\LinkProductive\ServiceCategoryController::class);
         Route::resource('services', App\Http\Controllers\LinkProductive\ServiceController::class);
         Route::resource('service-umkms', App\Http\Controllers\LinkProductive\ServiceUmkmController::class);

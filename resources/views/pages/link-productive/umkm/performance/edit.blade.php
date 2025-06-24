@@ -7,6 +7,10 @@
         <section class="section">
             <div class="section-header">
                 <h1>Performa UMKM</h1>
+                <div class="section-header-breadcrumb">
+                    <div class="breadcrumb-item active"><a href="#">Informasi UMKM</a></div>
+                    <div class="breadcrumb-item"><a href="#">UMKM</a></div>
+                </div>
             </div>
 
             <div class="section-body">
@@ -21,7 +25,7 @@
                             <div class="card-body">
                                 <div class="overflow-auto card">
                                     <form
-                                        action="{{ route('umkm.incomes.update', ['umkm' => $income->umkm_id, 'income' => $income->id]) }}"
+                                        action="{{ route('link-productive.umkms.performance.update', ['umkm' => $income->umkm_id, 'income' => $income->id]) }}"
                                         method="POST">
                                         @csrf
                                         @method('PUT')
