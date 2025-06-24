@@ -50,7 +50,9 @@
                                                         <td>{{ $service->serviceCategory->name }}</td>
                                                         <td>
                                                             <a href="{{ route('umkm.services.show', ['service' => $service->id]) }}"
-                                                                class="btn btn-warning">Lihat</a>
+                                                                class="btn btn-warning">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

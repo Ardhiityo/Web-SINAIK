@@ -54,14 +54,19 @@
                                                         <td>{{ $income->total_employee }}</td>
                                                         <td>
                                                             <a href="{{ route('umkm.incomes.edit', ['income' => $income->id]) }}"
-                                                                class="btn btn-warning">Edit</a>
+                                                                class="btn btn-warning">
+                                                                <i class="far fa-edit"></i>
+                                                            </a>
+                                                            <span class="mx-1"></span>
                                                             <form id="form-delete"
                                                                 action="{{ route('umkm.incomes.destroy', ['income' => $income->id]) }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">Hapus</button>
+                                                                    class="btn btn-danger">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>

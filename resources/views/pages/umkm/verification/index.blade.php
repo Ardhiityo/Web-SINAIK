@@ -31,7 +31,12 @@
                                         </thead>
                                         <tbody>
                                             <tr class="text-nowrap">
-                                                <td>{{ Auth::user()->umkm->is_verified == false ? 'Belum terverifkasi' : 'Terverifikasi' }}
+                                                <td>
+                                                    @if (Auth::user()->umkm->is_verified == false)
+                                                        <span class="badge badge-danger">Belum diverifikasi</span>
+                                                    @else
+                                                        <span class="badge badge-success">Terverifikasi</span>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>

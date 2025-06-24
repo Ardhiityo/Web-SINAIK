@@ -51,14 +51,19 @@
                                                         <td>{{ $sectorCategory->name }}</td>
                                                         <td>
                                                             <a href="{{ route('umkm.sector-category-umkms.edit', ['sector_category_umkm' => $sectorCategory->pivot->id]) }}"
-                                                                class="btn btn-warning">Edit</a>
+                                                                class="btn btn-warning">
+                                                                <i class="far fa-edit"></i>
+                                                            </a>
+                                                            <span class="mx-1"></span>
                                                             <form id="form-delete"
                                                                 action="{{ route('umkm.sector-category-umkms.destroy', ['sector_category_umkm' => $sectorCategory->pivot->id]) }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">Hapus</button>
+                                                                    class="btn btn-danger">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>

@@ -60,14 +60,19 @@
                                                         <td>{{ $product->price }}</td>
                                                         <td>
                                                             <a href="{{ route('umkm.products.edit', ['product' => $product->id]) }}"
-                                                                class="btn btn-warning">Edit</a>
+                                                                class="btn btn-warning">
+                                                                <i class="far fa-edit"></i>
+                                                            </a>
+                                                            <span class="mx-1"></span>
                                                             <form id="form-delete"
                                                                 action="{{ route('umkm.products.destroy', ['product' => $product->id]) }}"
                                                                 method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">Hapus</button>
+                                                                    class="btn btn-danger">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>

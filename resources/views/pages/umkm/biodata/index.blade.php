@@ -33,11 +33,16 @@
                     <div class="row">
                         <div class="my-3 col-12 d-flex justify-content-end">
                             <a href="{{ route('umkm.biodatas.edit', ['biodata' => $biodata->id]) }}"
-                                class="mr-2 btn btn-warning">Edit</a>
+                                class="mr-2 btn btn-warning">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <span class="mx-1"></span>
                             <form action="{{ route('umkm.biodatas.destroy', ['biodata' => $biodata->id]) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
                             </form>
                         </div>
                         <div class="col-12">
