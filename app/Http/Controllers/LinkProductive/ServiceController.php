@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\Service;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreServiceRequest;
 use App\Http\Requests\LinkProductive\UpdateServiceRequest;

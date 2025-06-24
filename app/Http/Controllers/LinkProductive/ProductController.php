@@ -8,17 +8,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Umkm\StoreProductRequest;
 use App\Http\Requests\Umkm\UpdateProductRequest;
+use App\Services\Interfaces\Umkm\ProductInterface;
+use App\Services\Interfaces\LinkProductive\UmkmInterface;
 
 class ProductController extends Controller
 {
     public function __construct(
-        private \App\Services\Interfaces\LinkProductive\UmkmInterface $linkProductiveUmkmRepository,
-        private \App\Services\Interfaces\Umkm\UmkmInterface $umkmRepository
+        private UmkmInterface $UmkmRepository,
+        private ProductInterface $productRepository
     ) {}
 
     public function index(Umkm $umkm)
     {
-        $products = $this->linkProductiveUmkmRepository->getUmkmProductsPaginate($umkm->id);
+        $products = $this->UmkmRepository->getUmkmProductsPaginate($umkm->id);
 
         $umkm->load('biodata:id,business_name,umkm_id');
 
@@ -34,7 +36,7 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request, Umkm $umkm)
     {
-        $this->umkmRepository->storeProduct($request->validated(), $umkm->id);
+        $this->productRepository->storeProduct($request->validated(), $umkm->id);
 
         return redirect()->route('link-productive.umkms.product.index', ['umkm' => $umkm->id])->with('success', 'Product berhasil ditambahkan');
     }
@@ -48,7 +50,7 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, Umkm $umkm, Product $product)
     {
-        $this->umkmRepository->updateProduct($request->validated(), $product);
+        $this->productRepository->updateProduct($request->validated(), $product);
 
         return redirect()->route('link-productive.umkms.product.index', ['umkm' => $umkm->id])->with('success', 'Product berhasil diupdate');
     }

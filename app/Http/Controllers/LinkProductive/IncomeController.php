@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Umkm\StoreIncomeRequest;
 use App\Models\Income;
 use App\Models\Umkm;
-use App\Services\Interfaces\Umkm\UmkmInterface;
+use App\Services\Interfaces\Umkm\IncomeInterface;
 
 class IncomeController extends Controller
 {
     public function __construct(
-        private UmkmInterface $umkmRepository
+        private IncomeInterface $incomeRepository
     ) {}
 
     public function create(Umkm $umkm)
@@ -22,7 +22,7 @@ class IncomeController extends Controller
 
     public function store(StoreIncomeRequest $request, Umkm $umkm)
     {
-        $this->umkmRepository->storeIncome($request->validated(), $umkm->id);
+        $this->incomeRepository->storeIncome($request->validated(), $umkm->id);
 
         return redirect()->route('link-productive.umkms.performance', ['umkm' => $umkm->id])->withSuccess('Berhasil disimpan');
     }

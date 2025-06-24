@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\LinkProductive;
 
-use Illuminate\Http\Request;
 use App\Models\Certification;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreCertificationRequest;

@@ -9,6 +9,7 @@ use App\Http\Requests\Umkm\StoreBiodataRequest;
 use App\Http\Requests\Umkm\UpdateBiodataRequest;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
+use App\Services\Interfaces\Umkm\BiodataInterface;
 use App\Services\Interfaces\Umkm\UmkmInterface;
 
 class BiodataController extends Controller
@@ -16,7 +17,7 @@ class BiodataController extends Controller
     public function __construct(
         private BusinessScaleInterface $businessScaleRepository,
         private CertificationInterface $certificationRepository,
-        private UmkmInterface $umkmRepository
+        private BiodataInterface $biodataRepository
     ) {}
 
     public function create(Umkm $umkm)
@@ -29,7 +30,7 @@ class BiodataController extends Controller
 
     public function store(StoreBiodataRequest $request, Umkm $umkm)
     {
-        $this->umkmRepository->storeBiodata($request->validated(), $umkm->id);
+        $this->biodataRepository->storeBiodata($request->validated(), $umkm->id);
 
         return redirect()->route('link-productive.umkms.show', ['umkm' => $umkm->id])->withSuccess('Berhasil disimpan');
     }
