@@ -67,12 +67,16 @@ class UmkmRepository implements UmkmInterface
             ->paginate(10);
     }
 
-    public function storeProduct(array $data)
+    public function storeProduct(array $data, $umkmId = null)
     {
         try {
             DB::beginTransaction();
             $user = Auth::user();
-            $data['umkm_id'] = $user->umkm->id;
+            if (is_null($umkmId)) {
+                $data['umkm_id'] = $user->umkm->id;
+            } else {
+                $data['umkm_id'] = $umkmId;
+            }
             $data['image'] = $data['image']->store('products', 'public');
             Product::create($data);
             DB::commit();

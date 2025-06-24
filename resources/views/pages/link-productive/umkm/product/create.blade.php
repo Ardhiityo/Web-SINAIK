@@ -8,15 +8,15 @@
             <div class="section-header">
                 <h1>Produk Bisnis</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Profile Bisnis</a></div>
-                    <div class="breadcrumb-item"><a href="#">Produk</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Informasi UMKM</a></div>
+                    <div class="breadcrumb-item"><a href="#">UMKM</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Produkmu</h2>
+                <h2 class="section-title">Produk UMKM</h2>
                 <p class="section-lead">
-                    Informasi mengenai data produkmu bisnismu
+                    Informasi mengenai data produk UMKM
                 </p>
 
                 <div class="row">
@@ -24,8 +24,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="{{ route('umkm.products.store') }}" method="POST"
-                                        enctype="multipart/form-data">
+                                    <form action="{{ route('link-productive.umkms.product.store', ['umkm' => $umkm->id]) }}"
+                                        method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Buat Data</h4>

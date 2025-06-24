@@ -6,17 +6,17 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Biodata Bisnis</h1>
+                <h1>Produk UMKM</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Profile Bisnis</a></div>
-                    <div class="breadcrumb-item"><a href="#">Produk</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Informasi UMKM</a></div>
+                    <div class="breadcrumb-item"><a href="#">UMKM</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Produkmu</h2>
+                <h2 class="section-title">Produk UMKM</h2>
                 <p class="section-lead">
-                    Informasi mengenai data produk bisnismu
+                    Informasi mengenai data produk UMKM
                 </p>
 
                 <div class="mt-5 row">
@@ -25,14 +25,15 @@
 
                             <div class="card-header">
                                 <h4>
-                                    <a href="{{ route('umkm.products.create') }}" class="btn btn-primary">Buat
+                                    <a href="{{ route('link-productive.umkms.product.create', ['umkm' => $umkm->id]) }}"
+                                        class="btn btn-primary">Buat
                                         Produk</a>
                                 </h4>
                             </div>
 
                             <div class="card-body">
                                 @if ($products->isEmpty())
-                                    <p>Kamu belum memiliki produk...</p>
+                                    <p>UMKM belum memiliki produk...</p>
                                 @else
                                     <div class="overflow-auto">
                                         <table class="table table-bordered">

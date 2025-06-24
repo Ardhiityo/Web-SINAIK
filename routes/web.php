@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'destroy'])->name('umkms.performance.destroy');
         Route::put('/umkms/{umkm}/performances/{income}', [App\Http\Controllers\LinkProductive\IncomeController::class, 'update'])->name('umkms.performance.update');
         Route::get('/umkms/{umkm}/products', [App\Http\Controllers\LinkProductive\ProductController::class, 'index'])->name('umkms.product.index');
+        Route::get('/umkms/{umkm}/products/create', [App\Http\Controllers\LinkProductive\ProductController::class, 'create'])->name('umkms.product.create');
+        Route::post('/umkms/{umkm}/products', [App\Http\Controllers\LinkProductive\ProductController::class, 'store'])->name('umkms.product.store');
         Route::get('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'edit'])->name('umkms.product.edit');
         Route::put('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'update'])->name('umkms.product.update');
         Route::delete('/umkms/{umkm}/products/{product}', [App\Http\Controllers\LinkProductive\ProductController::class, 'destroy'])->name('umkms.product.destroy');

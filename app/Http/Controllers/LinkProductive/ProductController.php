@@ -6,6 +6,7 @@ use App\Models\Umkm;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Umkm\StoreProductRequest;
 use App\Http\Requests\Umkm\UpdateProductRequest;
 
 class ProductController extends Controller
@@ -19,7 +20,19 @@ class ProductController extends Controller
     {
         $products = $this->linkProductiveUmkmRepository->getUmkmProductsPaginate($umkm->id);
 
-        return view('pages.link-productive.umkm.product.index', compact('products'));
+        return view('pages.link-productive.umkm.product.index', compact('products', 'umkm'));
+    }
+
+    public function create(Umkm $umkm)
+    {
+        return view('pages.link-productive.umkm.product.create', compact('umkm'));
+    }
+
+    public function store(StoreProductRequest $request, Umkm $umkm)
+    {
+        $this->umkmRepository->storeProduct($request->validated(), $umkm->id);
+
+        return redirect()->route('link-productive.umkms.product.index', ['umkm' => $umkm->id])->with('success', 'Product berhasil ditambahkan');
     }
 
     public function edit(Umkm $umkm, Product $product)
