@@ -38,7 +38,7 @@ class UmkmRepository implements UmkmInterface
     {
         return Umkm::with([
             'user:id,name',
-            'biodata:id,business_name,umkm_id,address'
+            'biodata:id,business_name,umkm_id'
         ])->select('id', 'user_id', 'is_verified')->latest()->paginate(10);
     }
 

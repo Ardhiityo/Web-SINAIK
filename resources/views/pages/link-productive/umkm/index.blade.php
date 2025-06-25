@@ -33,13 +33,13 @@
                                     <p>Belum ada data umkm...</p>
                                 @else
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama UMKM</th>
                                                     <th scope="col">Owner</th>
-                                                    <th scope="col">Alamat</th>
+                                                    <th scope="col">Status Verifikasi</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -49,7 +49,13 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
-                                                        <td>{{ $umkm->biodata->address ?? '-' }}</td>
+                                                        <td>
+                                                            @if ($umkm->is_verified)
+                                                                <span class="badge badge-succes">Sudah</span>
+                                                            @else
+                                                                <span class="badge badge-danger">Belum</span>
+                                                            @endif
+                                                        </td>
                                                         </td>
                                                         <td>
                                                             <a href="{{ route('link-productive.umkms.show', ['umkm' => $umkm->id]) }}"
@@ -63,17 +69,17 @@
                                                                 </a>
                                                             @else
                                                                 <span class="mx-2"></span>
+                                                                <form id="form-delete"
+                                                                    action="{{ route('link-productive.umkms.destroy', ['umkm' => $umkm->id]) }}"
+                                                                    method="POST" class="d-inline">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" id="btn-delete"
+                                                                        class="btn btn-danger">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
+                                                                </form>
                                                             @endif
-                                                            <form id="form-delete"
-                                                                action="{{ route('link-productive.umkms.destroy', ['umkm' => $umkm->id]) }}"
-                                                                method="POST" class="d-inline">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </button>
-                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach

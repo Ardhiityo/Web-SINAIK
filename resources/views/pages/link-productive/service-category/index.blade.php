@@ -37,7 +37,7 @@
                                     <p>Belum ada kategori layanan...</p>
                                 @else
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
