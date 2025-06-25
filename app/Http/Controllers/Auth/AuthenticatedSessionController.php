@@ -31,11 +31,11 @@ class AuthenticatedSessionController extends Controller
         $user = $request->user();
 
         if ($user->hasRole('umkm')) {
-            return redirect()->intended(route('dashboard'));
+            return redirect()->route('umkm.dashboard');
         } else if ($user->hasRole('admin_lp')) {
-            return redirect()->intended(route('dashboard'));
+            return redirect()->route('link-productive.dashboard');
         } else if ($user->hasRole('admin_ico')) {
-            return redirect()->intended(route('admin.ico.dashboard'));
+            // return redirect()->route('admin.ico.dashboard');
         }
     }
 

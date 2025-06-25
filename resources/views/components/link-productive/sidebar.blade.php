@@ -13,8 +13,8 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Home</li>
-            <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                <a href="{{ route('dashboard') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('link-productive.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.dashboard') }}" class="nav-link">
                     <i class="fas fa-house-user"></i>
                     <span>Dashboard</span>
                 </a>

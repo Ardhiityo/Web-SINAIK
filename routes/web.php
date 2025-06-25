@@ -4,24 +4,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     // Dashboard UMKM
-    Route::get('/', [App\Http\Controllers\Umkm\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', [App\Http\Controllers\Umkm\DashboardController::class, 'index'])->name('umkm.dashboard');
 
     // UMKM
-    Route::prefix('umkm')->name('umkm.')->group(function () {
-        Route::get('verifications', [App\Http\Controllers\Umkm\VerificationController::class, 'index'])->name('verifications.index');
-        Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
-        Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
-        Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
-        Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
-        Route::resource('services', App\Http\Controllers\Umkm\ServiceController::class);
-        Route::resource('service-umkms', App\Http\Controllers\Umkm\ServiceUmkmController::class);
-        Route::resource('umkms', App\Http\Controllers\Umkm\UmkmController::class);
-        Route::get('/umkms/{umkm}/product', [App\Http\Controllers\Umkm\UmkmController::class, 'product'])->name('umkms.product');
-        Route::get('/umkms/{umkm}/performance', [App\Http\Controllers\Umkm\UmkmController::class, 'performance'])->name('umkms.performance');
+    Route::middleware(['role:umkm'])->group(function () {
+        Route::prefix('umkm')->name('umkm.')->group(function () {
+            Route::get('verifications', [App\Http\Controllers\Umkm\VerificationController::class, 'index'])->name('verifications.index');
+            Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
+            Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
+            Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
+            Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
+            Route::resource('services', App\Http\Controllers\Umkm\ServiceController::class);
+            Route::resource('service-umkms', App\Http\Controllers\Umkm\ServiceUmkmController::class);
+            Route::resource('umkms', App\Http\Controllers\Umkm\UmkmController::class);
+            Route::get('/umkms/{umkm}/product', [App\Http\Controllers\Umkm\UmkmController::class, 'product'])->name('umkms.product');
+            Route::get('/umkms/{umkm}/performance', [App\Http\Controllers\Umkm\UmkmController::class, 'performance'])->name('umkms.performance');
+        });
     });
 
     // Link Productive
     Route::prefix('link-productive')->name('link-productive.')->group(function () {
+        // Dashboard Link Productive
+        Route::get('/', [App\Http\Controllers\LinkProductive\DashboardController::class, 'index'])->name('dashboard');
+
         Route::resource('verifications', App\Http\Controllers\LinkProductive\VerificationController::class);
         Route::resource('sector-categories', App\Http\Controllers\LinkProductive\SectorCategoryController::class);
         Route::resource('business-scales', App\Http\Controllers\LinkProductive\BusinessScaleController::class);
