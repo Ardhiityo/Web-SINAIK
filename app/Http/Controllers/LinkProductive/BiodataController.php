@@ -10,7 +10,6 @@ use App\Http\Requests\Umkm\UpdateBiodataRequest;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
 use App\Services\Interfaces\Umkm\BiodataInterface;
-use App\Services\Interfaces\Umkm\UmkmInterface;
 
 class BiodataController extends Controller
 {

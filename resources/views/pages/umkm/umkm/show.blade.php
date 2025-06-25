@@ -21,8 +21,10 @@
                 @if ($umkm->biodata->id ?? false)
                     <div class="row">
                         <div class="my-3 col-12 d-flex justify-content-end">
-                            <a href="" class="mr-2 btn btn-warning">Produk</a>
-                            <a href="" class="btn btn-success">Performa</a>
+                            <a href="{{ route('umkm.umkms.product', ['umkm' => $umkm->id]) }}"
+                                class="mr-2 btn btn-warning">Produk</a>
+                            <a href="{{ route('umkm.umkms.performance', ['umkm' => $umkm->id]) }}"
+                                class="btn btn-success">Performa</a>
                         </div>
                         <div class="col-12">
                             <div class="card">
@@ -31,7 +33,7 @@
                                         <h4>Owner</h4>
                                     </div>
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">Nama Owner</th>
@@ -56,7 +58,7 @@
                                         <h4>Profil</h4>
                                     </div>
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">Nama UMKM</th>
@@ -83,7 +85,7 @@
                                         <h4>Detail</h4>
                                     </div>
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">Sertifikasi Bisnis</th>
@@ -111,7 +113,7 @@
                                         <h4>Alamat</h4>
                                     </div>
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">Kota</th>
@@ -135,14 +137,6 @@
                 @else
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>
-                                    <a href="{{ route('link-productive.umkms.biodata.create', ['umkm' => $umkm->id]) }}"
-                                        class="btn btn-primary">
-                                        Buat Biodata
-                                    </a>
-                                </h4>
-                            </div>
                             <div class="card-body">
                                 <p>UMKM belum memiliki biodata...</p>
                             </div>

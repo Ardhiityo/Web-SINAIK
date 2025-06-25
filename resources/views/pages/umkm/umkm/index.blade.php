@@ -44,7 +44,6 @@
                                                         <td>{{ $umkm->user->name }}</td>
                                                         <td>{{ $umkm->sectorCategories->isEmpty() ? '-' : $umkm->sectorCategories->pluck('name')->implode(', ') }}
                                                         </td>
-                                                        </td>
                                                         <td>
                                                             <a href="{{ route('umkm.umkms.show', ['umkm' => $umkm->id]) }}"
                                                                 class="btn btn-success">

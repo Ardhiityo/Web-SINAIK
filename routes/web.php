@@ -16,6 +16,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('services', App\Http\Controllers\Umkm\ServiceController::class);
         Route::resource('service-umkms', App\Http\Controllers\Umkm\ServiceUmkmController::class);
         Route::resource('umkms', App\Http\Controllers\Umkm\UmkmController::class);
+        Route::get('/umkms/{umkm}/product', [App\Http\Controllers\Umkm\UmkmController::class, 'product'])->name('umkms.product');
+        Route::get('/umkms/{umkm}/performance', [App\Http\Controllers\Umkm\UmkmController::class, 'performance'])->name('umkms.performance');
     });
 
     // Link Productive

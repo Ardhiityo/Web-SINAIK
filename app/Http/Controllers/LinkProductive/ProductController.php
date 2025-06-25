@@ -14,13 +14,13 @@ use App\Services\Interfaces\LinkProductive\UmkmInterface;
 class ProductController extends Controller
 {
     public function __construct(
-        private UmkmInterface $UmkmRepository,
+        private UmkmInterface $umkmRepository,
         private ProductInterface $productRepository
     ) {}
 
     public function index(Umkm $umkm)
     {
-        $products = $this->UmkmRepository->getUmkmProductsPaginate($umkm->id);
+        $products = $this->umkmRepository->getUmkmProductsPaginate($umkm->id);
 
         $umkm->load('biodata:id,business_name,umkm_id');
 

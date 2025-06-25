@@ -22,15 +22,6 @@
                 <div class="mt-5 row">
                     <div class="col-12">
                         <div class="card">
-
-                            <div class="card-header">
-                                <h4>
-                                    <a href="{{ route('link-productive.umkms.product.create', ['umkm' => $umkm->id]) }}"
-                                        class="btn btn-primary">Buat
-                                        Produk</a>
-                                </h4>
-                            </div>
-
                             <div class="card-body">
                                 @if ($products->isEmpty())
                                     <p>UMKM belum memiliki produk...</p>
@@ -44,7 +35,6 @@
                                                     <th scope="col">Nama Produk</th>
                                                     <th scope="col">Deskripsi</th>
                                                     <th scope="col">Harga</th>
-                                                    <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -59,18 +49,6 @@
                                                         <td>{{ $product->name }}</td>
                                                         <td>{{ $product->description }}</td>
                                                         <td>{{ $product->price }}</td>
-                                                        <td>
-                                                            <a href="{{ route('link-productive.umkms.product.edit', ['umkm' => $product->umkm_id, 'product' => $product->id]) }}"
-                                                                class="btn btn-warning">Edit</a>
-                                                            <form id="form-delete"
-                                                                action="{{ route('link-productive.umkms.product.destroy', ['umkm' => $product->umkm_id, 'product' => $product->id]) }}"
-                                                                method="POST" class="d-inline">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">Hapus</button>
-                                                            </form>
-                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
