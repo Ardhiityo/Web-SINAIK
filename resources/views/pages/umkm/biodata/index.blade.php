@@ -77,7 +77,7 @@
                                         <h4>Profil</h4>
                                     </div>
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">Nama UMKM</th>
@@ -104,7 +104,7 @@
                                         <h4>Detail</h4>
                                     </div>
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">Sertifikasi Bisnis</th>

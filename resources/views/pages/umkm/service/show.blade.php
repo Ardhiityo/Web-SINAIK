@@ -38,7 +38,7 @@
                                     </h4>
                                 </div>
                                 <div class="overflow-auto">
-                                    <table class="table table-bordered">
+                                    <table class="table text-center table-bordered">
                                         <thead>
                                             <tr class="text-nowrap">
                                                 <th scope="col">Deskripsi</th>
@@ -64,7 +64,7 @@
                                     </h4>
                                 </div>
                                 <div class="overflow-auto">
-                                    <table class="table table-bordered">
+                                    <table class="table text-center table-bordered">
                                         <thead>
                                             <tr class="text-nowrap">
                                                 <th scope="col">Dimulai</th>
