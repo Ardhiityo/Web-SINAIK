@@ -27,8 +27,8 @@
                     <span>Verifkasi</span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->routeIs('umkm.products.*') ? 'active' : '' }}">
-                <a href="{{ route('umkm.products.index') }}" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('link-productive.supports.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.supports.index') }}" class="nav-link">
                     <i class="fas fa-envelope-open-text"></i>
                     <span>Dukungan</span>
                 </a>
