@@ -26,13 +26,13 @@
                                     <p>Belum ada data umkm...</p>
                                 @else
                                     <div class="overflow-auto">
-                                        <table class="table table-bordered">
+                                        <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama UMKM</th>
                                                     <th scope="col">Owner</th>
-                                                    <th scope="col">Alamat</th>
+                                                    <th scope="col">Sektor</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -42,7 +42,8 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
-                                                        <td>{{ $umkm->biodata->address ?? '-' }}</td>
+                                                        <td>{{ $umkm->sectorCategories->isEmpty() ? '-' : $umkm->sectorCategories->pluck('name')->implode(', ') }}
+                                                        </td>
                                                         </td>
                                                         <td>
                                                             <a href="{{ route('umkm.umkms.show', ['umkm' => $umkm->id]) }}"

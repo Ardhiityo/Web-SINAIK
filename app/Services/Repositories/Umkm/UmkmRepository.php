@@ -13,7 +13,8 @@ class UmkmRepository implements UmkmInterface
     {
         return Umkm::with([
             'user' => fn(Builder $query) => $query->select('id', 'name'),
-            'biodata' => fn(QueryBuilder $query) => $query->select('id', 'business_name', 'umkm_id', 'address')
+            'biodata' => fn(QueryBuilder $query) => $query->select('id', 'business_name', 'umkm_id', 'address'),
+            'sectorCategories' => fn(Builder $query) => $query->select('sector_categories.id', 'name')
         ])
             ->select('id', 'user_id')
             ->where('is_verified', true)->paginate(10);
