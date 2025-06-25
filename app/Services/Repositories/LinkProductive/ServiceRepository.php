@@ -15,6 +15,7 @@ class ServiceRepository implements ServiceInterface
             ->select('id', 'title', 'description', 'available_date', 'end_date', 'service_category_id')
             ->paginate(10);
     }
+
     public function storeService($data)
     {
         try {
