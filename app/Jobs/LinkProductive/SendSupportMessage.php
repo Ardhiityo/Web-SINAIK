@@ -14,7 +14,7 @@ class SendSupportMessage implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(public $subject, public $content)
+    public function __construct(public $subject, public $content, public $owner)
     {
         //
     }
@@ -27,6 +27,7 @@ class SendSupportMessage implements ShouldQueue
         Mail::to('aryaadi229@gmail.com')->send(new SupportUmkm(
             $this->subject,
             $this->content,
+            $this->owner
         ));
     }
 }

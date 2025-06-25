@@ -15,7 +15,7 @@ class SupportRepository implements SupportInterface
         try {
             DB::beginTransaction();
             $support = $umkm->supports()->create($data);
-            SendSupportMessage::dispatch($support->subject, $support->message);
+            SendSupportMessage::dispatch($support->subject, $support->message, $umkm->user->name);
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();

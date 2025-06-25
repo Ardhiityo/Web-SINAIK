@@ -18,7 +18,7 @@ class SupportUmkm extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public $subject, public $content) {}
+    public function __construct(public $subject, public $content, public $owner) {}
 
     /**
      * Get the message envelope.
@@ -40,6 +40,7 @@ class SupportUmkm extends Mailable
             view: 'mails.support-umkm',
             with: [
                 'content' => $this->content,
+                'owner' => $this->owner
             ]
         );
     }

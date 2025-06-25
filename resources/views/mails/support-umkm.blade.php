@@ -1,2 +1,2 @@
-<h3>Hallo,</h3>
+<h5>Hi {{ $owner }},</h5>
 <p>{{ $content }}</p>
