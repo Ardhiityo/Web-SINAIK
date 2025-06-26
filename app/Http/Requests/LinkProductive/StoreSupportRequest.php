@@ -23,7 +23,8 @@ class StoreSupportRequest extends FormRequest
     {
         return [
             'subject' => ['required', 'min:3', 'max:255'],
-            'message' => ['required', 'min:3']
+            'message' => ['required', 'min:3'],
+            'umkm_id' => ['required', 'exists:umkms,id']
         ];
     }
 }

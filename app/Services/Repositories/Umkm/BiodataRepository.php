@@ -54,7 +54,7 @@ class BiodataRepository implements BiodataInterface
             } else {
                 $data['umkm_id'] = $umkmId;
             }
-            Biodata::create($data);
+            $biodata = Biodata::create($data);
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();

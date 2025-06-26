@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\Umkm;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreSupportRequest;
 use App\Services\Interfaces\LinkProductive\UmkmInterface;
@@ -30,14 +29,15 @@ class SupportController extends Controller
         return view('pages.link-productive.support.create', compact('umkms'));
     }
 
+
     public function show(Umkm $umkm)
     {
         return view('pages.link-productive.support.show', compact('umkm'));
     }
 
-    public function store(StoreSupportRequest $request, Umkm $umkm)
+    public function store(StoreSupportRequest $request)
     {
-        $this->supportRepository->storeSupport($request->validated(), $umkm);
+        $this->supportRepository->storeSupport($request->validated());
 
         return redirect()->route('link-productive.supports.index')->withSuccess('Berhasil terkirim');
     }

@@ -20,12 +20,12 @@ class SupportRepository implements SupportInterface
             ->select('id', 'subject', 'message', 'umkm_id')->paginate(10);
     }
 
-    public function storeSupport($data, Umkm $umkm)
+    public function storeSupport($data)
     {
         try {
             DB::beginTransaction();
-            $support = $umkm->supports()->create($data);
-            SendSupportMessage::dispatch($support->subject, $support->message, $umkm->user->name, $umkm->user->email);
+            $support = Support::create($data);
+            SendSupportMessage::dispatch($support->subject, $support->message, $support->umkm->user->name, $support->umkm->user->email);
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
