@@ -19,7 +19,9 @@ class UserRepository implements UserInterface
     {
         try {
             DB::beginTransaction();
-            User::create($data)->assignRole('umkm');
+            $user = User::create($data);
+            $user->assignRole('umkm');
+            $user->umkm()->create();
             DB::commit();
         } catch (\Throwable $th) {
             Log::info($th->getMessage(), ['store umkm account']);

@@ -39,6 +39,7 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Owner</th>
                                                     <th scope="col">Email</th>
+                                                    <th scope="col">Status Verifikasi</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -48,6 +49,13 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $user->name }}</td>
                                                         <td>{{ $user->email ?? '-' }}</td>
+                                                        <td>
+                                                            @if ($user->umkm->is_verified)
+                                                                <span class="badge badge-success">Sudah</span>
+                                                            @else
+                                                                <span class="badge badge-danger">Belum</span>
+                                                            @endif
+                                                        </td>
                                                         <td>
                                                             <a href="{{ route('link-productive.users.edit', ['user' => $user->id]) }}"
                                                                 class="mr-2 btn btn-warning">

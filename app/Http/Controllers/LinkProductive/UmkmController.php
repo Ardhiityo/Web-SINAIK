@@ -75,8 +75,6 @@ class UmkmController extends Controller
      */
     public function destroy(Umkm $umkm)
     {
-        $umkm->user->delete();
-
-        return redirect()->route('link-productive.umkms.index')->with('success', 'Berhasil dihapus');
+        //
     }
 }

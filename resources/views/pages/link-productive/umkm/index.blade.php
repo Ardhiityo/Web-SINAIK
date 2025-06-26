@@ -55,18 +55,6 @@
                                                                     class="mx-2 btn btn-warning">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                            @else
-                                                                <span class="mx-2"></span>
-                                                                <form id="form-delete"
-                                                                    action="{{ route('link-productive.umkms.destroy', ['umkm' => $umkm->id]) }}"
-                                                                    method="POST" class="d-inline">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" id="btn-delete"
-                                                                        class="btn btn-danger">
-                                                                        <i class="fas fa-trash-alt"></i>
-                                                                    </button>
-                                                                </form>
                                                             @endif
                                                         </td>
                                                     </tr>
