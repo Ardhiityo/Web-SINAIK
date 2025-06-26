@@ -16,7 +16,7 @@
             <div class="section-body">
                 <h2 class="section-title">Sertifikasi</h2>
                 <p class="section-lead">
-                    Informasi mengenai data sertifikasi UMKM
+                    Edit sertifikasi umkm
                 </p>
 
                 <div class="row">

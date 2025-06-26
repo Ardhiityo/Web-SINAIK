@@ -6,7 +6,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Sektor Bisnis</h1>
+                <h1>Sektor bisnis</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Manajemen Bisnis</a></div>
                     <div class="breadcrumb-item"><a href="#">Sektor</a></div>
@@ -14,12 +14,12 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Sektor Bisnis</h2>
+                <h2 class="section-title">Data sektor bisnis</h2>
                 <p class="section-lead">
                     Informasi mengenai data sektor bisnis
                 </p>
 
-                <div class="mt-5 row">
+                <div class="row">
                     <div class="col-12">
                         <div class="card">
 

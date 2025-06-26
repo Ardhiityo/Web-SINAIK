@@ -14,11 +14,10 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Produkmu</h2>
+                <h2 class="section-title">Buat dukungan umkm</h2>
                 <p class="section-lead">
-                    Informasi mengenai data produkmu bisnismu
+                    Buat dukungan umkm
                 </p>
-
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -28,7 +27,7 @@
                                         method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-header">
-                                            <h4>Kirim Dukungan</h4>
+                                            <h4>Buat Data</h4>
                                         </div>
                                         @if ($errors->any())
                                             <div class="alert alert-danger">

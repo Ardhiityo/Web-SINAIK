@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Data Sertifikasi</h2>
+                <h2 class="section-title">Data sertifikasi</h2>
                 <p class="section-lead">
-                    Informasi mengenai data sertifikasi UMKM
+                    Informasi mengenai data sertifikasi umkm
                 </p>
                 <div class="row">
                     <div class="col-12">

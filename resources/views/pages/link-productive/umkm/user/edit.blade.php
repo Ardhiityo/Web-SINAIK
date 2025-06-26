@@ -6,17 +6,17 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Layanan</h1>
+                <h1>Akun umkm</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Manajemen Layanan</a></div>
-                    <div class="breadcrumb-item"><a href="#">Layanan</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Manajemen umkm</a></div>
+                    <div class="breadcrumb-item"><a href="#">umkm</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Layanan</h2>
+                <h2 class="section-title">Edit akun umkm</h2>
                 <p class="section-lead">
-                    Informasi mengenai data layanan
+                    Edit akun umkm
                 </p>
 
                 <div class="row">
@@ -29,7 +29,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="card-header">
-                                            <h4>Buat Data</h4>
+                                            <h4>Edit Data</h4>
                                         </div>
                                         @if ($errors->any())
                                             <div class="alert alert-danger">

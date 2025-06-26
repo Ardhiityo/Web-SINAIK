@@ -6,7 +6,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Skala Bisnis</h1>
+                <h1>Skala bisnis</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Manajemen Bisnis</a></div>
                     <div class="breadcrumb-item"><a href="#">Skala</a></div>
@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Skala Bisnis</h2>
+                <h2 class="section-title">Skala bisnis</h2>
                 <p class="section-lead">
-                    Informasi mengenai data skala bisnis
+                    Edit skala bisnis
                 </p>
 
                 <div class="row">

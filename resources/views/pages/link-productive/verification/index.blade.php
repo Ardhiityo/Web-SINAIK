@@ -6,17 +6,17 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Verifikasi UMKM</h1>
+                <h1>Verifikasi umkm</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Manajemen UMKM</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Manajemen umkm</a></div>
                     <div class="breadcrumb-item"><a href="#">Verifikasi</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Data Verifikasi Akun UMKM</h2>
+                <h2 class="section-title">Data verifikasi akun umkm</h2>
                 <p class="section-lead">
-                    Informasi mengenai data status verifikasi akun UMKM
+                    Informasi mengenai data status verifikasi akun umkm
                 </p>
                 <div class="row">
                     <div class="col-12">

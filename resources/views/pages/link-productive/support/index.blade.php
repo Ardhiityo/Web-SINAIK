@@ -6,18 +6,19 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Dukungan UMKM</h1>
+                <h1>Dukungan umkm</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Pusat UMKM</a></div>
-                    <div class="breadcrumb-item"><a href="#">UMKM</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Manajemen umkm</a></div>
+                    <div class="breadcrumb-item"><a href="#">Dukungan</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Data UMKM</h2>
+                <h2 class="section-title">Data dukungan umkm</h2>
                 <p class="section-lead">
-                    Informasi mengenai data UMKM
+                    Informasi mengenai data dukungan umkm
                 </p>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
