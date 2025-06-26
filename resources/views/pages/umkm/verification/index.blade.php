@@ -26,16 +26,16 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="text-nowrap">
-                                                <th scope="col">Status Verifikasi</th>
+                                                <th scope="col">Status Terverifikasi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="text-nowrap">
                                                 <td>
                                                     @if (Auth::user()->umkm->is_verified == false)
-                                                        <span class="badge badge-danger">Belum diverifikasi</span>
+                                                        <span class="badge badge-danger">Belum</span>
                                                     @else
-                                                        <span class="badge badge-success">Terverifikasi</span>
+                                                        <span class="badge badge-success">Sudah</span>
                                                     @endif
                                                 </td>
                                             </tr>

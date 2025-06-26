@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Sektor bisnis</h2>
+                <h2 class="section-title">Data sektor bisnis</h2>
                 <p class="section-lead">
                     Edit sektor bisnis
                 </p>

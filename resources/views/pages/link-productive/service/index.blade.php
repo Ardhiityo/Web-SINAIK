@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Layanan</h2>
+                <h2 class="section-title">Data Layanan</h2>
                 <p class="section-lead">
                     Informasi mengenai data layanan
                 </p>

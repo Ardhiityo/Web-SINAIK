@@ -39,7 +39,9 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+        ])->assignRole('umkm');
+
+        $user->umkm()->create();
 
         event(new Registered($user));
 

@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Buat dukungan umkm</h2>
+                <h2 class="section-title">Data dukungan umkm</h2>
                 <p class="section-lead">
                     Buat dukungan umkm
                 </p>

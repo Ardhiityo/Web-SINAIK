@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Edit akun umkm</h2>
+                <h2 class="section-title">Data akun umkm</h2>
                 <p class="section-lead">
                     Edit akun umkm
                 </p>
