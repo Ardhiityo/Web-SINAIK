@@ -22,8 +22,17 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+
+                            <div class="card-header">
+                                <h4>
+                                    <a href="{{ route('link-productive.supports.create') }}" class="btn btn-primary">
+                                        Buat dukungan
+                                    </a>
+                                </h4>
+                            </div>
+
                             <div class="card-body">
-                                @if ($umkms->isEmpty())
+                                @if ($supports->isEmpty())
                                     <p>Belum ada data umkm...</p>
                                 @else
                                     <div class="overflow-auto">
@@ -31,24 +40,24 @@
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Nama UMKM</th>
                                                     <th scope="col">Owner</th>
-                                                    <th scope="col">Sektor</th>
+                                                    <th scope="col">Nama UMKM</th>
+                                                    <th scope="col">Subject</th>
+                                                    <th scope="col">Pesan</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($umkms as $umkm)
+                                                @foreach ($supports as $support)
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
-                                                        <td>{{ $umkm->user->name }}</td>
-                                                        <td>{{ $umkm->sectorCategories->isEmpty() ? '-' : $umkm->sectorCategories->pluck('name')->implode(', ') }}
-                                                        </td>
+                                                        <td>{{ $support->umkm->user->name }}</td>
+                                                        <td>{{ $support->umkm->biodata->business_name ?? '-' }}</td>
+                                                        <td>{{ Str::limit($support->subject, 5, '...') }}</td>
+                                                        <td>{{ Str::limit($support->message, 7, '...') }}</td>
                                                         <td>
-                                                            <a href="{{ route('link-productive.supports.show', ['umkm' => $umkm->id]) }}"
-                                                                class="btn btn-success">
-                                                                <i class="far fa-envelope"></i>
+                                                            <a href="" class="btn btn-success">
+                                                                <i class="far fa-eye"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -60,7 +69,7 @@
                             </div>
                             <div class="row">
                                 <div class="flex-wrap mt-5 col-12 d-flex justify-content-end">
-                                    {{ $umkms->links('pagination::bootstrap-5') }}
+                                    {{ $supports->links('pagination::bootstrap-5') }}
                                 </div>
                             </div>
                         </div>

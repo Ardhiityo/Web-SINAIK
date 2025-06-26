@@ -18,9 +18,16 @@ class SupportController extends Controller
 
     public function index()
     {
-        $umkms = $this->umkmRepository->getUmkmsPaginate();
+        $supports = $this->supportRepository->getSupports();
 
-        return view('pages.link-productive.support.index', compact('umkms'));
+        return view('pages.link-productive.support.index', compact('supports'));
+    }
+
+    public function create()
+    {
+        $umkms = $this->umkmRepository->getUmkms();
+
+        return view('pages.link-productive.support.create', compact('umkms'));
     }
 
     public function show(Umkm $umkm)

@@ -35,9 +35,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
             Route::resource('users', App\Http\Controllers\LinkProductive\UserController::class);
             Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
-            Route::get('/supports', [App\Http\Controllers\LinkProductive\SupportController::class, 'index'])->name('supports.index');
-            Route::get('/supports/umkm/{umkm}', [App\Http\Controllers\LinkProductive\SupportController::class, 'show'])->name('supports.show');
-            Route::post('/supports/umkm/{umkm}', [App\Http\Controllers\LinkProductive\SupportController::class, 'store'])->name('supports.store');
+            Route::resource('supports', App\Http\Controllers\LinkProductive\SupportController::class);
             Route::get('/umkms/{umkm}/performance', [App\Http\Controllers\LinkProductive\UmkmController::class, 'performance'])->name('umkms.performance');
             Route::get('/umkms/{umkm}/performance/{income}/edit', [App\Http\Controllers\LinkProductive\IncomeController::class, 'edit'])->name('umkms.performance.edit');
             Route::get('/umkms/{umkm}/performance/create', [App\Http\Controllers\LinkProductive\IncomeController::class, 'create'])->name('umkms.performance.create');

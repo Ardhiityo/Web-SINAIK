@@ -23,8 +23,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="{{ route('link-productive.supports.store', ['umkm' => $umkm->id]) }}"
-                                        method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('link-productive.supports.store') }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Buat Data</h4>
@@ -44,6 +44,19 @@
                                                     <label for="name">Subjek</label>
                                                     <input required type="name" class="form-control" id="name"
                                                         placeholder="Subject..." name="subject">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="umkm_id">Umkm</label>
+                                                    <select id="umkm_id" required name="umkm_id" class="form-control">
+                                                        <option selected value="">Pilih...</option>
+                                                        @foreach ($umkms as $umkm)
+                                                            <option value="{{ $umkm->id }}"
+                                                                {{ old('umkm_id') == $umkm->id ? 'selected' : '' }}>
+                                                                {{ $umkm->user->name }} -
+                                                                {{ $umkm->biodata->business_name ?? '...' }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                                 <div class="form-group col-12">
                                                     <label for="message">Pesan</label>

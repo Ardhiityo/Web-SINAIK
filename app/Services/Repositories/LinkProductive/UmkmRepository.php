@@ -34,6 +34,14 @@ class UmkmRepository implements UmkmInterface
         }
     }
 
+    public function getUmkms()
+    {
+        return Umkm::with([
+            'user' => fn(Builder $query) => $query->select('id', 'name'),
+            'biodata' => fn(Builder $query) => $query->select('id', 'umkm_id', 'business_name')
+        ])->select('id', 'user_id')->get();
+    }
+
     public function getUmkmsPaginate()
     {
         return Umkm::with([
