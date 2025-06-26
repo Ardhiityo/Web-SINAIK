@@ -25,7 +25,8 @@
 
                             <div class="card-header">
                                 <h4>
-                                    <a href="" class="btn btn-primary">
+                                    <a href="{{ route('link-productive.umkms.sector-category-umkm.create', ['umkm' => $umkm->id]) }}"
+                                        class="btn btn-primary">
                                         Buat Sektor Bisnis
                                     </a>
                                 </h4>
@@ -58,8 +59,12 @@
                                                                 <i class="far fa-edit"></i>
                                                             </a>
                                                             <span class="mx-1"></span>
-                                                            <form id="form-delete" action="" method="POST"
-                                                                class="d-inline">
+                                                            <form id="form-delete"
+                                                                action="{{ route('link-productive.umkms.sector-category-umkm.destroy', [
+                                                                    'umkm' => $sectorCategory->pivot->umkm_id,
+                                                                    'sector_category_umkm' => $sectorCategory->pivot->id,
+                                                                ]) }}"
+                                                                method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"

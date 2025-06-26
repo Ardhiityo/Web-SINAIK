@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Umkm;
+namespace App\Http\Requests\LinkProductive;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\Umkm\CheckStoreSectorCategoryUmkm;
+use App\Rules\Umkm\CheckUpdateSectorCategoryUmkm;
 
-class StoreSectorCategoryUmkmRequest extends FormRequest
+class UpdateSectorCategoryUmkmRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +23,10 @@ class StoreSectorCategoryUmkmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sector_category_id' => ['required', 'exists:sector_categories,id', new CheckStoreSectorCategoryUmkm(
+            'sector_category_id' => ['required', 'exists:sector_categories,id', new CheckUpdateSectorCategoryUmkm(
                 $this->route('umkm')->id,
-                $this->sector_category_id
+                $this->sector_category_id,
+                $this->route('sector_category_umkm')->id
             )]
         ];
     }

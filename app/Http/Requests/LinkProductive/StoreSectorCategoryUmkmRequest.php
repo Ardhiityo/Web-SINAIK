@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Requests\Umkm;
+namespace App\Http\Requests\LinkProductive;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Umkm\CheckStoreSectorCategoryUmkm;
 
@@ -26,7 +25,7 @@ class StoreSectorCategoryUmkmRequest extends FormRequest
         return [
             'sector_category_id' => ['required', 'exists:sector_categories,id', new CheckStoreSectorCategoryUmkm(
                 $this->route('umkm')->id,
-                $this->sector_category_id
+                $this->sector_category_id,
             )]
         ];
     }

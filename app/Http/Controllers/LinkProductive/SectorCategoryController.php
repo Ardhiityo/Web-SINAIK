@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\SectorCategory;
-use App\Services\Interfaces\LinkProductive\SectorCategoryInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreSectorCategoryRequest;
 use App\Http\Requests\LinkProductive\UpdateSectorCategoryRequest;
+use App\Services\Interfaces\LinkProductive\SectorCategoryInterface;
 
 class SectorCategoryController extends Controller
 {
@@ -38,14 +38,6 @@ class SectorCategoryController extends Controller
         $this->sectorCategoryRepository->storeSectorCategory($request->validated());
 
         return redirect()->route('link-productive.sector-categories.index')->with('success', 'Sukses disimpan');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(SectorCategory $sectorCategory)
-    {
-        //
     }
 
     /**

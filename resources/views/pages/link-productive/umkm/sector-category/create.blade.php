@@ -24,7 +24,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-auto card">
-                                    <form action="{{ route('umkm.sector-category-umkms.store') }}" method="POST">
+                                    <form
+                                        action="{{ route('link-productive.umkms.sector-category-umkm.store', ['umkm' => $umkm->id]) }}"
+                                        method="POST">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Buat Data</h4>

@@ -25,7 +25,10 @@
                             <div class="card-body">
                                 <div class="overflow-auto card">
                                     <form
-                                        action="{{ route('umkm.sector-category-umkms.update', ['sector_category_umkm' => $sectorCategoryUmkm->id]) }}"
+                                        action="{{ route('link-productive.umkms.sector-category-umkm.update', [
+                                            'umkm' => $umkm->id,
+                                            'sector_category_umkm' => $sectorCategoryUmkm->id,
+                                        ]) }}"
                                         method="POST">
                                         @method('PUT')
                                         @csrf
