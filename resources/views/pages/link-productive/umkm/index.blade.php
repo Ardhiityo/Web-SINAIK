@@ -21,13 +21,6 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>
-                                    <a href="{{ route('link-productive.umkms.create') }}" class="btn btn-primary">
-                                        Buat UMKM
-                                    </a>
-                                </h4>
-                            </div>
                             <div class="card-body">
                                 @if ($umkms->isEmpty())
                                     <p>Belum ada data umkm...</p>
@@ -39,7 +32,7 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama UMKM</th>
                                                     <th scope="col">Owner</th>
-                                                    <th scope="col">Status Verifikasi</th>
+                                                    <th scope="col">Sektor</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -49,12 +42,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
-                                                        <td>
-                                                            @if ($umkm->is_verified)
-                                                                <span class="badge badge-succes">Sudah</span>
-                                                            @else
-                                                                <span class="badge badge-danger">Belum</span>
-                                                            @endif
+                                                        <td>{{ $umkm->sectorCategories->isEmpty() ? '-' : $umkm->sectorCategories->pluck('name')->implode(', ') }}
                                                         </td>
                                                         </td>
                                                         <td>

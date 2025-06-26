@@ -42,7 +42,12 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
-                                                        <td>{{ $umkm->is_verified ? 'Terverifikasi' : 'Belum Terverifikasi' }}
+                                                        <td>
+                                                            @if ($umkm->is_verified)
+                                                                <span class="badge badge-success">Sudah</span>
+                                                            @else
+                                                                <span class="badge badge-danger">Belum</span>
+                                                            @endif
                                                         </td>
                                                         <td>
                                                             @if ($umkm->is_verified)

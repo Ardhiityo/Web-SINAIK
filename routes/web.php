@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('sector-categories', App\Http\Controllers\LinkProductive\SectorCategoryController::class);
             Route::resource('business-scales', App\Http\Controllers\LinkProductive\BusinessScaleController::class);
             Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
+            Route::resource('users', App\Http\Controllers\LinkProductive\UserController::class);
             Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
             Route::get('/supports', [App\Http\Controllers\LinkProductive\SupportController::class, 'index'])->name('supports.index');
             Route::get('/supports/umkm/{umkm}', [App\Http\Controllers\LinkProductive\SupportController::class, 'show'])->name('supports.show');

@@ -1,35 +1,35 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Sertifikasi')
+@section('title', 'Buat Akun')
 
 @section('main')
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Sertifikasi</h1>
+                <h1>Layanan</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Manajemen UMKM</a></div>
-                    <div class="breadcrumb-item"><a href="#">Sertifikasi</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Manajemen Layanan</a></div>
+                    <div class="breadcrumb-item"><a href="#">Layanan</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Sertifikasi</h2>
+                <h2 class="section-title">Layanan</h2>
                 <p class="section-lead">
-                    Informasi mengenai data sertifikasi UMKM
+                    Informasi mengenai data layanan
                 </p>
 
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="overflow-auto">
-                                    <form action="{{ route('link-productive.certifications.update', $certification) }}"
+                                <div class="overflow-auto card">
+                                    <form action="{{ route('link-productive.users.update', ['user' => $user->id]) }}"
                                         method="POST">
                                         @csrf
                                         @method('PUT')
                                         <div class="card-header">
-                                            <h4>Edit Data</h4>
+                                            <h4>Buat Data</h4>
                                         </div>
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
@@ -43,10 +43,21 @@
                                         <div class="card-body">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="name">Nama Sertifikasi</label>
-                                                    <input required type="name" class="form-control" id="name"
-                                                        placeholder="Nama Sertifikasi..." name="name"
-                                                        value="{{ old('name', $certification->name) }}">
+                                                    <label for="name">Owner</label>
+                                                    <input required type="text" class="form-control" id="name"
+                                                        placeholder="Masukan owner..." name="name"
+                                                        value="{{ old('name', $user->name) }}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="email">Email</label>
+                                                    <input required type="text" class="form-control" id="email"
+                                                        placeholder="Masukan email..." name="email"
+                                                        value="{{ old('email', $user->email) }}">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" class="form-control" id="password"
+                                                        placeholder="Masukan password..." name="password">
                                                 </div>
                                             </div>
                                         </div>

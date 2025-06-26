@@ -38,8 +38,11 @@ class UmkmRepository implements UmkmInterface
     {
         return Umkm::with([
             'user:id,name',
-            'biodata:id,business_name,umkm_id'
-        ])->select('id', 'user_id', 'is_verified')->latest()->paginate(10);
+            'biodata:id,business_name,umkm_id',
+            'sectorCategories:id,name'
+        ])->select('id', 'user_id', 'is_verified')
+            ->where('is_verified', true)
+            ->latest()->paginate(10);
     }
 
     public function getUmkm($id)

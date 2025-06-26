@@ -26,7 +26,7 @@ class UmkmController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.link-productive.umkm.create');
     }
 
     /**

@@ -21,6 +21,12 @@
             </li>
 
             <li class="menu-header">Manajemen UMKM</li>
+            <li class="nav-item {{ request()->routeIs('link-productive.users.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.users.index') }}" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Akun</span>
+                </a>
+            </li>
             <li class="nav-item {{ request()->routeIs('link-productive.verifications.*') ? 'active' : '' }}">
                 <a href="{{ route('link-productive.verifications.index') }}" class="nav-link">
                     <i class="fas fa-info-circle"></i>
