@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/umkms/{umkm}/biodata/edit', [App\Http\Controllers\LinkProductive\BiodataController::class, 'edit'])->name('umkms.biodata.edit');
             Route::put('/umkms/{umkm}/biodata/{biodata}', [App\Http\Controllers\LinkProductive\BiodataController::class, 'update'])->name('umkms.biodata.update');
             Route::delete('/umkms/{umkm}/biodata/{biodata}', [App\Http\Controllers\LinkProductive\BiodataController::class, 'destroy'])->name('umkms.biodata.destroy');
+            Route::get('/umkms/{umkm}/sector-category-umkm', [App\Http\Controllers\LinkProductive\SectorCategoryUmkmController::class, 'index'])->name('umkms.sector-category-umkm.index');
+            Route::get('/umkms/{umkm}/sector-category-umkm/{sector_category_umkm}/edit', [App\Http\Controllers\LinkProductive\SectorCategoryUmkmController::class, 'edit'])->name('umkms.sector-category-umkm.edit');
+            Route::put('/umkms/{umkm}/sector-category-umkm/{sector_category_umkm}', [App\Http\Controllers\LinkProductive\SectorCategoryUmkmController::class, 'update'])->name('umkms.sector-category-umkm.update');
             Route::resource('service-categories', App\Http\Controllers\LinkProductive\ServiceCategoryController::class);
             Route::resource('services', App\Http\Controllers\LinkProductive\ServiceController::class);
             Route::resource('service-umkms', App\Http\Controllers\LinkProductive\ServiceUmkmController::class);

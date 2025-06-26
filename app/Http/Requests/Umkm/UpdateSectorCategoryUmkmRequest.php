@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Umkm;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Umkm\CheckUpdateSectorCategoryUmkm;
 
 class UpdateSectorCategoryUmkmRequest extends FormRequest
 {
@@ -22,7 +24,11 @@ class UpdateSectorCategoryUmkmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sector_category_id' => 'required|exists:sector_categories,id|unique:sector_category_umkm,sector_category_id,' . $this->route('sector_category_umkm')->id,
+            'sector_category_id' => ['required', 'exists:sector_categories,id', new CheckUpdateSectorCategoryUmkm(
+                Auth::user()->umkm->id,
+                $this->sector_category_id,
+                $this->route('sector_category_umkm')->id
+            )]
         ];
     }
 }

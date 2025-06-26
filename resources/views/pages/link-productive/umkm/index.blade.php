@@ -32,8 +32,9 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama UMKM</th>
                                                     <th scope="col">Owner</th>
-                                                    <th scope="col">Sektor</th>
-                                                    <th scope="col">Aksi</th>
+                                                    <th scope="col">Biodata</th>
+                                                    <th scope="col">Produk</th>
+                                                    <th scope="col">Performa</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -42,20 +43,23 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
-                                                        <td>{{ $umkm->sectorCategories->isEmpty() ? '-' : $umkm->sectorCategories->pluck('name')->implode(', ') }}
-                                                        </td>
-                                                        </td>
                                                         <td>
                                                             <a href="{{ route('link-productive.umkms.show', ['umkm' => $umkm->id]) }}"
                                                                 class="btn btn-success">
                                                                 <i class="fas fa-eye"></i>
                                                             </a>
-                                                            @if ($umkm->biodata->id ?? false)
-                                                                <a href="{{ route('link-productive.umkms.biodata.edit', ['umkm' => $umkm->id]) }}"
-                                                                    class="mx-2 btn btn-warning">
-                                                                    <i class="fas fa-edit"></i>
-                                                                </a>
-                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('link-productive.umkms.product.index', ['umkm' => $umkm->id]) }}"
+                                                                class="btn btn-success">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('link-productive.umkms.performance', ['umkm' => $umkm->id]) }}"
+                                                                class="btn btn-success">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

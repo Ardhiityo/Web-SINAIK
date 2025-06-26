@@ -19,6 +19,13 @@
                     Informasi mengenai biodata {{ $umkm->biodata->business_name }}
                 </p>
 
+                <div class="my-3 col-12 d-flex justify-content-end">
+                    <a href="{{ route('link-productive.umkms.sector-category-umkm.index', ['umkm' => $umkm->id]) }}"
+                        class="mr-2 btn btn-warning">
+                        Sektor Bisnis
+                    </a>
+                </div>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">

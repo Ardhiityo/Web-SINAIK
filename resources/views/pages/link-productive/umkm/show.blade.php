@@ -21,10 +21,15 @@
                 @if ($umkm->biodata->id ?? false)
                     <div class="row">
                         <div class="my-3 col-12 d-flex justify-content-end">
-                            <a href="{{ route('link-productive.umkms.product.index', ['umkm' => $umkm->id]) }}"
-                                class="mr-2 btn btn-warning">Produk</a>
-                            <a href="{{ route('link-productive.umkms.performance', ['umkm' => $umkm->id]) }}"
-                                class="btn btn-success">Performa</a>
+                            <a href="{{ route('link-productive.umkms.biodata.edit', ['umkm' => $umkm->id]) }}"
+                                class="mr-2 btn btn-warning">Edit</a>
+                            <form
+                                action="{{ route('link-productive.umkms.biodata.destroy', ['umkm' => $umkm->id, 'biodata' => $umkm->biodata->id]) }}"
+                                method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger">Hapus</button>
+                            </form>
                         </div>
                         <div class="col-12">
                             <div class="card">

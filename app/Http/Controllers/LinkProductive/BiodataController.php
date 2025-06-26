@@ -9,6 +9,7 @@ use App\Http\Requests\Umkm\StoreBiodataRequest;
 use App\Http\Requests\Umkm\UpdateBiodataRequest;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
+use App\Services\Interfaces\LinkProductive\UmkmInterface;
 use App\Services\Interfaces\Umkm\BiodataInterface;
 
 class BiodataController extends Controller
@@ -49,5 +50,12 @@ class BiodataController extends Controller
         $biodata->update($request->validated());
 
         return redirect()->route('link-productive.umkms.show', ['umkm' => $umkm->id])->withSuccess('Berhasil diupdate');
+    }
+
+    public function destroy(Umkm $umkm, Biodata $biodata)
+    {
+        $biodata->delete();
+
+        return redirect()->route('link-productive.umkms.show', ['umkm' => $umkm->id])->withSuccess('Berhasil dihapus');
     }
 }

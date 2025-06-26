@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">{{ $umkm->biodata->business_name }}</h2>
+                <h2 class="section-title">{{ $umkm->biodata->business_name ?? '' }}</h2>
                 <p class="section-lead">
-                    Informasi mengenai data produk UMKM {{ $umkm->biodata->business_name }}
+                    Informasi mengenai data produk UMKM {{ $umkm->biodata->business_name ?? '' }}
                 </p>
 
                 <div class="mt-5 row">
@@ -68,7 +68,7 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" id="btn-delete"
-                                                                    class="btn btn-danger">Hapus</button>
+                                                                    class="mx-2 btn btn-danger">Hapus</button>
                                                             </form>
                                                         </td>
                                                     </tr>
