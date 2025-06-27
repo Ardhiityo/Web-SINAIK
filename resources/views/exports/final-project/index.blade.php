@@ -1,7 +1,7 @@
 <table>
     <tr>
         <th rowspan="4">
-            <img src="{{ asset('img/unival.png') }}" width="100" height="100">
+            <img src="{{ asset('img/hero.png') }}" alt="link-productive" width="100" height="100">
         </th>
         <th style="font-size: 14px; font-weight: bold; text-align: left;" colspan="10">
             UNIVERSITAS AL-KHAIRIYAH

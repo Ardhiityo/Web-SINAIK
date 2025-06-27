@@ -87,7 +87,7 @@
             </div>
 
             <div class="row">
-                <div class="order-1 col-lg-8 col-md-12 col-12 col-sm-12 order-md-1">
+                <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Statistik</h4>
@@ -99,8 +99,19 @@
                             <canvas id="myIncomeChart" height="290"></canvas>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Statistik</h4>
+                            <div class="card-header-action">
+                                <span class="btn btn-primary">Karyawan</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myEmployeeChart" height="290"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <div class="order-3 col-lg-4 col-md-12 col-12 col-sm-12 order-md-2">
+                <div class="col-lg-4 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Layanan terbaru</h4>
@@ -131,19 +142,6 @@
                                     Semua layanan
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="order-2 col-lg-8 col-md-12 col-12 col-sm-12 order-md-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Statistik</h4>
-                            <div class="card-header-action">
-                                <span class="btn btn-primary">Karyawan</span>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="myEmployeeChart" height="290"></canvas>
                         </div>
                     </div>
                 </div>
