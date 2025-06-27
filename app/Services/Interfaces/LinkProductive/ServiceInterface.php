@@ -7,4 +7,5 @@ interface ServiceInterface
     public function getServicesPaginate();
     public function storeService(array $data);
     public function getServicesLatest();
+    public function getTotalService();
 }

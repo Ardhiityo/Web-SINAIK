@@ -87,4 +87,9 @@ class UmkmRepository implements UmkmInterface
             ->where('umkm_id', $id)
             ->paginate(10);
     }
+
+    public function getTotalUmkm()
+    {
+        return Umkm::where('is_verified', true)->count();
+    }
 }

@@ -35,4 +35,9 @@ class ServiceRepository implements ServiceInterface
             Log::info($th->getMessage(), ['store service']);
         }
     }
+
+    public function getTotalService()
+    {
+        return Service::count();
+    }
 }

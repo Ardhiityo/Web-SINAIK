@@ -14,6 +14,11 @@ class CertificationRepository implements CertificationInterface
         return Certification::select('id', 'name')->get();
     }
 
+    public function getTotalCertification()
+    {
+        return Certification::count();
+    }
+
     public function getCertificationsPaginate()
     {
         return Certification::select('id', 'name')->paginate(10);

@@ -30,4 +30,9 @@ class SectorCategoryRepository implements SectorCategoryInterface
             Log::info($th->getMessage(), ['create sector category']);
         }
     }
+
+    public function getTotalSectorCategory()
+    {
+        return SectorCategory::count();
+    }
 }
