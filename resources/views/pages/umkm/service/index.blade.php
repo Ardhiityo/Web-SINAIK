@@ -43,11 +43,12 @@
                                                 @foreach ($services as $service)
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $service->title }}</td>
-                                                        <td>{{ $service->description }}</td>
+                                                        <td>{{ Str::limit($service->title, 15, '...') }}</td>
+                                                        <td>{{ Str::limit($service->description, 20, '...') }}</td>
                                                         <td>{{ $service->available_date }}</td>
                                                         <td>{{ $service->end_date }}</td>
-                                                        <td>{{ $service->serviceCategory->name }}</td>
+                                                        <td>{{ Str::limit($service->serviceCategory->name, 15, '...') }}
+                                                        </td>
                                                         <td>
                                                             <a href="{{ route('umkm.services.show', ['service' => $service->id]) }}"
                                                                 class="btn btn-warning">

@@ -54,12 +54,13 @@ class ServiceUmkmRepository implements ServiceUmkmInterface
         try {
             DB::beginTransaction();
             $user = Auth::user();
-            ServiceUmkm::create([
+            $serviceUmkm = ServiceUmkm::create([
                 'umkm_id' => $user->umkm->id,
                 'register_status' => 'process',
                 'service_id' => $data['service_id']
             ]);
             DB::commit();
+            return $serviceUmkm;
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::info(json_encode($th->getMessage(), JSON_PRETTY_PRINT));

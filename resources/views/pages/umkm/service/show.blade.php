@@ -40,12 +40,12 @@
                                 <div class="overflow-auto">
                                     <table class="table text-center table-bordered">
                                         <thead>
-                                            <tr class="text-nowrap">
+                                            <tr>
                                                 <th scope="col">Deskripsi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="text-nowrap">
+                                            <tr>
                                                 <td>{{ $service->description }}</td>
                                             </tr>
                                         </tbody>
