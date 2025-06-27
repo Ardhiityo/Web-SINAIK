@@ -95,7 +95,18 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas id="myIncomeChart" height="180"></canvas>
+                            <canvas id="myIncomeChart" height="120"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Statistik</h4>
+                            <div class="card-header-action">
+                                <span class="btn btn-primary">Karyawan</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myEmployeeChart" height="120"></canvas>
                         </div>
                     </div>
                 </div>
@@ -126,8 +137,9 @@
                                 @endforeach
                             </ul>
                             <div class="pt-1 pb-1 text-center">
-                                <a href="" class="btn btn-primary btn-lg btn-round">
-                                    Semua jadwal
+                                <a href="{{ route('link-productive.services.index') }}"
+                                    class="btn btn-primary btn-lg btn-round">
+                                    Semua layanan
                                 </a>
                             </div>
                         </div>
@@ -141,15 +153,15 @@
 @push('scripts')
     <!-- JS Libraies -->
     <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
-    <script src="{{ asset('library/summernote/dist/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('library/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+@endpush
+
+@push('scripts')
     <script>
         var statistics_chart = document.getElementById("myIncomeChart").getContext('2d');
 
         var months = @json($months);
 
         var incomes = @json($incomes);
-
 
         var myChart = new Chart(statistics_chart, {
             type: 'line',
@@ -178,6 +190,55 @@
                         },
                         ticks: {
                             stepSize: 500000
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: '#fbfbfb',
+                            lineWidth: 2
+                        }
+                    }]
+                },
+            }
+        });
+    </script>
+@endpush
+
+@push('scripts')
+    <script>
+        var statistics_chart = document.getElementById("myEmployeeChart").getContext('2d');
+
+        var months = @json($months);
+
+        var employees = @json($employees);
+
+        var myChart = new Chart(statistics_chart, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Karyawan',
+                    data: employees,
+                    borderWidth: 5,
+                    borderColor: '#6777ef',
+                    backgroundColor: 'transparent',
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#6777ef',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            stepSize: 5
                         }
                     }],
                     xAxes: [{

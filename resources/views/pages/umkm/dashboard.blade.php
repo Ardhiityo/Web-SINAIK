@@ -219,15 +219,14 @@
 
 @push('scripts')
     <script>
-        var ctx = document.getElementById("myEmployeeChart").getContext('2d');
+        var statistics_chart = document.getElementById("myEmployeeChart").getContext('2d');
 
         // Labels (sumbu X)
         var dates = @json($dates);
 
-        // Dataset pertama (misal: jumlah proposal)
         var incomes = @json($employees);
 
-        var myChart = new Chart(ctx, {
+        var myChart = new Chart(statistics_chart, {
             type: 'line',
             data: {
                 labels: dates,
@@ -256,7 +255,7 @@
                             drawBorder: false
                         },
                         ticks: {
-                            stepSize: 500000
+                            stepSize: 5
                         }
                     }],
                     xAxes: [{

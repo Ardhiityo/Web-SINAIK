@@ -35,6 +35,7 @@ class DashboardService
         $months = [];
         $monthsNumber = [];
         $incomes = [];
+        $employees = [];
 
         $performances = Income::whereBetween('date', [$startMonth, $endMonth])->orderBy('date')->get();
 
@@ -48,8 +49,9 @@ class DashboardService
 
         foreach ($monthsNumber as $key => $value) {
             $incomes[] = Income::whereMonth('date', $value)->sum('total_income');
+            $employees[] = Income::whereMonth('date', $value)->sum('total_employee');
         }
 
-        return compact('incomes', 'months');
+        return compact('incomes', 'months', 'employees');
     }
 }
