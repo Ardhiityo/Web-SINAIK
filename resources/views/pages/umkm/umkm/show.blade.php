@@ -20,12 +20,6 @@
                 </p>
                 @if ($umkm->biodata->id ?? false)
                     <div class="row">
-                        <div class="my-3 col-12 d-flex justify-content-end">
-                            <a href="{{ route('umkm.umkms.product', ['umkm' => $umkm->id]) }}"
-                                class="mr-2 btn btn-warning">Produk</a>
-                            <a href="{{ route('umkm.umkms.performance', ['umkm' => $umkm->id]) }}"
-                                class="btn btn-success">Performa</a>
-                        </div>
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">

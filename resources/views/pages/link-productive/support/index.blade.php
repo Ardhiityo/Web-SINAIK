@@ -56,7 +56,8 @@
                                                         <td>{{ Str::limit($support->subject, 5, '...') }}</td>
                                                         <td>{{ Str::limit($support->message, 7, '...') }}</td>
                                                         <td>
-                                                            <a href="" class="btn btn-success">
+                                                            <a href="{{ route('link-productive.supports.show', ['support' => $support->id]) }}"
+                                                                class="btn btn-success">
                                                                 <i class="far fa-eye"></i>
                                                             </a>
                                                         </td>

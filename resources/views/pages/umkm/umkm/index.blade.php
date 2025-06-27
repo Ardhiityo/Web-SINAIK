@@ -32,8 +32,9 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama UMKM</th>
                                                     <th scope="col">Owner</th>
-                                                    <th scope="col">Sektor</th>
-                                                    <th scope="col">Aksi</th>
+                                                    <th scope="col">Biodata</th>
+                                                    <th scope="col">Product</th>
+                                                    <th scope="col">Performa</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -42,10 +43,21 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
-                                                        <td>{{ $umkm->sectorCategories->isEmpty() ? '-' : $umkm->sectorCategories->pluck('name')->implode(', ') }}
                                                         </td>
                                                         <td>
                                                             <a href="{{ route('umkm.umkms.show', ['umkm' => $umkm->id]) }}"
+                                                                class="btn btn-success">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('umkm.umkms.product', ['umkm' => $umkm->id]) }}"
+                                                                class="btn btn-success">
+                                                                <i class="fas fa-eye"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('umkm.umkms.performance', ['umkm' => $umkm->id]) }}"
                                                                 class="btn btn-success">
                                                                 <i class="fas fa-eye"></i>
                                                             </a>

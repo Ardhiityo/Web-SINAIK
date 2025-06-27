@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">{{ $umkm->biodata->business_name ?? '' }}</h2>
+                <h2 class="section-title">Data Produk</h2>
                 <p class="section-lead">
                     Informasi mengenai data produk UMKM {{ $umkm->biodata->business_name ?? '' }}
                 </p>
