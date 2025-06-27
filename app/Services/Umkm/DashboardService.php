@@ -2,7 +2,6 @@
 
 namespace App\Services\Umkm;
 
-use Illuminate\Support\Facades\Log;
 use App\Services\Interfaces\Umkm\IncomeInterface;
 use App\Services\Interfaces\Umkm\ServiceUmkmInterface;
 use App\Services\Interfaces\Umkm\SectorCategoryInterface;
@@ -17,7 +16,7 @@ class DashboardService
         private ServiceInterface $serviceRepository
     ) {}
 
-    public function getTotalPanel()
+    public function getPanelData()
     {
         $totalService = $this->serviceUmkmRepository->getTotalServiceUmkm();
         $performance = $this->incomeRepository->getTotalIncomeLatestFirst();
@@ -29,7 +28,7 @@ class DashboardService
         return compact('totalService', 'totalEmployee', 'totalIncome', 'totalSector', 'services');
     }
 
-    public function getTotalStatistic()
+    public function getStatisticData()
     {
         $performances = $this->incomeRepository->getTotalIncomeLatest();
         $dates = [];
@@ -37,7 +36,7 @@ class DashboardService
         $employees = [];
 
         foreach ($performances as $key => $performance) {
-            $dates[] = $performance->date;
+            $dates[] = $performance->date->translatedFormat('F');
             $incomes[] = $performance->total_income;
             $employees[] = $performance->total_employee;
         }

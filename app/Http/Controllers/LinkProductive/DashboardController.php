@@ -11,8 +11,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $panelData = $this->dashboardService->getTotalPanel();
+        $panelData = $this->dashboardService->getPanelData();
 
-        return view('pages.link-productive.dashboard', $panelData);
+        $statisticData = $this->dashboardService->getStatisticData();
+
+        return view('pages.link-productive.dashboard', $panelData, $statisticData);
     }
 }

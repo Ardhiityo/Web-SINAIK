@@ -89,13 +89,13 @@
                 <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Statistics</h4>
+                            <h4>Statistik</h4>
                             <div class="card-header-action">
-                                <span class="btn btn-primary">Periode</span>
+                                <span class="btn btn-primary">Pendapatan</span>
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas id="myChart" height="180"></canvas>
+                            <canvas id="myIncomeChart" height="180"></canvas>
                         </div>
                     </div>
                 </div>
@@ -106,22 +106,24 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled list-unstyled-border">
-                                <a href="" class="mb-4 text-decoration-none media">
-                                    <img class="mr-3 rounded-circle" width="50"
-                                        src="{{ asset('img/avatar/avatar-1.png') }}" alt="avatar">
-                                    <div class="media-body">
-                                        <div class="float-right text-primary">
-                                            12/12/2024
+                                @foreach ($services as $service)
+                                    <a href="{{ route('link-productive.services.show', ['service' => $service->id]) }}"
+                                        class="mb-4 text-decoration-none media">
+                                        <img class="mr-3 rounded-circle" width="50"
+                                            src="{{ asset('img/avatar/avatar-1.png') }}" alt="avatar">
+                                        <div class="media-body">
+                                            <div class="float-right text-primary">
+                                                {{ Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
+                                            </div>
+                                            <div class="media-title">
+                                                {{ Str::limit(ucfirst(strtolower($service->title)), 15, '...') }}
+                                            </div>
+                                            <span class="text-small text-muted">
+                                                {{ Str::limit(ucfirst(strtolower($service->description)), 40, '...') }}
+                                            </span>
                                         </div>
-                                        <div class="media-title">
-                                            Arya
-                                        </div>
-                                        <span class="text-small text-muted">
-                                            Mulai sidang
-                                            pukul 08.00 wib, pada ruangan C.A
-                                        </span>
-                                    </div>
-                                </a>
+                                    </a>
+                                @endforeach
                             </ul>
                             <div class="pt-1 pb-1 text-center">
                                 <a href="" class="btn btn-primary btn-lg btn-round">
@@ -142,20 +144,20 @@
     <script src="{{ asset('library/summernote/dist/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('library/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
     <script>
-        var statistics_chart = document.getElementById("myChart").getContext('2d');
+        var statistics_chart = document.getElementById("myIncomeChart").getContext('2d');
 
-        var academicCalendarData = [1, 2, 3]
+        var months = @json($months);
 
-        var totalProposalByPeriodes = [1, 2, 3]
+        var incomes = @json($incomes);
 
 
         var myChart = new Chart(statistics_chart, {
             type: 'line',
             data: {
-                labels: academicCalendarData,
+                labels: months,
                 datasets: [{
-                    label: 'Statistics',
-                    data: totalProposalByPeriodes,
+                    label: 'Pendapatan',
+                    data: incomes,
                     borderWidth: 5,
                     borderColor: '#6777ef',
                     backgroundColor: 'transparent',
@@ -175,7 +177,7 @@
                             drawBorder: false,
                         },
                         ticks: {
-                            stepSize: 5
+                            stepSize: 500000
                         }
                     }],
                     xAxes: [{

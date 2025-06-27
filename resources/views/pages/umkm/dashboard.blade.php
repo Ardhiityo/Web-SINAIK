@@ -232,7 +232,7 @@
             data: {
                 labels: dates,
                 datasets: [{
-                    label: 'Pendapatan',
+                    label: 'Karyawan',
                     data: incomes,
                     borderWidth: 3,
                     borderColor: '#6777ef',

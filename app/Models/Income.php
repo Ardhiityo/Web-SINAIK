@@ -13,6 +13,10 @@ class Income extends Model
         'total_employee',
     ];
 
+    protected $casts = [
+        'date' => 'date'
+    ];
+
     public function umkm()
     {
         return $this->belongsTo(Umkm::class);
