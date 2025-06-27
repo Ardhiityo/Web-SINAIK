@@ -18,7 +18,7 @@ class IncomeRepository implements IncomeInterface
         //
     }
 
-    public function getIncomes()
+    public function getIncomesPaginate()
     {
         $user = Auth::user();
 
@@ -50,7 +50,7 @@ class IncomeRepository implements IncomeInterface
         }
     }
 
-    public function getTotalIncomeLatest()
+    public function getTotalIncomeLatestFirst()
     {
         $user = Auth::user();
 
@@ -58,5 +58,16 @@ class IncomeRepository implements IncomeInterface
             ->select('id', 'total_income', 'total_employee')
             ->orderByDesc('id')
             ->first();
+    }
+
+    public function getTotalIncomeLatest()
+    {
+        $user = Auth::user();
+
+        return Income::where('umkm_id', $user->umkm->id)
+            ->select('id', 'total_income', 'total_employee', 'date')
+            ->orderByDesc('id')
+            ->take(4)
+            ->get();
     }
 }

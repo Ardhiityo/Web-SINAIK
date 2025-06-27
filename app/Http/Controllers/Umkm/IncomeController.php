@@ -19,7 +19,7 @@ class IncomeController extends Controller
      */
     public function index()
     {
-        $incomes = $this->incomeRepository->getIncomes();
+        $incomes = $this->incomeRepository->getIncomesPaginate();
 
         return view('pages.umkm.income.index', compact('incomes'));
     }

@@ -91,11 +91,11 @@
                         <div class="card-header">
                             <h4>Statistics</h4>
                             <div class="card-header-action">
-                                <span class="btn btn-primary">Periode</span>
+                                <span class="btn btn-primary">Performa</span>
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas id="myChart" height="180"></canvas>
+                            <canvas id="myChart" height="400"></canvas>
                         </div>
                     </div>
                 </div>
@@ -140,43 +140,59 @@
 @push('scripts')
     <!-- JS Libraies -->
     <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
-    <script src="{{ asset('library/summernote/dist/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('library/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
     <script>
-        var statistics_chart = document.getElementById("myChart").getContext('2d');
+        var ctx = document.getElementById("myChart").getContext('2d');
 
-        var academicCalendarData = [1, 2, 3]
+        // Labels (sumbu X)
+        var dates = @json($dates);
 
-        var totalProposalByPeriodes = [1, 2, 3]
+        // Dataset pertama (misal: jumlah proposal)
+        var incomes = @json($incomes);
 
+        // Dataset kedua (misal: pendapatan)
+        var employees = @json($employees);
 
-        var myChart = new Chart(statistics_chart, {
+        var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: academicCalendarData,
+                labels: dates,
                 datasets: [{
-                    label: 'Statistics',
-                    data: totalProposalByPeriodes,
-                    borderWidth: 5,
-                    borderColor: '#6777ef',
-                    backgroundColor: 'transparent',
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: '#6777ef',
-                    pointRadius: 4
-                }]
+                        label: 'Total Karyawan',
+                        data: employees,
+                        borderWidth: 3,
+                        borderColor: '#6777ef',
+                        backgroundColor: 'transparent',
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#6777ef',
+                        pointRadius: 4
+                    },
+                    {
+                        label: 'Total Pendapatan',
+                        data: incomes,
+                        borderWidth: 3,
+                        borderColor: '#28a745',
+                        backgroundColor: 'transparent',
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#28a745',
+                        pointRadius: 4
+                    }
+                ]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true,
+                    labels: {
+                        boxWidth: 12
+                    }
                 },
                 scales: {
                     yAxes: [{
                         gridLines: {
                             display: false,
-                            drawBorder: false,
+                            drawBorder: false
                         },
                         ticks: {
-                            stepSize: 5
+                            stepSize: 500000
                         }
                     }],
                     xAxes: [{
@@ -186,6 +202,12 @@
                         }
                     }]
                 },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                responsive: true,
+                maintainAspectRatio: false
             }
         });
     </script>

@@ -77,5 +77,7 @@
             </li>
 
         </ul>
+        <div class="p-3 mt-4 mb-4 hide-sidebar-mini">
+        </div>
     </aside>
 </div>
