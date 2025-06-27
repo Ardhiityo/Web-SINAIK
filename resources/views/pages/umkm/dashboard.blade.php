@@ -85,21 +85,22 @@
                     </a>
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+                <div class="order-1 col-lg-8 col-md-12 col-12 col-sm-12 order-md-1">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Statistics</h4>
+                            <h4>Statistik</h4>
                             <div class="card-header-action">
-                                <span class="btn btn-primary">Performa</span>
+                                <span class="btn btn-primary">Pendapatan</span>
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas id="myChart" height="400"></canvas>
+                            <canvas id="myIncomeChart" height="290"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+                <div class="order-3 col-lg-4 col-md-12 col-12 col-sm-12 order-md-2">
                     <div class="card">
                         <div class="card-header">
                             <h4>Layanan terbaru</h4>
@@ -107,7 +108,8 @@
                         <div class="card-body">
                             <ul class="list-unstyled list-unstyled-border">
                                 @foreach ($services as $service)
-                                    <a href="" class="mb-4 text-decoration-none media">
+                                    <a href="{{ route('umkm.services.show', ['service' => $service->id]) }}"
+                                        class="mb-4 text-decoration-none media">
                                         <img class="mr-3 rounded-circle" width="50"
                                             src="{{ asset('img/avatar/avatar-1.png') }}" alt="avatar">
                                         <div class="media-body">
@@ -118,7 +120,7 @@
                                                 {{ Str::limit(ucfirst(strtolower($service->title)), 15, '...') }}
                                             </div>
                                             <span class="text-small text-muted">
-                                                {{ Str::limit(ucfirst(strtolower($service->description)), 25, '...') }}
+                                                {{ Str::limit(ucfirst(strtolower($service->description)), 40, '...') }}
                                             </span>
                                         </div>
                                     </a>
@@ -132,6 +134,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="order-2 col-lg-8 col-md-12 col-12 col-sm-12 order-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Statistik</h4>
+                            <div class="card-header-action">
+                                <span class="btn btn-primary">Karyawan</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myEmployeeChart" height="290"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -140,8 +155,11 @@
 @push('scripts')
     <!-- JS Libraies -->
     <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
+@endpush
+
+@push('scripts')
     <script>
-        var ctx = document.getElementById("myChart").getContext('2d');
+        var ctx = document.getElementById("myIncomeChart").getContext('2d');
 
         // Labels (sumbu X)
         var dates = @json($dates);
@@ -149,38 +167,84 @@
         // Dataset pertama (misal: jumlah proposal)
         var incomes = @json($incomes);
 
-        // Dataset kedua (misal: pendapatan)
-        var employees = @json($employees);
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'Pendapatan',
+                    data: incomes,
+                    borderWidth: 3,
+                    borderColor: '#6777ef',
+                    backgroundColor: 'transparent',
+                    pointBackgroundColor: '#ffff',
+                    pointBorderColor: '#6777ef',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                    labels: {
+                        boxWidth: 12
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            stepSize: 500000
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: '#fbfbfb',
+                            lineWidth: 2
+                        }
+                    }]
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+@endpush
+
+@push('scripts')
+    <script>
+        var ctx = document.getElementById("myEmployeeChart").getContext('2d');
+
+        // Labels (sumbu X)
+        var dates = @json($dates);
+
+        // Dataset pertama (misal: jumlah proposal)
+        var incomes = @json($employees);
 
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: dates,
                 datasets: [{
-                        label: 'Total Karyawan',
-                        data: employees,
-                        borderWidth: 3,
-                        borderColor: '#6777ef',
-                        backgroundColor: 'transparent',
-                        pointBackgroundColor: '#fff',
-                        pointBorderColor: '#6777ef',
-                        pointRadius: 4
-                    },
-                    {
-                        label: 'Total Pendapatan',
-                        data: incomes,
-                        borderWidth: 3,
-                        borderColor: '#28a745',
-                        backgroundColor: 'transparent',
-                        pointBackgroundColor: '#fff',
-                        pointBorderColor: '#28a745',
-                        pointRadius: 4
-                    }
-                ]
+                    label: 'Pendapatan',
+                    data: incomes,
+                    borderWidth: 3,
+                    borderColor: '#6777ef',
+                    backgroundColor: 'transparent',
+                    pointBackgroundColor: '#ffff',
+                    pointBorderColor: '#6777ef',
+                    pointRadius: 4
+                }]
             },
             options: {
                 legend: {
-                    display: true,
+                    display: false,
                     labels: {
                         boxWidth: 12
                     }

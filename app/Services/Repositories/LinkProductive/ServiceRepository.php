@@ -20,7 +20,7 @@ class ServiceRepository implements ServiceInterface
     {
         return Service::select('id', 'title', 'description', 'created_at')
             ->orderByDesc('id')
-            ->limit(4)
+            ->limit(3)
             ->get();
     }
 
