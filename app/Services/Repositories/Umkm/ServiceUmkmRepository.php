@@ -48,7 +48,6 @@ class ServiceUmkmRepository implements ServiceUmkmInterface
         return $user->umkm->serviceUmkms()->paginate(10);
     }
 
-
     public function storeServiceUmkm($data)
     {
         try {
@@ -65,5 +64,14 @@ class ServiceUmkmRepository implements ServiceUmkmInterface
             DB::rollBack();
             Log::info(json_encode($th->getMessage(), JSON_PRETTY_PRINT));
         }
+    }
+
+    public function getTotalServiceUmkm()
+    {
+        $user = Auth::user();
+
+        return ServiceUmkm::where('umkm_id', $user->umkm->id)
+            ->where('register_status', 'approved')
+            ->count();
     }
 }

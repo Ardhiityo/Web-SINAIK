@@ -49,4 +49,14 @@ class IncomeRepository implements IncomeInterface
             Log::info($th->getMessage(), ['store income']);
         }
     }
+
+    public function getTotalIncomeLatest()
+    {
+        $user = Auth::user();
+
+        return Income::where('umkm_id', $user->umkm->id)
+            ->select('id', 'total_income', 'total_employee')
+            ->orderByDesc('id')
+            ->first();
+    }
 }

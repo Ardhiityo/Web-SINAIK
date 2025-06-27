@@ -5,7 +5,7 @@ namespace App\Http\Controllers\LinkProductive;
 use App\Models\Umkm;
 use App\Models\SectorCategoryUmkm;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Umkm\StoreSectorCategoryUmkmRequest;
+use App\Http\Requests\LinkProductive\StoreSectorCategoryUmkmRequest;
 use App\Services\Interfaces\LinkProductive\SectorCategoryInterface;
 use App\Http\Requests\LinkProductive\UpdateSectorCategoryUmkmRequest;
 use App\Services\Interfaces\LinkProductive\SectorCategoryUmkmInterface;

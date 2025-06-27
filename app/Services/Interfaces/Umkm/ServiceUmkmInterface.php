@@ -8,4 +8,5 @@ interface ServiceUmkmInterface
     public function registeredServiceUmkmCheck($serviceId);
     public function destroyServiceUmkm($serviceId);
     public function getServiceUmkmPaginate();
+    public function getTotalServiceUmkm();
 }

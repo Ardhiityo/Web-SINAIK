@@ -48,4 +48,11 @@ class SectorCategoryRepository implements SectorCategoryInterface
             ->where('sector_categories.id', $id)
             ->firstOrFail();
     }
+
+    public function getTotalSectorCategory()
+    {
+        $user = Auth::user();
+
+        return $user->umkm->sectorCategories()->count();
+    }
 }

@@ -24,10 +24,10 @@
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">
-                                    <h4>Total Layananmu</h4>
+                                    <h4>Total Layanan</h4>
                                 </div>
                                 <div class="card-body">
-                                    0
+                                    {{ $totalService }}
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                     <h4>Total Karyawan</h4>
                                 </div>
                                 <div class="card-body">
-                                    0
+                                    {{ $totalEmployee }}
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                     <h4>Total Pendapatan</h4>
                                 </div>
                                 <div class="card-body">
-                                    5
+                                    {{ $totalIncome }}
                                 </div>
                             </div>
                         </div>
@@ -70,15 +70,15 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <a href="">
                         <div class="card card-statistic-1">
-                            <div class="card-icon bg-danger">
+                            <div class="card-icon bg-info">
                                 <i class="fas fa-calendar-days"></i>
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">
-                                    <h4>Total Laporanmu</h4>
+                                    <h4>Total Sektor</h4>
                                 </div>
                                 <div class="card-body">
-                                    0
+                                    {{ $totalSector }}
                                 </div>
                             </div>
                         </div>

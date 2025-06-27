@@ -7,4 +7,5 @@ interface SectorCategoryInterface
     public function getSectorCategories();
     public function storeSectorCategory(array $data);
     public function getSectorCategoryById($id);
+    public function getTotalSectorCategory();
 }

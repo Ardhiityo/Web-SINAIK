@@ -25,7 +25,7 @@ class StoreSectorCategoryUmkmRequest extends FormRequest
     {
         return [
             'sector_category_id' => ['required', 'exists:sector_categories,id', new CheckStoreSectorCategoryUmkm(
-                $this->route('umkm')->id,
+                Auth::user()->umkm->id,
                 $this->sector_category_id
             )]
         ];
