@@ -106,26 +106,27 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled list-unstyled-border">
-                                <a href="" class="mb-4 text-decoration-none media">
-                                    <img class="mr-3 rounded-circle" width="50"
-                                        src="{{ asset('img/avatar/avatar-1.png') }}" alt="avatar">
-                                    <div class="media-body">
-                                        <div class="float-right text-primary">
-                                            12/12/2024
+                                @foreach ($services as $service)
+                                    <a href="" class="mb-4 text-decoration-none media">
+                                        <img class="mr-3 rounded-circle" width="50"
+                                            src="{{ asset('img/avatar/avatar-1.png') }}" alt="avatar">
+                                        <div class="media-body">
+                                            <div class="float-right text-primary">
+                                                {{ Carbon\Carbon::parse($service->created_at)->diffForHumans() }}
+                                            </div>
+                                            <div class="media-title">
+                                                {{ Str::limit(ucfirst(strtolower($service->title)), 15, '...') }}
+                                            </div>
+                                            <span class="text-small text-muted">
+                                                {{ Str::limit(ucfirst(strtolower($service->description)), 25, '...') }}
+                                            </span>
                                         </div>
-                                        <div class="media-title">
-                                            Arya
-                                        </div>
-                                        <span class="text-small text-muted">
-                                            Mulai sidang
-                                            pukul 08.00 wib, pada ruangan C.A
-                                        </span>
-                                    </div>
-                                </a>
+                                    </a>
+                                @endforeach
                             </ul>
                             <div class="pt-1 pb-1 text-center">
-                                <a href="" class="btn btn-primary btn-lg btn-round">
-                                    Semua jadwal
+                                <a href="{{ route('umkm.services.index') }}" class="btn btn-primary btn-lg btn-round">
+                                    Semua layanan
                                 </a>
                             </div>
                         </div>

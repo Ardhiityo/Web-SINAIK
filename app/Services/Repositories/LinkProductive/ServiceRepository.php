@@ -16,6 +16,14 @@ class ServiceRepository implements ServiceInterface
             ->paginate(10);
     }
 
+    public function getServicesLatest()
+    {
+        return Service::select('id', 'title', 'description', 'created_at')
+            ->orderByDesc('id')
+            ->limit(4)
+            ->get();
+    }
+
     public function storeService($data)
     {
         try {
