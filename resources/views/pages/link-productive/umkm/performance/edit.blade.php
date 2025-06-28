@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Performa</h2>
+                <h2 class="section-title">Data performa</h2>
                 <p class="section-lead">
-                    Informasi mengenai data performa umkm
+                    Edit data performa umkm
                 </p>
 
                 <div class="row">

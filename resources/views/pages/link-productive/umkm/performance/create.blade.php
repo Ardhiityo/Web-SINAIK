@@ -8,15 +8,15 @@
             <div class="section-header">
                 <h1>Laporan Pendapatan Bisnis</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Pelaporan Bisnis</a></div>
+                    <div class="breadcrumb-item active"><a href="#">Informasi UMKM</a></div>
                     <div class="breadcrumb-item"><a href="#">Laporan</a></div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Laporanmu</h2>
+                <h2 class="section-title">Data laporan</h2>
                 <p class="section-lead">
-                    Informasi mengenai data laporan bisnismu
+                    Buat data laporan bisnis
                 </p>
 
                 <div class="row">

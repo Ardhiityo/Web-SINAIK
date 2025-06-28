@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Data UMKM</h2>
+                <h2 class="section-title">Data umkm</h2>
                 <p class="section-lead">
-                    Informasi mengenai performa data UMKM
+                    Informasi mengenai performa data umkm
                 </p>
                 <div class="row">
                     <div class="col-12">
@@ -48,7 +48,7 @@
                                                 @foreach ($performances as $performance)
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $performance->date }}</td>
+                                                        <td>{{ $performance->date->translatedFormat('d F Y') }}</td>
                                                         <td>{{ $performance->total_income }}</td>
                                                         <td>{{ $performance->total_employee }}</td>
                                                         <td>
