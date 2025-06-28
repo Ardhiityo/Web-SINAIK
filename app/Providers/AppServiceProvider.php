@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Interfaces\HistoryInterface;
+use App\Services\Repositories\HistoryRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,6 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->singleton(HistoryInterface::class, HistoryRepository::class);
+
         // UMKM
         $this->app->singleton(\App\Services\Interfaces\Umkm\BiodataInterface::class, \App\Services\Repositories\Umkm\BiodataRepository::class);
         $this->app->singleton(\App\Services\Interfaces\Umkm\IncomeInterface::class, \App\Services\Repositories\Umkm\IncomeRepository::class);

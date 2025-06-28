@@ -19,7 +19,7 @@
                     <a href="">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-primary">
-                                <i class="far fa-user"></i>
+                                <i class="fas fa-list-ol"></i>
 
                             </div>
                             <div class="card-wrap">
@@ -37,7 +37,7 @@
                     <a href="">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-success">
-                                <i class="far fa-user"></i>
+                                <i class="fas fa-users"></i>
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">
@@ -54,7 +54,7 @@
                     <a href="">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-warning">
-                                <i class="far fa-building"></i>
+                                <i class="fas fa-dollar-sign"></i>
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">
@@ -71,7 +71,7 @@
                     <a href="">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-info">
-                                <i class="fas fa-calendar-days"></i>
+                                <i class="far fa-building"></i>
                             </div>
                             <div class="card-wrap">
                                 <div class="card-header">

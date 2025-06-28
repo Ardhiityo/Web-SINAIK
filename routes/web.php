@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\HistoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     // Dashboard UMKM
     Route::get('/', [App\Http\Controllers\Umkm\DashboardController::class, 'index'])->name('umkm.dashboard')
         ->middleware('role:umkm');
+
+    Route::delete('histories', [HistoryController::class, 'destroy'])->name('histories.destroy');
 
     // UMKM
     Route::middleware(['role:umkm'])->group(function () {

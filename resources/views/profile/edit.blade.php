@@ -26,10 +26,10 @@
                         </p>
                     </div>
                     <div class="justify-content-end col-12 col-md-6 d-flex">
-                        <form action="{{ route('history.destroy') }}" method="post">
+                        <form action="{{ route('histories.destroy') }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-warning">
+                            <button class="btn btn-danger">
                                 <i class="fa-solid fa-clock-rotate-left"></i>
                                 <i class="fa-solid fa-trash"></i>
                             </button>
@@ -54,28 +54,18 @@
                                 </div>
                             </div>
                             <div class="profile-widget-description">
-                                @role('visitor')
-                                    Sebagai Visitor, Anda memiliki akses untuk melihat informasi pada sistem. Visitor merupakan
+                                @role('umkm')
+                                    Sebagai UMKM, Anda memiliki akses untuk melihat informasi pada sistem. UMKM merupakan
                                     pengguna yang dapat mengakses dan melihat konten yang tersedia tanpa memiliki hak untuk
                                     melakukan perubahan pada sistem.
                                 @endrole
-                                @role('admin')
+                                @role('admin_lp')
                                     Sebagai Admin, Anda memiliki akses penuh untuk mengelola seluruh fitur pada sistem. Admin
                                     dapat
-                                    melakukan penambahan, pengubahan, dan penghapusan data seperti tahun akademik, proposal,
-                                    mahasiswa,
-                                    ruangan, dan dosen. Admin juga bertanggung jawab untuk memastikan data yang dikelola tetap
+                                    melakukan penambahan, pengubahan, dan penghapusan data. Admin juga bertanggung jawab untuk
+                                    memastikan data yang dikelola tetap
                                     akurat
                                     dan terorganisir dengan baik.
-                                @endrole
-                                @role('visitor')
-                                    <div class="d-flex justify-content-end">
-                                        <form action="{{ route('profile.destroy') }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger">Hapus Akun</button>
-                                        </form>
-                                    </div>
                                 @endrole
                             </div>
                         </div>
