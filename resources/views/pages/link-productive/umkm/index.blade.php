@@ -32,6 +32,7 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama UMKM</th>
                                                     <th scope="col">Owner</th>
+                                                    <th scope="col">Status Kelas</th>
                                                     <th scope="col">Biodata</th>
                                                     <th scope="col">Produk</th>
                                                     <th scope="col">Performa</th>
@@ -43,6 +44,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
+                                                        <td>Naik Kelas</td>
                                                         <td>
                                                             <a href="{{ route('link-productive.umkms.show', ['umkm' => $umkm->id]) }}"
                                                                 class="btn btn-success">

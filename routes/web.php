@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('certifications', App\Http\Controllers\LinkProductive\CertificationController::class);
             Route::resource('users', App\Http\Controllers\LinkProductive\UserController::class);
             Route::resource('umkms', App\Http\Controllers\LinkProductive\UmkmController::class);
+            Route::resource('umkm-statuses', App\Http\Controllers\LinkProductive\UmkmStatusController::class);
             Route::resource('supports', App\Http\Controllers\LinkProductive\SupportController::class);
             Route::get('/umkms/{umkm}/performance', [App\Http\Controllers\LinkProductive\UmkmController::class, 'performance'])->name('umkms.performance');
             Route::get('/umkms/{umkm}/performance/{income}/edit', [App\Http\Controllers\LinkProductive\IncomeController::class, 'edit'])->name('umkms.performance.edit');

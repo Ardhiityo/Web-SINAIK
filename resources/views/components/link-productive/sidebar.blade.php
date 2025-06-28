@@ -59,6 +59,12 @@
                     <span>Sertifikasi</span>
                 </a>
             </li>
+            <li class="nav-item {{ request()->routeIs('link-productive.umkm-statuses.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.umkm-statuses.index') }}" class="nav-link">
+                    <i class="fas fa-balance-scale-right"></i>
+                    <span>Status Kelas</span>
+                </a>
+            </li>
 
             <li class="menu-header">Manajemen Layanan</li>
             <li class="nav-item {{ request()->routeIs('link-productive.services.*') ? 'active' : '' }}">
