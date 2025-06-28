@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Skala bisnis</h2>
+                <h2 class="section-title">Data skala bisnis</h2>
                 <p class="section-lead">
                     Buat skala bisnis
                 </p>

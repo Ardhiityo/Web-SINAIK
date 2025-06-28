@@ -14,9 +14,9 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Kategori Layanan</h2>
+                <h2 class="section-title">Data kategori layanan</h2>
                 <p class="section-lead">
-                    Informasi mengenai data kategori layanan
+                    Edit data kategori layanan
                 </p>
 
                 <div class="row">

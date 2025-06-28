@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Pendaftar</h2>
+                <h2 class="section-title">Data pendaftar</h2>
                 <p class="section-lead">
                     Informasi mengenai semua data pendaftar layanan
                 </p>

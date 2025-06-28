@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Sertifikasi</h2>
+                <h2 class="section-title">Data sertifikasi</h2>
                 <p class="section-lead">
                     Buat sertifikasi umkm
                 </p>
