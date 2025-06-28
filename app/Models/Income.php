@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Umkm;
 use Illuminate\Database\Eloquent\Model;
 
 class Income extends Model

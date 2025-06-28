@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Umkm;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Umkm\CheckUpdateSectorCategoryUmkm;
 
@@ -13,7 +14,7 @@ class UpdateSectorCategoryUmkmRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Gate::allows('update', $this->route('sector_category_umkm'));
     }
 
     /**

@@ -48,6 +48,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $this->authorize('update', $product);
+
         return view('pages.umkm.product.edit', compact('product'));
     }
 
@@ -66,6 +68,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $this->authorize('delete', $product);
+
         Storage::disk('public')->delete($product->image);
 
         $product->delete();

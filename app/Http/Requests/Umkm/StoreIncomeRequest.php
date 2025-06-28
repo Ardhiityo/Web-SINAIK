@@ -22,7 +22,7 @@ class StoreIncomeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => 'required|date|unique:incomes,date',
+            'date' => 'required|date',
             'total_income' => 'required|numeric',
             'total_employee' => 'required|integer|min:0',
         ];

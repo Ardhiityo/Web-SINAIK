@@ -77,6 +77,8 @@ class BiodataController extends Controller
      */
     public function destroy(Biodata $biodata)
     {
+        $this->authorize('delete', $biodata);
+
         $biodata->delete();
 
         return redirect()->route('umkm.biodatas.index')->withSuccess('Biodata berhasil dihapus');

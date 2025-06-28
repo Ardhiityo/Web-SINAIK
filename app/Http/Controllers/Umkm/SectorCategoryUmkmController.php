@@ -52,6 +52,8 @@ class SectorCategoryUmkmController extends Controller
      */
     public function edit(SectorCategoryUmkm $sectorCategoryUmkm)
     {
+        $this->authorize('update', $sectorCategoryUmkm);
+
         $sectorCategoryLists = $this->sectorCategoryLinkProductiveRepository->getSectorCategories();
 
         return view('pages.umkm.sectory-category.edit', compact('sectorCategoryUmkm', 'sectorCategoryLists'));
@@ -73,6 +75,8 @@ class SectorCategoryUmkmController extends Controller
      */
     public function destroy(SectorCategoryUmkm $sectorCategoryUmkm)
     {
+        $this->authorize('delete', $sectorCategoryUmkm);
+
         $sectorCategoryUmkm->delete();
 
         return redirect()->route('umkm.sector-category-umkms.index')

@@ -39,7 +39,7 @@ class IncomeController extends Controller
     {
         $this->incomeRepository->storeIncome($request->validated());
 
-        return redirect()->route('umkm.incomes.index')->with('success', 'Pendapatan berhasil disimpan');
+        return redirect()->route('umkm.incomes.index')->with('success', 'Berhasil disimpan');
     }
 
     /**
@@ -47,6 +47,8 @@ class IncomeController extends Controller
      */
     public function edit(Income $income)
     {
+        $this->authorize('update', $income);
+
         return view('pages.umkm.income.edit', compact('income'));
     }
 
@@ -57,7 +59,7 @@ class IncomeController extends Controller
     {
         $income->update($request->validated());
 
-        return redirect()->route('umkm.incomes.index')->with('success', 'Pendapatan berhasil diupdate');
+        return redirect()->route('umkm.incomes.index')->with('success', 'Berhasil diupdate');
     }
 
     /**
@@ -65,8 +67,10 @@ class IncomeController extends Controller
      */
     public function destroy(Income $income)
     {
+        $this->authorize('delete', $income);
+
         $income->delete();
 
-        return redirect()->route('umkm.incomes.index')->with('success', 'Pendapatan berhasil dihapus');
+        return redirect()->route('umkm.incomes.index')->with('success', 'Berhasil dihapus');
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Umkm;
 
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateIncomeRequest extends FormRequest
@@ -13,7 +13,7 @@ class UpdateIncomeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Gate::allows('update', $this->route('income'));
     }
 
     /**
