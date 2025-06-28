@@ -16,6 +16,23 @@ class ServiceRepository implements ServiceInterface
             ->paginate(10);
     }
 
+    public function getServicesByKeyword($keyword)
+    {
+        $services = Service::whereFullText('title', $keyword)
+            ->with('serviceCategory:id,name')
+            ->select('id', 'title', 'description', 'available_date', 'end_date', 'service_category_id')
+            ->paginate(10);
+
+        if ($services->isEmpty()) {
+            return Service::whereLike('title', $keyword)
+                ->with('serviceCategory:id,name')
+                ->select('id', 'title', 'description', 'available_date', 'end_date', 'service_category_id')
+                ->paginate(10);
+        }
+
+        return $services;
+    }
+
     public function getServicesLatest()
     {
         return Service::select('id', 'title', 'description', 'created_at')

@@ -1,6 +1,6 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
-    <form class="mr-auto form-inline" action="{{ route('services.index') }}" method="GET">
+    <form class="mr-auto form-inline" action="{{ route('umkm.services.index') }}" method="GET">
         <ul class="mr-3 navbar-nav">
             <li>
                 <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg">

@@ -20,8 +20,8 @@ class DashboardService
     {
         $totalService = $this->serviceUmkmRepository->getTotalServiceUmkm();
         $performance = $this->incomeRepository->getTotalIncomeLatestFirst();
-        $totalEmployee = $performance->total_employee;
-        $totalIncome = $performance->total_income;
+        $totalEmployee = $performance->total_employee ?? 0;
+        $totalIncome = $performance->total_income ?? 0;
         $totalSector = $this->sectorCategoryRepoistory->getTotalSectorCategory();
         $services = $this->serviceRepository->getServicesLatest();
 

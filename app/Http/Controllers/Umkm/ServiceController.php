@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Models\Service;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Umkm\StoreServiceRequest;
+use App\Services\Interfaces\HistoryInterface;
 use App\Services\Interfaces\LinkProductive\ServiceInterface;
 use App\Services\Interfaces\Umkm\ServiceUmkmInterface;
 
@@ -12,12 +14,18 @@ class ServiceController extends Controller
 {
     public function __construct(
         private ServiceInterface $serviceRepository,
-        private ServiceUmkmInterface $serviceUmkmRepository
+        private ServiceUmkmInterface $serviceUmkmRepository,
+        private HistoryInterface $historyRepository
     ) {}
 
-    public function index()
+    public function index(Request $request)
     {
-        $services = $this->serviceRepository->getServicesPaginate();
+        if ($keyword = $request->query('keyword')) {
+            $this->historyRepository->storeHistory($keyword);
+            $services = $this->serviceRepository->getServicesByKeyword($keyword);
+        } else {
+            $services = $this->serviceRepository->getServicesPaginate();
+        }
 
         return view('pages.umkm.service.index', compact('services'));
     }

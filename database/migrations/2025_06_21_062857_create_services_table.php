@@ -21,6 +21,8 @@ return new class extends Migration
                 ->constrained('service_categories')
                 ->cascadeOnDelete();
             $table->timestamps();
+
+            $table->fullText('title');
         });
     }
 

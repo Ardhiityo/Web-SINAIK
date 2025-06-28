@@ -1,6 +1,6 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
-    <form class="mr-auto form-inline" action="" method="GET">
+    <form class="mr-auto form-inline" action="{{ route('link-productive.services.index') }}" method="GET">
         <ul class="mr-3 navbar-nav">
             <li>
                 <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg">
@@ -14,7 +14,7 @@
             </li>
         </ul>
         <div class="search-element">
-            <input class="form-control" type="search" name="nim" placeholder="Cari layanan disini..."
+            <input class="form-control" type="search" name="keyword" placeholder="Cari layanan disini..."
                 aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
@@ -25,11 +25,11 @@
                     </div>
                     @foreach ($histories as $history)
                         <div class="search-item">
-                            <a href="{{ '' }}">
+                            <a href="{{ route('link-productive.services.index', ['keyword' => $history->keyword]) }}">
                                 <div class="mr-3 text-white search-icon bg-primary">
                                     <i class="fas fa-clock-rotate-left"></i>
                                 </div>
-                                Abc
+                                {{ $history->keyword }}
                             </a>
                         </div>
                     @endforeach
