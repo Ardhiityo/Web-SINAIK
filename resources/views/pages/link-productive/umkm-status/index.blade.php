@@ -23,16 +23,13 @@
                     <div class="col-12">
                         <div class="card">
 
-                            @if ($umkmStatuses->isEmpty())
-                                <div class="card-header">
-                                    <h4>
-                                        <a href="{{ route('link-productive.umkm-statuses.create') }}"
-                                            class="btn btn-primary">
-                                            Buat Status Kelas
-                                        </a>
-                                    </h4>
-                                </div>
-                            @endif
+                            <div class="card-header">
+                                <h4>
+                                    <a href="{{ route('link-productive.umkm-statuses.create') }}" class="btn btn-primary">
+                                        Buat Status Kelas
+                                    </a>
+                                </h4>
+                            </div>
 
                             <div class="card-body">
                                 @if ($umkmStatuses->isEmpty())

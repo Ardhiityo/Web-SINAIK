@@ -9,9 +9,14 @@ use App\Services\Interfaces\LinkProductive\UmkmStatusInterface;
 
 class UmkmStatusRepository implements UmkmStatusInterface
 {
-    public function getUmkmStatuses()
+    public function getUmkmStatusesPaginate()
     {
         return UmkmStatus::select('id', 'name')->paginate(10);
+    }
+
+    public function getUmkmStatuses()
+    {
+        return UmkmStatus::select('id', 'name')->get();
     }
 
     public function storeUmkmStatus($data)

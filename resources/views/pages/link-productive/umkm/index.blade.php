@@ -44,7 +44,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
                                                         <td>{{ $umkm->user->name }}</td>
-                                                        <td>Naik Kelas</td>
+                                                        <td>{{ $umkm->umkmStatus->name ?? '-' }}</td>
                                                         <td>
                                                             <a href="{{ route('link-productive.umkms.show', ['umkm' => $umkm->id]) }}"
                                                                 class="btn btn-success">

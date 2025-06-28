@@ -20,7 +20,10 @@
                 </p>
                 <div class="row">
                     <div class="my-3 col-12 d-flex justify-content-end">
-                        <a href="" class="mr-2 btn btn-warning">Status Kelas</a>
+                        <a href="{{ route('link-productive.umkms.umkm-status.edit', [
+                            'umkm' => $umkm->id,
+                        ]) }}"
+                            class="mr-2 btn btn-warning">Status Kelas</a>
                     </div>
                     <div class="col-12">
                         <div class="card">

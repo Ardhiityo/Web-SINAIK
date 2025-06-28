@@ -38,7 +38,7 @@ class UmkmRepository implements UmkmInterface
     {
         return Umkm::with([
             'user' => fn(Builder $query) => $query->select('id', 'name'),
-            'biodata' => fn(Builder $query) => $query->select('id', 'umkm_id', 'business_name')
+            'biodata' => fn(Builder $query) => $query->select('id', 'umkm_id', 'business_name'),
         ])->select('id', 'user_id')->get();
     }
 
@@ -47,8 +47,9 @@ class UmkmRepository implements UmkmInterface
         return Umkm::with([
             'user:id,name',
             'biodata:id,business_name,umkm_id',
-            'sectorCategories:id,name'
-        ])->select('id', 'user_id', 'is_verified')
+            'sectorCategories:id,name',
+            'umkmStatus:id,name'
+        ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
             ->where('is_verified', true)
             ->latest()->paginate(10);
     }
@@ -57,6 +58,7 @@ class UmkmRepository implements UmkmInterface
     {
         return Umkm::with([
             'user' => fn(Builder $query) => $query->select('id', 'name'),
+            'umkmStatus' => fn(Builder $query) => $query->select('id', 'name'),
             'biodata' => fn(Builder $query) => $query->with('businessScale:id,name', 'certification:id,name')
                 ->select(
                     'id',
@@ -71,7 +73,7 @@ class UmkmRepository implements UmkmInterface
                     'business_scale_id',
                     'certification_id'
                 )
-        ])->select('id', 'user_id', 'is_verified')
+        ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
             ->findOrFail($id);
     }
 

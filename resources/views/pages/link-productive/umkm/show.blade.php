@@ -43,12 +43,14 @@
                                                 <tr class="text-nowrap">
                                                     <th scope="col">Nama Owner</th>
                                                     <th scope="col">Telepon</th>
+                                                    <th scope="col">Status Kelas</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr class="text-nowrap">
                                                     <td>{{ $umkm->user->name }}</td>
                                                     <td>{{ $umkm->biodata->phone_number ?? '-' }}</td>
+                                                    <td>{{ $umkm->umkmStatus->name ?? '-' }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

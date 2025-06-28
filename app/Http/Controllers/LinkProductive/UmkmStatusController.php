@@ -14,7 +14,7 @@ class UmkmStatusController extends Controller
 
     public function index()
     {
-        $umkmStatuses = $this->umkmStatusRepository->getUmkmStatuses();
+        $umkmStatuses = $this->umkmStatusRepository->getUmkmStatusesPaginate();
 
         return view('pages.link-productive.umkm-status.index', compact('umkmStatuses'));
     }

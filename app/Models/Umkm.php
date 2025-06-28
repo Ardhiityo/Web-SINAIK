@@ -11,12 +11,18 @@ class Umkm extends Model
     ];
 
     protected $fillable = [
-        'biodata_id'
+        'biodata_id',
+        'umkm_status_id'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function umkmStatus()
+    {
+        return $this->belongsTo(UmkmStatus::class);
     }
 
     public function biodata()

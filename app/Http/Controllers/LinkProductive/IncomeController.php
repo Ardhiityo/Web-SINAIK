@@ -7,12 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Umkm\StoreIncomeRequest;
 use App\Models\Income;
 use App\Models\Umkm;
+use App\Services\Interfaces\LinkProductive\UmkmStatusInterface;
 use App\Services\Interfaces\Umkm\IncomeInterface;
+use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
     public function __construct(
-        private IncomeInterface $incomeRepository
+        private IncomeInterface $incomeRepository,
+        private UmkmStatusInterface $umkmStatusRepository
     ) {}
 
     public function create(Umkm $umkm)
@@ -44,5 +47,21 @@ class IncomeController extends Controller
         $income->delete();
 
         return redirect()->route('link-productive.umkms.performance', ['umkm' => $umkm->id])->with('success', 'Berhasil dihapus');
+    }
+
+    public function umkmStatusEdit(Umkm $umkm)
+    {
+        $umkmStatatuses = $this->umkmStatusRepository->getUmkmStatuses();
+
+        $umkm->load('biodata:id,business_name,umkm_id');
+
+        return view('pages.link-productive.umkm.umkm-status.edit', compact('umkm', 'umkmStatatuses'));
+    }
+
+    public function umkmStatusUpdate(Request $request, Umkm $umkm)
+    {
+        $umkm->update($request->only('umkm_status_id'));
+
+        return redirect()->route('link-productive.umkms.performance', ['umkm' => $umkm->id])->with('success', 'Berhasil diupdate');
     }
 }

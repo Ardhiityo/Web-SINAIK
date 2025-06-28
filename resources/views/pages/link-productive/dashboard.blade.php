@@ -118,7 +118,7 @@
                         <div class="card-body">
                             <ul class="list-unstyled list-unstyled-border">
                                 @foreach ($services as $service)
-                                    <a href="{{ route('link-productive.services.show', ['service' => $service->id]) }}"
+                                    <a href="{{ route('link-productive.services.edit', ['service' => $service->id]) }}"
                                         class="mb-4 text-decoration-none media">
                                         <img class="mr-3 rounded-circle" width="50"
                                             src="{{ asset('img/avatar/avatar-1.png') }}" alt="avatar">
