@@ -36,7 +36,12 @@
             @include('sweetalert::alert')
 
             <!-- Header -->
-            <x-header />
+            @if (Auth::user()->hasRole('umkm'))
+                <x-umkm.header />
+            @else
+                <x-link-productive.header />
+            @endif
+            <!-- Header -->
 
             <!-- Sidebar -->
             @role('umkm')
@@ -46,6 +51,7 @@
             @role('admin_lp')
                 <x-link-productive.sidebar />
             @endrole
+            <!-- Sidebar -->
 
             <!-- Content -->
             @yield('main')

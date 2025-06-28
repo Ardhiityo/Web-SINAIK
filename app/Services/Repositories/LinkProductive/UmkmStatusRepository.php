@@ -27,7 +27,7 @@ class UmkmStatusRepository implements UmkmStatusInterface
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            Log::info($th->getMessage());
+            Log::info($th->getMessage(), ['store umkm status']);
         }
     }
 }

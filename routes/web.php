@@ -8,6 +8,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\Umkm\DashboardController::class, 'index'])->name('umkm.dashboard')
         ->middleware('role:umkm');
 
+    Route::post('histories', [HistoryController::class, 'store'])->name('histories.store');
     Route::delete('histories', [HistoryController::class, 'destroy'])->name('histories.destroy');
 
     // UMKM
