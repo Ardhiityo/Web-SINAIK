@@ -14,16 +14,18 @@ Route::middleware('auth')->group(function () {
     // UMKM
     Route::middleware(['role:umkm'])->group(function () {
         Route::prefix('umkm')->name('umkm.')->group(function () {
-            Route::get('verifications', [App\Http\Controllers\Umkm\VerificationController::class, 'index'])->name('verifications.index');
-            Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
-            Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
-            Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
-            Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
-            Route::resource('services', App\Http\Controllers\Umkm\ServiceController::class);
-            Route::resource('service-umkms', App\Http\Controllers\Umkm\ServiceUmkmController::class);
-            Route::resource('umkms', App\Http\Controllers\Umkm\UmkmController::class);
-            Route::get('/umkms/{umkm}/product', [App\Http\Controllers\Umkm\UmkmController::class, 'product'])->name('umkms.product');
-            Route::get('/umkms/{umkm}/performance', [App\Http\Controllers\Umkm\UmkmController::class, 'performance'])->name('umkms.performance');
+            Route::get('verifications', action: [App\Http\Controllers\Umkm\VerificationController::class, 'index'])->name('verifications.index');
+            Route::middleware('is_verified')->group(function () {
+                Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
+                Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
+                Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
+                Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
+                Route::resource('services', App\Http\Controllers\Umkm\ServiceController::class)->except(['edit', 'update', 'create']);
+                Route::resource('service-umkms', App\Http\Controllers\Umkm\ServiceUmkmController::class);
+                Route::resource('umkms', App\Http\Controllers\Umkm\UmkmController::class);
+                Route::get('/umkms/{umkm}/product', [App\Http\Controllers\Umkm\UmkmController::class, 'product'])->name('umkms.product');
+                Route::get('/umkms/{umkm}/performance', [App\Http\Controllers\Umkm\UmkmController::class, 'performance'])->name('umkms.performance');
+            });
         });
     });
 

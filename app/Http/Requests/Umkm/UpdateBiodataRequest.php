@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Umkm;
 
+use App\Models\Biodata;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateBiodataRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class UpdateBiodataRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Gate::allows('update', $this->route('biodata'));
     }
 
     /**

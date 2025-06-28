@@ -6,9 +6,9 @@ use App\Models\Biodata;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Umkm\StoreBiodataRequest;
 use App\Http\Requests\Umkm\UpdateBiodataRequest;
+use App\Services\Interfaces\Umkm\BiodataInterface;
 use App\Services\Interfaces\LinkProductive\BusinessScaleInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
-use App\Services\Interfaces\Umkm\BiodataInterface;
 
 class BiodataController extends Controller
 {
@@ -54,6 +54,8 @@ class BiodataController extends Controller
      */
     public function edit(Biodata $biodata)
     {
+        $this->authorize('update', $biodata);
+
         $businessScales = $this->businessScaleRepository->getBusinessScales();
         $certifications = $this->certificationRepository->getCertifications();
 

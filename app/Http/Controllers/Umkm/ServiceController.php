@@ -32,7 +32,7 @@ class ServiceController extends Controller
 
     public function store(StoreServiceRequest $request)
     {
-        $serviceUmkm = $this->serviceUmkmRepository->storeServiceUmkm($request->validated());
+        $this->serviceUmkmRepository->storeServiceUmkm($request->validated());
 
         return redirect()->route('umkm.service-umkms.index')->withSuccess('Pendaftaran berhasil');
     }
