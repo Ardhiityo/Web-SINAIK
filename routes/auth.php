@@ -21,6 +21,12 @@ Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
+    Route::get('login/astra', [AuthenticatedSessionController::class, 'createAstra'])
+        ->name('login.astra');
+
+    Route::get('login/ico', [AuthenticatedSessionController::class, 'createIco'])
+        ->name('login.ico');
+
     Route::post('login', [AuthenticatedSessionController::class, 'store'])
         ->name('login.store');
 

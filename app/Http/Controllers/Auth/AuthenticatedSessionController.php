@@ -19,6 +19,16 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    public function createIco(): View
+    {
+        return view('auth.ico.login');
+    }
+
+    public function createAstra(): View
+    {
+        return view('auth.astra.login');
+    }
+
     /**
      * Handle an incoming authentication request.
      */

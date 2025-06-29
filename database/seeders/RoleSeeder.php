@@ -26,6 +26,10 @@ class RoleSeeder extends Seeder
         Role::create([
             'name' => 'admin_ico'
         ]);
+        // Astra
+        Role::create([
+            'name' => 'admin_astra'
+        ]);
 
         User::create([
             'name' => 'Link Productive',
