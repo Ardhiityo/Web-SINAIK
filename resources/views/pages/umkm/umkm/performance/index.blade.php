@@ -39,7 +39,7 @@
                                                 @foreach ($performances as $performance)
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $performance->date }}</td>
+                                                        <td>{{ $performance->date->translatedFormat('d F Y') }}</td>
                                                         <td>{{ $performance->total_income }}</td>
                                                         <td>{{ $performance->total_employee }}</td>
                                                     </tr>

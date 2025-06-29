@@ -6,22 +6,30 @@ use App\Models\Service;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreServiceRequest;
 use App\Http\Requests\LinkProductive\UpdateServiceRequest;
+use App\Services\Interfaces\HistoryInterface;
 use App\Services\Interfaces\LinkProductive\ServiceCategoryInterface;
 use App\Services\Interfaces\LinkProductive\ServiceInterface;
+use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
     public function __construct(
         private ServiceInterface $serviceRepository,
-        private ServiceCategoryInterface $serviceCategoryRepository
+        private ServiceCategoryInterface $serviceCategoryRepository,
+        private HistoryInterface $historyRepository
     ) {}
 
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $services = $this->serviceRepository->getServicesPaginate();
+        if ($keyword = $request->query('keyword')) {
+            $this->historyRepository->storeHistory($keyword);
+            $services = $this->serviceRepository->getServicesByKeyword($keyword);
+        } else {
+            $services = $this->serviceRepository->getServicesPaginate();
+        }
 
         return view('pages.link-productive.service.index', compact('services'));
     }

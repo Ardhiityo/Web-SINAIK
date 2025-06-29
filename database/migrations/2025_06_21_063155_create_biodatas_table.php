@@ -24,6 +24,10 @@ return new class extends Migration
             $table->foreignId('certification_id')->nullable()->constrained('certifications')->nullOnDelete();
             $table->foreignId('umkm_id')->constrained('umkms')->cascadeOnDelete();
             $table->timestamps();
+
+            $table->fullText('city');
+            $table->fullText('province');
+            $table->fullText('business_name');
         });
     }
 

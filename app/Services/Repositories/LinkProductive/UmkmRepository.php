@@ -19,6 +19,140 @@ class UmkmRepository implements UmkmInterface
             'biodata:id,business_name,umkm_id'
         ])->select('id', 'user_id', 'is_verified')->latest()->paginate(10);
     }
+    public function getUmkmsByKeyword($category, $keyword)
+    {
+        if ($category === 'owner') {
+            $umkms = Umkm::with([
+                'user:id,name',
+                'biodata:id,business_name,umkm_id',
+                'sectorCategories:id,name',
+                'umkmStatus:id,name'
+            ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                ->where('is_verified', true)
+                ->whereHas('user', function ($query) use ($keyword) {
+                    $query->whereFullText('name', $keyword);
+                })
+                ->latest()->paginate(10);
+            if ($umkms->isEmpty()) {
+                $umkms = Umkm::with([
+                    'user:id,name',
+                    'biodata:id,business_name,umkm_id',
+                    'sectorCategories:id,name',
+                    'umkmStatus:id,name'
+                ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                    ->where('is_verified', true)
+                    ->whereHas('user', function ($query) use ($keyword) {
+                        $query->whereLike('name', $keyword);
+                    })
+                    ->latest()->paginate(10);
+            }
+            return $umkms;
+        } else if ($category === 'umkm') {
+            $umkms = Umkm::with([
+                'user:id,name',
+                'biodata:id,business_name,umkm_id',
+                'sectorCategories:id,name',
+                'umkmStatus:id,name'
+            ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                ->where('is_verified', true)
+                ->whereHas('biodata', function ($query) use ($keyword) {
+                    $query->whereFullText('business_name', $keyword);
+                })
+                ->latest()->paginate(10);
+            if ($umkms->isEmpty()) {
+                $umkms = Umkm::with([
+                    'user:id,name',
+                    'biodata:id,business_name,umkm_id',
+                    'sectorCategories:id,name',
+                    'umkmStatus:id,name'
+                ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                    ->where('is_verified', true)
+                    ->whereHas('biodata', function ($query) use ($keyword) {
+                        $query->whereLike('business_name', $keyword);
+                    })
+                    ->latest()->paginate(10);
+            }
+            return $umkms;
+        } else if ($category === 'umkm_status') {
+            $umkms = Umkm::with([
+                'user:id,name',
+                'biodata:id,business_name,umkm_id',
+                'sectorCategories:id,name',
+                'umkmStatus:id,name'
+            ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                ->where('is_verified', true)
+                ->whereHas('umkmStatus', function ($query) use ($keyword) {
+                    $query->whereFullText('name', $keyword);
+                })
+                ->latest()->paginate(10);
+            if ($umkms->isEmpty()) {
+                $umkms = Umkm::with([
+                    'user:id,name',
+                    'biodata:id,business_name,umkm_id',
+                    'sectorCategories:id,name',
+                    'umkmStatus:id,name'
+                ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                    ->where('is_verified', true)
+                    ->whereHas('umkmStatus', function ($query) use ($keyword) {
+                        $query->whereLike('name', $keyword);
+                    })
+                    ->latest()->paginate(10);
+            }
+            return $umkms;
+        } else if ($category === 'province') {
+            $umkms = Umkm::with([
+                'user:id,name',
+                'biodata:id,business_name,umkm_id',
+                'sectorCategories:id,name',
+                'umkmStatus:id,name'
+            ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                ->where('is_verified', true)
+                ->whereHas('biodata', function ($query) use ($keyword) {
+                    $query->whereFullText('province', $keyword);
+                })
+                ->latest()->paginate(10);
+            if ($umkms->isEmpty()) {
+                $umkms = Umkm::with([
+                    'user:id,name',
+                    'biodata:id,business_name,umkm_id',
+                    'sectorCategories:id,name',
+                    'umkmStatus:id,name'
+                ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                    ->where('is_verified', true)
+                    ->whereHas('biodata', function ($query) use ($keyword) {
+                        $query->whereLike('province', $keyword);
+                    })
+                    ->latest()->paginate(10);
+            }
+            return $umkms;
+        } else if ($category === 'city') {
+            $umkms = Umkm::with([
+                'user:id,name',
+                'biodata:id,business_name,umkm_id',
+                'sectorCategories:id,name',
+                'umkmStatus:id,name'
+            ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                ->where('is_verified', true)
+                ->whereHas('biodata', function ($query) use ($keyword) {
+                    $query->whereFullText('city', $keyword);
+                })
+                ->latest()->paginate(10);
+            if ($umkms->isEmpty()) {
+                $umkms = Umkm::with([
+                    'user:id,name',
+                    'biodata:id,business_name,umkm_id',
+                    'sectorCategories:id,name',
+                    'umkmStatus:id,name'
+                ])->select('id', 'user_id', 'is_verified', 'umkm_status_id')
+                    ->where('is_verified', true)
+                    ->whereHas('biodata', function ($query) use ($keyword) {
+                        $query->whereLike('city', $keyword);
+                    })
+                    ->latest()->paginate(10);
+            }
+            return $umkms;
+        }
+    }
 
     public function updateVerification($id)
     {

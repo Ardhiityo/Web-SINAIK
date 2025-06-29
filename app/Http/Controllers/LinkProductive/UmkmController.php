@@ -14,9 +14,15 @@ class UmkmController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $umkms = $this->umkmRepository->getUmkmsPaginate();
+        if ($request->query('category') && $request->query('keyword')) {
+            $category = $request->query('category');
+            $keyword = $request->query('keyword');
+            $umkms = $this->umkmRepository->getUmkmsByKeyword($category, $keyword);
+        } else {
+            $umkms = $this->umkmRepository->getUmkmsPaginate();
+        }
 
         return view('pages.link-productive.umkm.index', compact('umkms'));
     }

@@ -25,12 +25,54 @@
                                 @if ($umkms->isEmpty())
                                     <p>Belum ada data umkm...</p>
                                 @else
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <div class="form-group">
+                                                <div class="mb-3 input-group">
+                                                    <form action="{{ route('link-productive.umkms.index') }}" method="get"
+                                                        class="d-flex">
+                                                        <select id="category" required name="category"
+                                                            class="form-control">
+                                                            <option selected value="">Kategori...</option>
+                                                            <option value="owner"
+                                                                {{ request('category') === 'owner' ? 'selected' : '' }}>
+                                                                Owner
+                                                            </option>
+                                                            <option value="umkm"
+                                                                {{ request('category') === 'umkm' ? 'selected' : '' }}>
+                                                                Umkm
+                                                            </option>
+                                                            <option value="umkm_status"
+                                                                {{ request('category') === 'umkm_status' ? 'selected' : '' }}>
+                                                                Status Kelas
+                                                            </option>
+                                                            <option value="province"
+                                                                {{ request('category') === 'province' ? 'selected' : '' }}>
+                                                                Provinsi
+                                                            </option>
+                                                            <option value="city"
+                                                                {{ request('category') === 'city' ? 'selected' : '' }}>
+                                                                City
+                                                            </option>
+                                                        </select>
+                                                        <input type="text" class="form-control" placeholder="Keyword..."
+                                                            name="keyword" value="{{ request('keyword') }}">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-primary" type="submit">
+                                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="overflow-auto">
                                         <table class="table text-center table-bordered">
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Nama UMKM</th>
+                                                    <th scope="col">UMKM</th>
                                                     <th scope="col">Owner</th>
                                                     <th scope="col">Status Kelas</th>
                                                     <th scope="col">Biodata</th>

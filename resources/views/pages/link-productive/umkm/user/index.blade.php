@@ -39,7 +39,7 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Owner</th>
                                                     <th scope="col">Email</th>
-                                                    <th scope="col">Status Verifikasi</th>
+                                                    <th scope="col">Status Terverifikasi</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>

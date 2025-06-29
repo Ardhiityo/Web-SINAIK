@@ -54,7 +54,7 @@
                                                     <label for="umkm">UMKM</label>
                                                     <input required type="text" readonly class="form-control"
                                                         id="umkm" name="umkm"
-                                                        value="{{ $umkm->biodata->business_name }}">
+                                                        value="{{ $umkm->biodata->business_name ?? '-' }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="umkm_status_id">Status Kelas</label>
