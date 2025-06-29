@@ -14,21 +14,25 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Layanan</h2>
+                <h2 class="section-title">Data Layanan</h2>
                 <p class="section-lead">
                     Informasi mengenai data layanan {{ $service->title }}, dengan
                     kategori {{ $service->serviceCategory->name }}
                 </p>
+
                 <div class="mt-5 row">
-                    @if (!$registeredServiceCheck)
-                        <div class="mb-4 col-12 d-flex justify-content-end">
+                    <div class="mb-4 col-12 d-flex justify-content-between">
+                        <a href="{{ route('umkm.services.index') }}" class="btn btn-primary">
+                            Kembali
+                        </a>
+                        @if (!$registeredServiceCheck)
                             <form action="{{ route('umkm.services.store') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="service_id" value="{{ $service->id }}">
                                 <button class="btn btn-success">Daftar</button>
                             </form>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">

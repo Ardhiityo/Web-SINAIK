@@ -31,4 +31,11 @@ class ServiceUmkmController extends Controller
 
         return redirect()->route('link-productive.service-umkms.index')->with('success', 'Berhasil diubah');
     }
+
+    public function destroy(ServiceUmkm $serviceUmkm)
+    {
+        $serviceUmkm->delete();
+
+        return redirect()->route('link-productive.service-umkms.index')->with('success', 'Berhasil dihapus');
+    }
 }

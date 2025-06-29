@@ -18,7 +18,13 @@
                 <p class="section-lead">
                     Informasi mengenai data layanan
                 </p>
-
+                <div class="row">
+                    <div class="my-4 col-6">
+                        <a href="{{ route('link-productive.services.index') }}" class="btn btn-primary">
+                            Kembali
+                        </a>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -30,7 +36,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="card-header">
-                                            <h4>Buat Data</h4>
+                                            <h4>Edit Data</h4>
                                         </div>
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
