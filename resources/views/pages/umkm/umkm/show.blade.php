@@ -18,6 +18,13 @@
                 <p class="section-lead">
                     Informasi mengenai biodata UMKM
                 </p>
+                <div class="row">
+                    <div class="my-4 col-6">
+                        <a href="{{ route('umkm.umkms.index') }}" class="btn btn-primary">
+                            Kembali
+                        </a>
+                    </div>
+                </div>
                 @if ($umkm->biodata->id ?? false)
                     <div class="row">
                         <div class="col-12">

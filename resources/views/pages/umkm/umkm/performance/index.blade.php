@@ -19,6 +19,13 @@
                     Informasi mengenai performa data UMKM
                 </p>
                 <div class="row">
+                    <div class="my-4 col-6">
+                        <a href="{{ route('umkm.umkms.index') }}" class="btn btn-primary">
+                            Kembali
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
