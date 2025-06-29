@@ -18,6 +18,7 @@
                 <p class="section-lead">
                     Informasi mengenai data akun umkm
                 </p>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
