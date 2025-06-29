@@ -14,11 +14,17 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">{{ $umkm->biodata->business_name }}</h2>
+                <h2 class="section-title">Data produk {{ $umkm->biodata->business_name ?? '' }}</h2>
                 <p class="section-lead">
-                    Buat data produk UMKM {{ $umkm->biodata->business_name }}
+                    Buat data produk UMKM {{ $umkm->biodata->business_name ?? '' }}
                 </p>
-
+                <div class="row">
+                    <div class="my-4 col-6">
+                        <a href="{{ route('link-productive.umkms.index') }}" class="btn btn-primary">
+                            Kembali
+                        </a>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">

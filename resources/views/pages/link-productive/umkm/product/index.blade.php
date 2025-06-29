@@ -18,8 +18,14 @@
                 <p class="section-lead">
                     Informasi mengenai data produk UMKM {{ $umkm->biodata->business_name ?? '' }}
                 </p>
-
-                <div class="mt-5 row">
+                <div class="row">
+                    <div class="my-4 col-6">
+                        <a href="{{ route('link-productive.umkms.index') }}" class="btn btn-primary">
+                            Kembali
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-12">
                         <div class="card">
 

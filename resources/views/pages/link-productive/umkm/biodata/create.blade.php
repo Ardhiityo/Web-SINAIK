@@ -18,7 +18,6 @@
                 <p class="section-lead">
                     Informasi mengenai data biodatamu bisnis
                 </p>
-
                 <div class="row">
                     <div class="col-12">
                         <div class="card">

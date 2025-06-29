@@ -18,8 +18,12 @@
                 <p class="section-lead">
                     Informasi mengenai performa data umkm
                 </p>
+
                 <div class="row">
-                    <div class="my-3 col-12 d-flex justify-content-end">
+                    <div class="my-4 col-12 d-flex justify-content-between">
+                        <a href="{{ route('link-productive.umkms.index') }}" class="btn btn-primary">
+                            Kembali
+                        </a>
                         <a href="{{ route('link-productive.umkms.umkm-status.edit', [
                             'umkm' => $umkm->id,
                         ]) }}"
