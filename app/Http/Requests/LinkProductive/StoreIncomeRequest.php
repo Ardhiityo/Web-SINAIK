@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Requests\Umkm;
+namespace App\Http\Requests\LinkProductive;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
-use App\Rules\Umkm\CheckUpdateIncome;
+use App\Rules\Umkm\CheckStoreIncome;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateIncomeRequest extends FormRequest
+class StoreIncomeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Gate::allows('update', $this->route('income'));
+        return true;
     }
 
     /**
@@ -25,12 +23,8 @@ class UpdateIncomeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => [
-                'required',
-                'date',
-                new CheckUpdateIncome($this->date, Auth::user()->umkm, $this->route('income'))
-            ],
-            'total_income' => 'required|numeric',
+            'date' => ['required', 'date', new CheckStoreIncome($this->date, $this->route('umkm'))],
+            'total_income' => 'required|integer',
             'total_employee' => 'required|integer|min:0',
         ];
     }

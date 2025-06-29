@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\LinkProductive;
 
-use App\Http\Requests\LinkProductive\UpdateIncomeRequest;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Umkm\StoreIncomeRequest;
-use App\Models\Income;
 use App\Models\Umkm;
-use App\Services\Interfaces\LinkProductive\UmkmStatusInterface;
-use App\Services\Interfaces\Umkm\IncomeInterface;
+use App\Models\Income;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Interfaces\Umkm\IncomeInterface;
+use App\Http\Requests\LinkProductive\StoreIncomeRequest;
+use App\Http\Requests\LinkProductive\UpdateIncomeRequest;
+use App\Services\Interfaces\LinkProductive\UmkmStatusInterface;
 
 class IncomeController extends Controller
 {

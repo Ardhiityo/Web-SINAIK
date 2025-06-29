@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Umkm;
 
+use App\Rules\Umkm\CheckStoreIncome;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreIncomeRequest extends FormRequest
@@ -22,7 +24,7 @@ class StoreIncomeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => 'required|date',
+            'date' => ['required', 'date', new CheckStoreIncome($this->date, Auth::user()->umkm)],
             'total_income' => 'required|integer',
             'total_employee' => 'required|integer|min:0',
         ];

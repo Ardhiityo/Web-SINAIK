@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\LinkProductive;
 
+use App\Rules\Umkm\CheckUpdateIncome;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateIncomeRequest extends FormRequest
@@ -22,7 +23,7 @@ class UpdateIncomeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => ['required', 'date', 'unique:incomes,date,' . $this->route('income')->id],
+            'date' => ['required', 'date', new CheckUpdateIncome($this->date, $this->route('umkm'), $this->route('income'))],
             'total_income' => ['required', 'integer'],
             'total_employee' => ['required', 'integer', 'min:0'],
         ];
