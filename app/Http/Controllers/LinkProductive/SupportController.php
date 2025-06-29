@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\LinkProductive;
 
-use App\Models\Umkm;
 use App\Models\Support;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreSupportRequest;
 use App\Services\Interfaces\LinkProductive\UmkmInterface;

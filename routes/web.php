@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     // Dashboard UMKM
     Route::get('/', [App\Http\Controllers\Umkm\DashboardController::class, 'index'])->name('umkm.dashboard')
-        ->middleware('role:umkm');
+        ->middleware('is_umkm');
 
     Route::post('histories', [HistoryController::class, 'store'])->name('histories.store');
     Route::delete('histories', [HistoryController::class, 'destroy'])->name('histories.destroy');

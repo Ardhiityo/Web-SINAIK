@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Biodata;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class BiodataPolicy
 {
@@ -37,7 +36,11 @@ class BiodataPolicy
      */
     public function update(User $user, Biodata $biodata): bool
     {
-        return $user->umkm->id === $biodata->umkm_id;
+        if ($user->hasRole('umkm')) {
+            return $user->umkm->id === $biodata->umkm_id;
+        }
+
+        return true;
     }
 
     /**
@@ -45,7 +48,11 @@ class BiodataPolicy
      */
     public function delete(User $user, Biodata $biodata): bool
     {
-        return $user->umkm->id === $biodata->umkm_id;
+        if ($user->hasRole('umkm')) {
+            return $user->umkm->id === $biodata->umkm_id;
+        }
+
+        return true;
     }
 
     /**
@@ -53,7 +60,11 @@ class BiodataPolicy
      */
     public function restore(User $user, Biodata $biodata): bool
     {
-        return $user->umkm->id === $biodata->umkm_id;
+        if ($user->hasRole('umkm')) {
+            return $user->umkm->id === $biodata->umkm_id;
+        }
+
+        return true;
     }
 
     /**
@@ -61,6 +72,10 @@ class BiodataPolicy
      */
     public function forceDelete(User $user, Biodata $biodata): bool
     {
-        return $user->umkm->id === $biodata->umkm_id;
+        if ($user->hasRole('umkm')) {
+            return $user->umkm->id === $biodata->umkm_id;
+        }
+
+        return true;
     }
 }

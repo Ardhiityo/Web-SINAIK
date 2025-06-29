@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Umkm\CheckIsUmkm;
 use App\Http\Middleware\Umkm\CheckIsVerified;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -16,7 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
-            'is_verified' => CheckIsVerified::class
+            'is_verified' => CheckIsVerified::class,
+            'is_umkm' => CheckIsUmkm::class
         ]);
         $middleware->web(append: [
             \RealRashid\SweetAlert\ToSweetAlert::class,

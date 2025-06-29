@@ -4,7 +4,6 @@ namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\Umkm;
 use App\Models\Biodata;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Umkm\StoreBiodataRequest;
 use App\Http\Requests\Umkm\UpdateBiodataRequest;

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\Umkm;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\LinkProductive\UmkmInterface;
 

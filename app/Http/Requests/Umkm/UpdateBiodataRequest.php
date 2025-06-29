@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Umkm;
 
-use App\Models\Biodata;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 

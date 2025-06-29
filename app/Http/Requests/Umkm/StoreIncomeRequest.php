@@ -23,7 +23,7 @@ class StoreIncomeRequest extends FormRequest
     {
         return [
             'date' => 'required|date',
-            'total_income' => 'required|numeric',
+            'total_income' => 'required|integer',
             'total_employee' => 'required|integer|min:0',
         ];
     }

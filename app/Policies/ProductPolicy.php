@@ -36,7 +36,10 @@ class ProductPolicy
      */
     public function update(User $user, Product $product): bool
     {
-        return $user->umkm->id === $product->umkm_id;
+        if ($user->hasRole('umkm')) {
+            return $user->umkm->id === $product->umkm_id;
+        }
+        return true;
     }
 
     /**
@@ -44,7 +47,10 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product): bool
     {
-        return $user->umkm->id === $product->umkm_id;
+        if ($user->hasRole('umkm')) {
+            return $user->umkm->id === $product->umkm_id;
+        }
+        return true;
     }
 
     /**
@@ -52,7 +58,10 @@ class ProductPolicy
      */
     public function restore(User $user, Product $product): bool
     {
-        return $user->umkm->id === $product->umkm_id;
+        if ($user->hasRole('umkm')) {
+            return $user->umkm->id === $product->umkm_id;
+        }
+        return true;
     }
 
     /**
@@ -60,6 +69,9 @@ class ProductPolicy
      */
     public function forceDelete(User $user, Product $product): bool
     {
-        return false;
+        if ($user->hasRole('umkm')) {
+            return $user->umkm->id === $product->umkm_id;
+        }
+        return true;
     }
 }
