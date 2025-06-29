@@ -66,7 +66,7 @@ class IncomeRepository implements IncomeInterface
 
         return Income::where('umkm_id', $user->umkm->id)
             ->select('id', 'total_income', 'total_employee', 'date')
-            ->orderByDesc('id')
+            ->orderBy('date')
             ->take(4)
             ->get();
     }

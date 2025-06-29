@@ -18,7 +18,13 @@
                 <p class="section-lead">
                     Informasi mengenai data biodatamu bisnismu
                 </p>
-
+                <div class="row">
+                    <div class="my-4 col-6">
+                        <a href="{{ route('umkm.biodatas.index') }}" class="btn btn-primary">
+                            Kembali
+                        </a>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
