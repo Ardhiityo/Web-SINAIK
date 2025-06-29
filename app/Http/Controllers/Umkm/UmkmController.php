@@ -3,34 +3,41 @@
 namespace App\Http\Controllers\Umkm;
 
 use App\Models\Umkm;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\Umkm\ProductInterface;
+use App\Services\Interfaces\LinkProductive\UmkmInterface;
 
 class UmkmController extends Controller
 {
     public function __construct(
-        private \App\Services\Interfaces\LinkProductive\UmkmInterface $umkmLinkProductiveRepository,
-        private \App\Services\Interfaces\Umkm\UmkmInterface $umkmRepository,
+        private UmkmInterface $umkmRepository,
         private ProductInterface $productRepository
     ) {}
 
-    public function index()
+    public function index(Request $request)
     {
-        $umkms = $this->umkmRepository->getUmkmsPaginate();
+        if ($request->query('category') && $request->query('keyword')) {
+            $category = $request->query('category');
+            $keyword = $request->query('keyword');
+            $umkms = $this->umkmRepository->getUmkmsByKeyword($category, $keyword);
+        } else {
+            $umkms = $this->umkmRepository->getUmkmsPaginate();
+        }
 
         return view('pages.umkm.umkm.index', compact('umkms'));
     }
 
     public function show(Umkm $umkm)
     {
-        $umkm = $this->umkmLinkProductiveRepository->getUmkm($umkm->id);
+        $umkm = $this->umkmRepository->getUmkm($umkm->id);
 
         return view('pages.umkm.umkm.show', compact('umkm'));
     }
 
     public function product(Umkm $umkm)
     {
-        $products = $this->umkmLinkProductiveRepository->getUmkmProductsPaginate($umkm->id);
+        $products = $this->umkmRepository->getUmkmProductsPaginate($umkm->id);
 
         $umkm->load('biodata:id,business_name,umkm_id');
 
@@ -39,7 +46,7 @@ class UmkmController extends Controller
 
     public function performance(Umkm $umkm)
     {
-        $performances = $this->umkmLinkProductiveRepository->getUmkmPerformancePaginate($umkm->id);
+        $performances = $this->umkmRepository->getUmkmPerformancePaginate($umkm->id);
 
         return view('pages.umkm.umkm.performance.index', compact('umkm', 'performances'));
     }

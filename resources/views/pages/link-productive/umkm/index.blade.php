@@ -53,7 +53,7 @@
                                                             </option>
                                                             <option value="city"
                                                                 {{ request('category') === 'city' ? 'selected' : '' }}>
-                                                                City
+                                                                Kota
                                                             </option>
                                                         </select>
                                                         <input type="text" class="form-control" placeholder="Keyword..."
