@@ -23,7 +23,7 @@ class UpdateIncomeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => ['required', 'date', new CheckUpdateIncome($this->date, $this->route('umkm'), $this->route('income'))],
+            'date' => ['required', 'date', 'before_or_equal:today', new CheckUpdateIncome($this->date, $this->route('umkm'), $this->route('income'))],
             'total_income' => ['required', 'integer'],
             'total_employee' => ['required', 'integer', 'min:0'],
         ];

@@ -28,6 +28,7 @@ class UpdateIncomeRequest extends FormRequest
             'date' => [
                 'required',
                 'date',
+                'before_or_equal:today',
                 new CheckUpdateIncome($this->date, Auth::user()->umkm, $this->route('income'))
             ],
             'total_income' => 'required|numeric',

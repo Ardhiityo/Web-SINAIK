@@ -44,20 +44,20 @@
             <!-- Header -->
 
             <!-- Sidebar -->
-            @role('umkm')
+            @if (Auth::user()->hasRole('umkm'))
                 <x-umkm.sidebar />
-            @endrole
-
-            @role('admin_lp')
+            @else
                 <x-link-productive.sidebar />
-            @endrole
+            @endif
             <!-- Sidebar -->
 
             <!-- Content -->
             @yield('main')
+            <!-- Content -->
 
             <!-- Footer -->
             <x-footer />
+            <!-- Footer -->
         </div>
     </div>
 

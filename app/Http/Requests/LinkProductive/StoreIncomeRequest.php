@@ -23,7 +23,7 @@ class StoreIncomeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => ['required', 'date', new CheckStoreIncome($this->date, $this->route('umkm'))],
+            'date' => ['required', 'date', new CheckStoreIncome($this->date, $this->route('umkm')), 'before_or_equal:today'],
             'total_income' => 'required|integer',
             'total_employee' => 'required|integer|min:0',
         ];

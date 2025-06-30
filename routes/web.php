@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // Link Productive
-    Route::middleware('role:admin_lp')->group(function () {
+    Route::middleware('role:admin_lp|admin_astra|admin_ico')->group(function () {
         Route::prefix('link-productive')->name('link-productive.')->group(function () {
             // Dashboard Link Productive
             Route::get('/', [App\Http\Controllers\LinkProductive\DashboardController::class, 'index'])->name('dashboard');

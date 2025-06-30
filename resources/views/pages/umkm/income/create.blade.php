@@ -49,7 +49,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="date">Tanggal</label>
                                                     <input required type="date" class="form-control" id="date"
-                                                        name="date" value="{{ old('date') }}">
+                                                        name="date" value="{{ old('date', now()->format('Y-m-d')) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="total_income">Total Pendapatan</label>

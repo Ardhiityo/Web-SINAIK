@@ -15,7 +15,7 @@ class CheckIsUmkm
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->hasRole('admin_lp')) {
+        if ($request->user()->hasRole(['admin_lp', 'admin_astra', 'admin_ico'])) {
             return redirect()->route('link-productive.dashboard');
         }
         return $next($request);

@@ -20,33 +20,35 @@
                 </a>
             </li>
 
-            <li class="menu-header">Manajemen UMKM</li>
-            <li class="nav-item {{ request()->routeIs('link-productive.users.*') ? 'active' : '' }}">
-                <a href="{{ route('link-productive.users.index') }}" class="nav-link">
-                    <i class="fas fa-user"></i>
-                    <span>Akun</span>
-                </a>
-            </li>
-            <li class="nav-item {{ request()->routeIs('link-productive.verifications.*') ? 'active' : '' }}">
-                <a href="{{ route('link-productive.verifications.index') }}" class="nav-link">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Verifkasi</span>
-                </a>
-            </li>
-            <li class="nav-item {{ request()->routeIs('link-productive.supports.*') ? 'active' : '' }}">
-                <a href="{{ route('link-productive.supports.index') }}" class="nav-link">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <span>Dukungan</span>
-                </a>
-            </li>
+            @role('admin_lp')
+                <li class="menu-header">Manajemen UMKM</li>
+                <li class="nav-item {{ request()->routeIs('link-productive.users.*') ? 'active' : '' }}">
+                    <a href="{{ route('link-productive.users.index') }}" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        <span>Akun</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('link-productive.verifications.*') ? 'active' : '' }}">
+                    <a href="{{ route('link-productive.verifications.index') }}" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Verifkasi</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('link-productive.supports.*') ? 'active' : '' }}">
+                    <a href="{{ route('link-productive.supports.index') }}" class="nav-link">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <span>Dukungan</span>
+                    </a>
+                </li>
 
-            <li class="menu-header">Manajemen Peran</li>
-            <li class="nav-item {{ request()->routeIs('link-productive.roles.*') ? 'active' : '' }}">
-                <a href="{{ route('link-productive.roles.index') }}" class="nav-link">
-                    <i class="fas fa-user-lock"></i>
-                    <span>Peran</span>
-                </a>
-            </li>
+                <li class="menu-header">Manajemen Peran</li>
+                <li class="nav-item {{ request()->routeIs('link-productive.roles.*') ? 'active' : '' }}">
+                    <a href="{{ route('link-productive.roles.index') }}" class="nav-link">
+                        <i class="fas fa-user-lock"></i>
+                        <span>Peran</span>
+                    </a>
+                </li>
+            @endrole
 
             <li class="menu-header">Manajemen Bisnis</li>
             <li class="nav-item {{ request()->routeIs('link-productive.sector-categories.*') ? 'active' : '' }}">
