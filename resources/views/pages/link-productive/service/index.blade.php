@@ -72,8 +72,8 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $service->title }}</td>
                                                         <td>{{ $service->description }}</td>
-                                                        <td>{{ $service->available_date }}</td>
-                                                        <td>{{ $service->end_date }}</td>
+                                                        <td>{{ $service->available_date->translatedFormat('d F Y') }}</td>
+                                                        <td>{{ $service->end_date->translatedFormat('d F Y') }}</td>
                                                         <td>{{ $service->serviceCategory->name }}</td>
                                                         <td>
                                                             <a href="{{ route('link-productive.services.edit', ['service' => $service->id]) }}"

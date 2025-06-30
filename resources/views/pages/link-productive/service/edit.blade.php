@@ -63,12 +63,13 @@
                                                     <label for="available_date">Tanggal Mulai</label>
                                                     <input required type="date" class="form-control" id="available_date"
                                                         name="available_date"
-                                                        value="{{ old('available_date', $service->available_date) }}">
+                                                        value="{{ old('available_date', $service->available_date->format('Y-m-d')) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="end_date">Tanggal Selesai</label>
                                                     <input required type="date" class="form-control" id="end_date"
-                                                        name="end_date" value="{{ old('end_date', $service->end_date) }}">
+                                                        name="end_date"
+                                                        value="{{ old('end_date', $service->end_date->format('Y-m-d')) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="service_category_id">Kategori Layanan</label>

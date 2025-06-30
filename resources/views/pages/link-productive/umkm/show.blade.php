@@ -86,7 +86,8 @@
                                         <tbody>
                                             <tr class="text-nowrap">
                                                 <td>{{ $umkm->biodata->business_name ?? '-' }}</td>
-                                                <td>{{ $umkm->biodata->founding_year ?? '-' }}</td>
+                                                <td>{{ $umkm->biodata->founding_year->translatedFormat('d F Y') ?? '-' }}
+                                                </td>
                                                 <td>{{ $umkm->biodata->businessScale->name ?? '-' }}</td>
                                             </tr>
                                         </tbody>

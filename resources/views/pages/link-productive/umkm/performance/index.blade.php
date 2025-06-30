@@ -59,7 +59,8 @@
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $performance->date->translatedFormat('d F Y') }}</td>
-                                                        <td>{{ $performance->total_income }}</td>
+                                                        <td>{{ number_format($performance->total_income, thousands_separator: '.') }}
+                                                        </td>
                                                         <td>{{ $performance->total_employee }}</td>
                                                         <td>
                                                             <a href="{{ route('link-productive.umkms.performance.edit', ['umkm' => $performance->umkm_id, 'income' => $performance->id]) }}"
