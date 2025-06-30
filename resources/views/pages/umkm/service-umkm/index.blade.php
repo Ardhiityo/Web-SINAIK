@@ -42,8 +42,9 @@
                                                     <tr class="text-nowrap">
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $serviceUmkm->title }}</td>
-                                                        <td>{{ $serviceUmkm->available_date }}</td>
-                                                        <td>{{ $serviceUmkm->end_date }}</td>
+                                                        <td>{{ $serviceUmkm->available_date->translatedFormat('d F Y') }}
+                                                        </td>
+                                                        <td>{{ $serviceUmkm->end_date->translatedFormat('d F Y') }}</td>
                                                         <td>
                                                             @if ($serviceUmkm->pivot->register_status == 'process')
                                                                 <span class="badge badge-warning">Diproses</span>

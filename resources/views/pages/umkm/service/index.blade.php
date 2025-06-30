@@ -63,8 +63,8 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ Str::limit($service->title, 15, '...') }}</td>
                                                         <td>{{ Str::limit($service->description, 20, '...') }}</td>
-                                                        <td>{{ $service->available_date }}</td>
-                                                        <td>{{ $service->end_date }}</td>
+                                                        <td>{{ $service->available_date->translatedFormat('d F Y') }}</td>
+                                                        <td>{{ $service->end_date->translatedFormat('d F Y') }}</td>
                                                         <td>{{ Str::limit($service->serviceCategory->name, 15, '...') }}
                                                         </td>
                                                         <td>

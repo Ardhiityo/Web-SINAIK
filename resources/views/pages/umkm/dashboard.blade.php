@@ -61,7 +61,7 @@
                                     <h4>Total Pendapatan</h4>
                                 </div>
                                 <div class="card-body">
-                                    {{ $totalIncome }}
+                                    {{ number_format($totalIncome, thousands_separator: '.') }}
                                 </div>
                             </div>
                         </div>

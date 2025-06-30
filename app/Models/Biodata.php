@@ -19,6 +19,10 @@ class Biodata extends Model
         'umkm_id'
     ];
 
+    protected $casts = [
+        'founding_year' => 'date'
+    ];
+
     public function umkm()
     {
         return $this->belongsTo(Umkm::class);

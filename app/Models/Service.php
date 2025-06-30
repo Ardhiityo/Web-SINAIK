@@ -14,6 +14,11 @@ class Service extends Model
         'service_category_id'
     ];
 
+    protected $casts = [
+        'available_date' => 'date',
+        'end_date' => 'date'
+    ];
+
     public function serviceCategory()
     {
         return $this->belongsTo(ServiceCategory::class);

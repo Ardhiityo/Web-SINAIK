@@ -88,7 +88,7 @@
                                             <tbody>
                                                 <tr class="text-nowrap">
                                                     <td>{{ $biodata->business_name ?? '-' }}</td>
-                                                    <td>{{ $biodata->founding_year ?? '-' }}</td>
+                                                    <td>{{ $biodata->founding_year->translatedFormat('d F Y') ?? '-' }}</td>
                                                     <td>{{ $biodata->businessScale->name ?? '-' }}</td>
                                                 </tr>
                                             </tbody>
