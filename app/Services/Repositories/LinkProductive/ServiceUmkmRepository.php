@@ -3,8 +3,10 @@
 namespace App\Services\Repositories\LinkProductive;
 
 use App\Models\ServiceUmkm;
-use App\Services\Interfaces\LinkProductive\ServiceUmkmInterface;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use App\Services\Interfaces\LinkProductive\ServiceUmkmInterface;
 
 class ServiceUmkmRepository implements ServiceUmkmInterface
 {
@@ -15,5 +17,17 @@ class ServiceUmkmRepository implements ServiceUmkmInterface
         ])
             ->select('id', 'umkm_id', 'service_id', 'register_status')
             ->paginate(10);
+    }
+
+    public function storeServiceUmkm($data)
+    {
+        try {
+            DB::beginTransaction();
+            ServiceUmkm::create($data);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::info($th->getMessage(), ['store service umkm']);
+        }
     }
 }

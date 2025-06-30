@@ -33,6 +33,11 @@ class ServiceRepository implements ServiceInterface
         return $services;
     }
 
+    public function getServices()
+    {
+        return Service::select('id', 'title')->get();
+    }
+
     public function getServicesLatest()
     {
         return Service::select('id', 'title', 'description', 'created_at')

@@ -22,6 +22,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+                            <div class="card-header">
+                                <h4>
+                                    <a href="{{ route('link-productive.service-umkms.create') }}" class="btn btn-primary">
+                                        Buat Pendaftar
+                                    </a>
+                                </h4>
+                            </div>
                             <div class="card-body">
                                 @if ($serviceUmkms->isEmpty())
                                     <p>Belum ada pendaftar layanan...</p>
