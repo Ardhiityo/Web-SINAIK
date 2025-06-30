@@ -40,6 +40,14 @@
                 </a>
             </li>
 
+            <li class="menu-header">Manajemen Peran</li>
+            <li class="nav-item {{ request()->routeIs('link-productive.roles.*') ? 'active' : '' }}">
+                <a href="{{ route('link-productive.roles.index') }}" class="nav-link">
+                    <i class="fas fa-user-lock"></i>
+                    <span>Peran</span>
+                </a>
+            </li>
+
             <li class="menu-header">Manajemen Bisnis</li>
             <li class="nav-item {{ request()->routeIs('link-productive.sector-categories.*') ? 'active' : '' }}">
                 <a href="{{ route('link-productive.sector-categories.index') }}" class="nav-link">
