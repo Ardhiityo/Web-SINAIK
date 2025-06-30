@@ -2,7 +2,6 @@
 
 namespace App\Services\Repositories\LinkProductive;
 
-use App\Models\Umkm;
 use App\Models\Support;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

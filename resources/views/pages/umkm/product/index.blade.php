@@ -14,7 +14,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Produkm</h2>
+                <h2 class="section-title">Produk</h2>
                 <p class="section-lead">
                     Informasi mengenai data produk bisnis
                 </p>

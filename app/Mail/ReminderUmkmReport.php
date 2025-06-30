@@ -10,14 +10,17 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
 
-class SupportUmkm extends Mailable
+class ReminderUmkmReport extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public $subject, public $content, public $owner) {}
+    public function __construct(public $owner)
+    {
+        //
+    }
 
     /**
      * Get the message envelope.
@@ -26,7 +29,7 @@ class SupportUmkm extends Mailable
     {
         return new Envelope(
             from: new Address('ardhityo229@gmail.com', 'Link Productive'),
-            subject: $this->subject,
+            subject: 'Pengingat Laporan Bisnis'
         );
     }
 
@@ -36,10 +39,10 @@ class SupportUmkm extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mails.support-umkm',
+            view: 'mails.reminder-report-umkm',
             with: [
-                'content' => $this->content,
-                'owner' => $this->owner
+                'owner' => $this->owner,
+                'reportLink' => route('umkm.incomes.create')
             ]
         );
     }
