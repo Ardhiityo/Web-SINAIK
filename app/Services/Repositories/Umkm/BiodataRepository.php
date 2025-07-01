@@ -54,11 +54,19 @@ class BiodataRepository implements BiodataInterface
             } else {
                 $data['umkm_id'] = $umkmId;
             }
-            $biodata = Biodata::create($data);
+            $data['city'] = strtolower($data['city']);
+            $data['province'] = strtolower($data['province']);
+            $data['address'] = strtolower($data['address']);
+            Biodata::create($data);
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::info($th->getMessage(), ['store biodata']);
         }
+    }
+
+    public function getCities()
+    {
+        return Biodata::select('city')->orderBy('city')->distinct('city')->pluck('city');
     }
 }

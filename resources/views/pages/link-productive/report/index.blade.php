@@ -32,21 +32,33 @@
                                         <div class="form-group col-md-6">
                                             <label for="start_date">Dari tanggal</label>
                                             <input required type="date" class="form-control" id="start_date"
-                                                name="start_date" value="{{ old('start_date') }}">
+                                                name="start_date" value="{{ old('start_date', now()->format('Y-m-d')) }}">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="end_date">Hingga tanggal</label>
                                             <input required type="date" class="form-control" id="end_date"
-                                                name="end_date" value="{{ old('end_date') }}">
+                                                name="end_date" value="{{ old('end_date', now()->format('Y-m-d')) }}">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="city">Kota</label>
+                                            <select id="city" required name="city" class="form-control">
+                                                <option selected value="">Pilih...</option>
+                                                @foreach ($cities as $city)
+                                                    <option value="{{ $city }}"
+                                                        {{ old('city') == $city ? 'selected' : '' }}>
+                                                        {{ $city }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="format">Format File</label>
                                             <select id="format" required name="format" class="form-control">
                                                 <option selected value="">Pilih...</option>
-                                                <option value="pdf">
-                                                    PDF
-                                                <option value="excel">
-                                                    Excel
+                                                <option value="pdf" {{ old('format') == 'pdf' ? 'selected' : '' }}>
+                                                    pdf
+                                                <option value="excel" {{ old('format') == 'excel' ? 'selected' : '' }}>
+                                                    excel
                                                 </option>
                                             </select>
                                         </div>

@@ -23,8 +23,9 @@ class StoreReportRequest extends FormRequest
     {
         return [
             'start_date' => ['nullable'],
-            'end_date' => ['nullable', 'after:start_date'],
-            'format' => ['nullable', 'in:pdf,excel']
+            'end_date' => ['nullable', 'after_or_equal:start_date'],
+            'format' => ['nullable', 'in:pdf,excel'],
+            'city' => ['required', 'exists:biodatas,city'],
         ];
     }
 }

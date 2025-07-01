@@ -49,6 +49,7 @@ class Umkm extends Model
     {
         return $this->hasMany(Income::class);
     }
+
     public function serviceUmkms()
     {
         return $this->belongsToMany(Service::class, 'service_umkm', 'umkm_id', 'service_id')->withPivot('register_status');

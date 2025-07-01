@@ -34,4 +34,13 @@ class UpdateBiodataRequest extends FormRequest
             'certification_id' => ['required', 'exists:certifications,id']
         ];
     }
+
+    public function passedValidation()
+    {
+        $this->merge([
+            'province' => strtolower($this->province),
+            'city' => strtolower($this->city),
+            'address' => strtolower($this->address),
+        ]);
+    }
 }
