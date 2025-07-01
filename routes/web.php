@@ -73,6 +73,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('services', App\Http\Controllers\LinkProductive\ServiceController::class);
             Route::resource('service-umkms', App\Http\Controllers\LinkProductive\ServiceUmkmController::class);
             Route::resource('roles', App\Http\Controllers\LinkProductive\RoleController::class);
+            Route::get('/reports', [App\Http\Controllers\LinkProductive\ReportController::class, 'index'])->name('reports.index');
+            Route::get('/reports/store', [App\Http\Controllers\LinkProductive\ReportController::class, 'store'])->name('reports.store');
         });
     });
 });
