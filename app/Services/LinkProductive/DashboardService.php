@@ -3,6 +3,7 @@
 namespace App\Services\LinkProductive;
 
 use App\Models\Income;
+use Illuminate\Support\Facades\Cache;
 use App\Services\Interfaces\LinkProductive\UmkmInterface;
 use App\Services\Interfaces\LinkProductive\ServiceInterface;
 use App\Services\Interfaces\LinkProductive\CertificationInterface;
@@ -19,10 +20,22 @@ class DashboardService
 
     public function getPanelData()
     {
-        $totalService = $this->serviceRepository->getTotalService();
-        $totalUmkm = $this->umkmRepository->getTotalUmkm();
-        $totalSectorCategory = $this->sectorCategoryRepository->getTotalSectorCategory();
-        $totalCertification = $this->certificationRepository->getTotalCertification();
+        $totalService = Cache::remember('totalService', 1440, function () {
+            return $this->serviceRepository->getTotalService();
+        });
+
+        $totalUmkm = Cache::remember('totalUmkm', 1440, function () {
+            return $this->umkmRepository->getTotalUmkm();
+        });
+
+        $totalSectorCategory = Cache::remember('totalSectorCategory', 1440, function () {
+            return $this->sectorCategoryRepository->getTotalSectorCategory();
+        });
+
+        $totalCertification = Cache::remember('totalCertification', 1440, function () {
+            return $this->certificationRepository->getTotalCertification();
+        });
+
         $services = $this->serviceRepository->getServicesLatest();
 
         return compact('totalService', 'totalUmkm', 'totalSectorCategory', 'totalCertification', 'services');
@@ -37,7 +50,9 @@ class DashboardService
         $incomes = [];
         $employees = [];
 
-        $performances = Income::whereBetween('date', [$startMonth, $endMonth])->orderBy('date')->get();
+        $performances = Cache::remember('performances', 1440, function () use ($startMonth, $endMonth) {
+            return Income::whereBetween('date', [$startMonth, $endMonth])->get();
+        });
 
         foreach ($performances as $key => $performance) {
             $month = $performance->date->translatedFormat('F');

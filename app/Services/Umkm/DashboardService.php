@@ -2,6 +2,7 @@
 
 namespace App\Services\Umkm;
 
+use Illuminate\Support\Facades\Cache;
 use App\Services\Interfaces\Umkm\IncomeInterface;
 use App\Services\Interfaces\Umkm\ServiceUmkmInterface;
 use App\Services\Interfaces\Umkm\SectorCategoryInterface;
@@ -18,11 +19,21 @@ class DashboardService
 
     public function getPanelData()
     {
-        $totalService = $this->serviceUmkmRepository->getTotalServiceUmkm();
-        $performance = $this->incomeRepository->getTotalIncomeLatestFirst();
+        $totalService = Cache::remember('totalService', 1440, function () {
+            return $this->serviceUmkmRepository->getTotalServiceUmkm();
+        });
+
+        $performance = Cache::remember('performance', 1440, function () {
+            return $this->incomeRepository->getTotalIncomeLatestFirst();
+        });
+
         $totalEmployee = $performance->total_employee ?? 0;
         $totalIncome = $performance->total_income ?? 0;
-        $totalSector = $this->sectorCategoryRepoistory->getTotalSectorCategory();
+
+        $totalSector = Cache::remember('totalSector', 1440, function () {
+            return $this->sectorCategoryRepoistory->getTotalSectorCategory();
+        });
+
         $services = $this->serviceRepository->getServicesLatest();
 
         return compact('totalService', 'totalEmployee', 'totalIncome', 'totalSector', 'services');
@@ -30,7 +41,10 @@ class DashboardService
 
     public function getStatisticData()
     {
-        $performances = $this->incomeRepository->getTotalIncomeLatest();
+        $performances = Cache::remember('performances', 1440, function () {
+            return $this->incomeRepository->getTotalIncomeLatest();
+        });
+
         $dates = [];
         $incomes = [];
         $employees = [];
