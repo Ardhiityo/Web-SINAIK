@@ -3,6 +3,7 @@
 namespace App\Services\LinkProductive;
 
 use App\Models\Income;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use App\Services\Interfaces\LinkProductive\UmkmInterface;
 use App\Services\Interfaces\LinkProductive\ServiceInterface;
@@ -45,13 +46,14 @@ class DashboardService
     {
         $startMonth = now()->subMonths(4)->startOfMonth();
         $endMonth = now()->endOfMonth();
+
         $months = [];
         $monthsNumber = [];
         $incomes = [];
         $employees = [];
 
         $performances = Cache::remember('performances', 1440, function () use ($startMonth, $endMonth) {
-            return Income::whereBetween('date', [$startMonth, $endMonth])->get();
+            return Income::whereBetween('date', [$startMonth, $endMonth])->orderBy('date')->get();
         });
 
         foreach ($performances as $key => $performance) {
