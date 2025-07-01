@@ -67,7 +67,7 @@ class BiodataController extends Controller
      */
     public function update(UpdateBiodataRequest $request, Biodata $biodata)
     {
-        $biodata->update($request->validated());
+        $biodata->update($request->all());
 
         return redirect()->route('umkm.biodatas.index')->withSuccess('Biodata berhasil diupdate');
     }

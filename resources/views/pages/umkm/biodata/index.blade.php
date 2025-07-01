@@ -142,9 +142,9 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="text-nowrap">
-                                                    <td>{{ $umkm->biodata->city ?? '-' }}</td>
-                                                    <td>{{ $umkm->biodata->province ?? '-' }}</td>
-                                                    <td>{{ $umkm->biodata->address ?? '-' }}</td>
+                                                    <td>{{ ucfirst($biodata->city) ?? '-' }}</td>
+                                                    <td>{{ ucfirst($biodata->province) ?? '-' }}</td>
+                                                    <td>{{ ucfirst($biodata->address) ?? '-' }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

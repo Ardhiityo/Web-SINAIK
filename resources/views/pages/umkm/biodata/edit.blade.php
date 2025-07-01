@@ -88,7 +88,7 @@
                                                     <label for="founding_year">Tahun Berdiri</label>
                                                     <input required type="date" class="form-control" id="founding_year"
                                                         name="founding_year"
-                                                        value="{{ old('founding_year', $biodata->founding_year) }}">
+                                                        value="{{ old('founding_year', $biodata->founding_year->format('Y-m-d')) }}">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="city">Kota</label>
