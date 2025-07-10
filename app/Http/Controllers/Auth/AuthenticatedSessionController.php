@@ -42,10 +42,8 @@ class AuthenticatedSessionController extends Controller
 
         if ($user->hasRole('umkm')) {
             return redirect()->route('umkm.dashboard');
-        } else if ($user->hasRole('admin_lp')) {
+        } else if ($user->hasRole(['admin_lp', 'admin_astra', 'admin_ico'])) {
             return redirect()->route('link-productive.dashboard');
-        } else if ($user->hasRole('admin_ico')) {
-            // return redirect()->route('admin.ico.dashboard');
         }
     }
 

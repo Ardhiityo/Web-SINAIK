@@ -33,6 +33,24 @@
                                 @if ($serviceUmkms->isEmpty())
                                     <p>Belum ada pendaftar layanan...</p>
                                 @else
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <div class="form-group">
+                                                <div class="mb-3 input-group">
+                                                    <form action="{{ route('link-productive.service-umkms.index') }}"
+                                                        method="get" class="d-flex">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Nama UMKM..." name="keyword">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-primary" type="submit">
+                                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="overflow-auto">
                                         <table class="table text-center table-bordered">
                                             <thead>

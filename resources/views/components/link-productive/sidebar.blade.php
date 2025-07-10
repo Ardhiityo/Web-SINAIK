@@ -40,13 +40,13 @@
                         <span>Dukungan</span>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->routeIs('link-productive.roles.*') ? 'active' : '' }}">
+                    <a href="{{ route('link-productive.roles.index') }}" class="nav-link">
+                        <i class="fas fa-user-lock"></i>
+                        <span>Peran</span>
+                    </a>
+                </li>
             @endrole
-            <li class="nav-item {{ request()->routeIs('link-productive.roles.*') ? 'active' : '' }}">
-                <a href="{{ route('link-productive.roles.index') }}" class="nav-link">
-                    <i class="fas fa-user-lock"></i>
-                    <span>Peran</span>
-                </a>
-            </li>
             <li class="nav-item {{ request()->routeIs('link-productive.reports.*') ? 'active' : '' }}">
                 <a href="{{ route('link-productive.reports.index') }}" class="nav-link">
                     <i class="fas fa-chart-pie"></i>

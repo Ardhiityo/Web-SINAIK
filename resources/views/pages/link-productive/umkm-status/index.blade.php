@@ -40,7 +40,7 @@
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Skala Bisnis</th>
+                                                    <th scope="col">Status Kelas</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>

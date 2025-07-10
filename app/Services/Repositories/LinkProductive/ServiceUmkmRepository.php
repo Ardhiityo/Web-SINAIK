@@ -30,4 +30,18 @@ class ServiceUmkmRepository implements ServiceUmkmInterface
             Log::info($th->getMessage(), ['store service umkm']);
         }
     }
+
+    public function getServiceUmkmByKeyword($keyword)
+    {
+        return ServiceUmkm::with([
+            'umkm:id,user_id,umkm_status_id',
+            'umkm.biodata:id,umkm_id,business_name,phone_number',
+            'umkm.user:id,name',
+            'umkm.umkmStatus:id,name'
+        ])->whereHas('umkm', function ($query) use ($keyword) {
+            $query->whereHas('biodata', function ($query) use ($keyword) {
+                $query->whereFullText('business_name', $keyword);
+            });
+        })->select('id', 'umkm_id', 'service_id')->paginate(10);
+    }
 }

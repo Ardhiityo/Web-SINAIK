@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\ServiceUmkm;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreServiceUmkmRequest;
-use App\Http\Requests\LinkProductive\UpdateServiceUmkmRequest;
-use App\Services\Interfaces\LinkProductive\ServiceInterface;
-use App\Services\Interfaces\LinkProductive\ServiceUmkmInterface;
 use App\Services\Interfaces\LinkProductive\UmkmInterface;
+use App\Services\Interfaces\LinkProductive\ServiceInterface;
+use App\Http\Requests\LinkProductive\UpdateServiceUmkmRequest;
+use App\Services\Interfaces\LinkProductive\ServiceUmkmInterface;
 
 class ServiceUmkmController extends Controller
 {
@@ -18,9 +19,13 @@ class ServiceUmkmController extends Controller
         private ServiceInterface $serviceRepository
     ) {}
 
-    public function index()
+    public function index(Request $request)
     {
-        $serviceUmkms = $this->serviceUmkmRepository->getServiceUmkmsPaginate();
+        if ($keyword = $request->query('keyword')) {
+            $serviceUmkms = $this->serviceUmkmRepository->getServiceUmkmByKeyword($keyword);
+        } else {
+            $serviceUmkms = $this->serviceUmkmRepository->getServiceUmkmsPaginate();
+        }
 
         return view('pages.link-productive.service-umkm.index', compact('serviceUmkms'));
     }
