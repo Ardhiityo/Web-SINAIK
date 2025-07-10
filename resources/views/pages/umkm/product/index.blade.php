@@ -48,7 +48,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($products as $product)
-                                                    <tr class="text-nowrap">
+                                                    <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>
                                                             <img src="{{ asset(Storage::url($product->image)) }}"
@@ -59,7 +59,7 @@
                                                         <td>{{ $product->description }}</td>
                                                         <td>{{ number_format($product->price, thousands_separator: '.') }}
                                                         </td>
-                                                        <td>
+                                                        <td class="d-flex align-items-center">
                                                             <a href="{{ route('umkm.products.edit', ['product' => $product->id]) }}"
                                                                 class="btn btn-warning">
                                                                 <i class="far fa-edit"></i>

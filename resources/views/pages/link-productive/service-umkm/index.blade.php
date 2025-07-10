@@ -74,11 +74,11 @@
                                                         <td>{{ $serviceUmkm->service->title }}</td>
                                                         <td>
                                                             @if ($serviceUmkm->register_status == 'process')
-                                                                Diproses
+                                                                <span class="badge badge-warning">Diproses</span>
                                                             @elseif ($serviceUmkm->register_status == 'rejected')
-                                                                Ditolak
+                                                                <span class="badge badge-danger">Ditolak</span>
                                                             @elseif ($serviceUmkm->register_status == 'approved')
-                                                                Diterima
+                                                                <span class="badge badge-success">Diterima</span>
                                                             @endif
                                                         </td>
                                                         <td>
