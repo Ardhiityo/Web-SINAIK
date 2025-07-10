@@ -12,7 +12,10 @@ class UserRepository implements UserInterface
 {
     public function getUmkmAccountsPaginate()
     {
-        return User::role('umkm')->select('id', 'email', 'name')->paginate(10);
+        return User::role('umkm')
+            ->with('umkm:id,is_verified,user_id')
+            ->select('id', 'email', 'name')
+            ->paginate(10);
     }
 
     public function storeUmkmAccount($data)
@@ -39,5 +42,13 @@ class UserRepository implements UserInterface
             DB::rollBack();
             Log::info($th->getMessage(), ['update umkm account']);
         }
+    }
+
+    public function getUmkmByKeyword($keyword)
+    {
+        return User::with('umkm:id,is_verified,user_id')
+            ->whereFullText('name', $keyword)
+            ->select('id', 'name', 'email')
+            ->paginate(10);
     }
 }

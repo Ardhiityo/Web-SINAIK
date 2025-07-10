@@ -228,4 +228,18 @@ class UmkmRepository implements UmkmInterface
     {
         return Umkm::where('is_verified', true)->count();
     }
+
+    public function getUmkmByKeyword($keyword)
+    {
+        return Umkm::with(
+            [
+                'user:id,name',
+                'biodata:id,business_name',
+                'umkmStatus:id,umkm_id,name'
+            ]
+        )
+            ->whereHas('user', function ($query) use ($keyword) {
+                $query->whereFullText('name', $keyword);
+            })->select('id', 'user_id')->paginate(10);
+    }
 }

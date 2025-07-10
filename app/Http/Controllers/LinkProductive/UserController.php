@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\LinkProductive;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkProductive\StoreUserRequest;
 use App\Http\Requests\LinkProductive\UpdateUserRequest;
@@ -12,9 +13,13 @@ class UserController extends Controller
 {
     public function __construct(private UserInterface $userRepository) {}
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->userRepository->getUmkmAccountsPaginate();
+        if ($keyword = $request->query('keyword')) {
+            $users = $this->userRepository->getUmkmByKeyword($keyword);
+        } else {
+            $users = $this->userRepository->getUmkmAccountsPaginate();
+        }
 
         return view('pages.link-productive.umkm.user.index', compact('users'));
     }
