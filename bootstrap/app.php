@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Umkm\CheckBiodata;
 use App\Http\Middleware\Umkm\CheckIsUmkm;
 use App\Http\Middleware\Umkm\CheckIsVerified;
 use Illuminate\Foundation\Application;
@@ -19,7 +20,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'is_verified' => CheckIsVerified::class,
-            'is_umkm' => CheckIsUmkm::class
+            'is_umkm' => CheckIsUmkm::class,
+            'check_biodata' => CheckBiodata::class
         ]);
         $middleware->web(append: [
             \RealRashid\SweetAlert\ToSweetAlert::class,

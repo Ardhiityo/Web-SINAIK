@@ -19,7 +19,9 @@ Route::middleware('auth')->group(function () {
             Route::middleware('is_verified')->group(function () {
                 Route::resource('biodatas', App\Http\Controllers\Umkm\BiodataController::class);
                 Route::resource('products', App\Http\Controllers\Umkm\ProductController::class);
-                Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
+                Route::middleware('check_biodata')->group(function () {
+                    Route::resource('incomes', App\Http\Controllers\Umkm\IncomeController::class);
+                });
                 Route::resource('sector-category-umkms', App\Http\Controllers\Umkm\SectorCategoryUmkmController::class);
                 Route::resource('services', App\Http\Controllers\Umkm\ServiceController::class)->except(['edit', 'update', 'create']);
                 Route::resource('service-umkms', App\Http\Controllers\Umkm\ServiceUmkmController::class);

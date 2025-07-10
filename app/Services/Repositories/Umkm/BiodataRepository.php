@@ -69,4 +69,9 @@ class BiodataRepository implements BiodataInterface
     {
         return Biodata::select('city')->orderBy('city')->distinct('city')->pluck('city');
     }
+
+    public function checkBiodata($umkmId)
+    {
+        return Biodata::where('umkm_id', $umkmId)->exists();
+    }
 }
