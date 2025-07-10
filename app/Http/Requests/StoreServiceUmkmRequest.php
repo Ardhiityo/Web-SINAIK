@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\LinkProductive\CheckStoreServiceUmkm;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreServiceUmkmRequest extends FormRequest
@@ -22,7 +23,11 @@ class StoreServiceUmkmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'umkm_id' => ['required', 'exists:umkms,id'],
+            'umkm_id' => [
+                'required',
+                'exists:umkms,id',
+                new CheckStoreServiceUmkm($this->umkm_id, $this->service_id)
+            ],
             'service_id' => ['required', 'exists:services,id']
         ];
     }

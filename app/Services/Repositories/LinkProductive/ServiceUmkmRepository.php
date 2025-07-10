@@ -44,4 +44,11 @@ class ServiceUmkmRepository implements ServiceUmkmInterface
             });
         })->select('id', 'umkm_id', 'service_id')->paginate(10);
     }
+
+    public function checkServiceUmkm($umkmId, $serviceId)
+    {
+        return ServiceUmkm::where('umkm_id', $umkmId)
+            ->where('service_id', $serviceId)
+            ->exists();
+    }
 }
