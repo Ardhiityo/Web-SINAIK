@@ -15,7 +15,7 @@
         </ul>
         <div class="search-element">
             <input class="form-control" type="search" name="keyword" placeholder="Cari layanan disini..."
-                aria-label="Search" data-width="250">
+                aria-label="Search" data-width="250" autocomplete="off">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
             @if (!$histories->isEmpty())
