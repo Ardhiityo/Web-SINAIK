@@ -66,7 +66,7 @@
                                                         <td>{{ $product->description }}</td>
                                                         <td>{{ number_format($product->price, thousands_separator: '.') }}
                                                         </td>
-                                                        <td class="d-flex align-items-center">
+                                                        <td class="text-nowrap">
                                                             <a href="{{ route('link-productive.umkms.product.edit', ['umkm' => $product->umkm_id, 'product' => $product->id]) }}"
                                                                 class="btn btn-warning">Edit</a>
                                                             <form id="form-delete"

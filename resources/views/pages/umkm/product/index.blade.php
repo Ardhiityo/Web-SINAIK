@@ -59,7 +59,7 @@
                                                         <td>{{ $product->description }}</td>
                                                         <td>{{ number_format($product->price, thousands_separator: '.') }}
                                                         </td>
-                                                        <td class="d-flex align-items-center">
+                                                        <td class="text-nowrap">
                                                             <a href="{{ route('umkm.products.edit', ['product' => $product->id]) }}"
                                                                 class="btn btn-warning">
                                                                 <i class="far fa-edit"></i>
